@@ -1,20 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <memory.h>
-#include <malloc.h>
-#include <windows.h>
-#include <conio.h>
 
 #include "show.h"
 #include "player.h"
 #include "gotoyx.h"
-
+#include "file.h"
 
 int main() {
-    show_gameboard_grid();
+    int i;
+    Land** gameboard = file_get_land_info();
+    Land* c_land;
+    for(i = 0; i < 22; i++){
+        c_land = &(*gameboard)[i];
+        printf("%s(%d) : %d <%s>\n", c_land->name, i+1, c_land->land_price, c_land->landmark_name);
+    }
 
-
-    gotoyx(0, 0);
-    getch();
-
+    system("pause");
 }

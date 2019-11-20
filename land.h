@@ -8,6 +8,7 @@
 typedef struct land{
     int land_position;
     char* name;
+    char* landmark_name;
     int land_price;
     int land_multiply; //배수 설정 (페스티벌)
     int label; //누구건지 0, 1, 2

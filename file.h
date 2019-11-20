@@ -7,4 +7,4 @@
 
 #endif //KONKUK_FILE_H
 
-void file_get_land_info();
+Land** file_get_land_info();
