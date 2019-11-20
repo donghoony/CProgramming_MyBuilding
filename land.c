@@ -3,5 +3,8 @@
 //
 
 #include "land.h"
+#include "player.h"
 
-int land_buy(Player p, Land L, int level);
+int land_buy(Player* p, Land* L, int level){
+
+}
