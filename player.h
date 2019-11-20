@@ -12,7 +12,6 @@
 typedef struct player{
     int money;
     int position;
-    char* name;
     int label; //->identify bot or not
     int lap; // 몇 바퀴 돌았는지
 }Player;
