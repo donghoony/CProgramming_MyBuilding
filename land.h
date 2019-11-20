@@ -1,12 +1,13 @@
 //
 // Created by DongHoony on 2019-11-20.
 //
-
+#pragma once
+#include "player.h"
 #ifndef KONKUK_LAND_H
 #define KONKUK_LAND_H
 
 #endif //KONKUK_LAND_H
-#include "player.h"
+
 
 // land.h -> 재욱
 typedef struct land{
@@ -18,5 +19,6 @@ typedef struct land{
     int level; // 0000 -> 2진수를 통한 별장, 빌딩, 호텔, 랜드마크 여부
 }Land;
 
-int land_buy(Player p, Land l, int level);
+int land_buy(Player, Land, int);
+
 //-> 반환값 따라서 성공여부
