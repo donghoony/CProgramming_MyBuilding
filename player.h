@@ -17,4 +17,4 @@ typedef struct player{
     int lap; // 몇 바퀴 돌았는지
 }Player;
 
-void player_move(Land from, Land to);
+void player_move(Player* p, int move_value);
