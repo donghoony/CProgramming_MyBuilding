@@ -1,12 +1,8 @@
 //
 // Created by DongHoony on 2019-11-20.
 //
-
-
-#ifndef KONKUK_LAND_H
-#define KONKUK_LAND_H
-
-#endif //KONKUK_LAND_H
+#pragma  once
+#include "player.h"
 
 // land.h -> 재욱
 typedef struct land{

@@ -11,3 +11,4 @@
 
 void show_land_info(Land);
 void show_gameboard(Land* gameboard);
+void show_gameboard_grid();

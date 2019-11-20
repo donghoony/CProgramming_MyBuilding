@@ -1,9 +1,10 @@
 //
 // Created by DongHoony on 2019-11-20.
 //
-#pragma once
+
 #include "player.h"
 #include "money.h"
+#include "land.h"
 
 #define NOT_OK -1
 #define OK 0

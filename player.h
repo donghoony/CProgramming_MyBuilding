@@ -2,14 +2,7 @@
 // Created by DongHoony on 2019-11-20.
 //
 
-
-#include "land.h"
-
-#ifndef KONKUK_PLAYER_H
-#define KONKUK_PLAYER_H
-
-#endif //KONKUK_PLAYER_H
-
+#pragma  once
 typedef struct player{
     int money;
     int position;
