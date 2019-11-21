@@ -24,26 +24,26 @@
 19 S 100 LANDMARK_S
 20 T 100 LANDMARK_T
 21 U 100 LANDMARK_U
-22 V 100 LANDMARK_V
-23 W 100 LANDMARK_W
 
 -* S / M / L Building Position, Player land position, Bot land position *-
-0
-1
-2
-3
-4
+-* (Land number) (Small building y, x) (Medium building y, x) (Large building y, x) (Player position at land y, x) (Bot position at land y, x) *-
+!
+0 -1 -1 -1 -1 -1 -1 29 5 29 12
+1 ? ? ? ? ? ? 21 5 23 5
+2 ? ? ? ? ? ? 15 5 17 5
+3 ? ? ? ? ? ? 9 5 11 5
+4 -1 -1 -1 -1 -1 -1
 5
 6
 7
 8
 9
 10
-11
+11 -1 -1 -1 -1 -1 -1
 12
 13
 14
-15
+15 -1 -1 -1 -1 -1 -1
 16
 17
 18

@@ -13,5 +13,7 @@
 void player_move(Player* p, int move_value){
     int cur_position, nxt_position;
     cur_position = p->position;
+    if (cur_position + move_value >= 22) {}
     nxt_position = (cur_position + move_value) % 22;
+
 }

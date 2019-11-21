@@ -11,9 +11,10 @@ Land* file_get_land_info(){
     char c;
     int land_price, land_number, i;
     char land_name[100], landmark_name[100];
-    Land temp_land, tmp;
+    Land temp_land;
+    // land tmp;
     // land array <Struct array>
-    Land* land_array = (Land*) malloc(sizeof(Land) * 22);
+    Land* land_array = (Land*) malloc(sizeof(Land) * 21);
 
     // File
     FILE* f = fopen("C:\\Users\\DongHoony\\CLionProjects\\KONKUK\\CProgramming_TeamProject_MyBuilding\\File", "r");
@@ -26,7 +27,7 @@ Land* file_get_land_info(){
         if(c == '!') break;
         else printf("%c", c);
     }
-    for(i = 0; i < 22; i++){
+    for(i = 0; i < 21; i++){
         memset(land_name, 0x0, 100);
         memset(landmark_name, 0x0, 100);
 
@@ -44,9 +45,10 @@ Land* file_get_land_info(){
         land_array[i] = temp_land;
 
         // test codes below
+        /*
         tmp = land_array[i];
-
         printf("%d %s %d %s\n", tmp.land_position, tmp.name, tmp.land_price, tmp.landmark_name);
+        */
         //test code ends
 
     }
