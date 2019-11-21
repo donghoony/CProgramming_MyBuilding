@@ -8,11 +8,16 @@
 
 int main() {
     int i;
-    Land** gameboard = file_get_land_info();
-    Land* c_land;
-    for(i = 0; i < 22; i++){
-        c_land = &(*gameboard)[i];
-        printf("%s(%d) : %d <%s>\n", c_land->name, i+1, c_land->land_price, c_land->landmark_name);
+    Land** gameboard;
+    Land cur_land;
+    gameboard = file_get_land_info();
+    if (gameboard == NULL){
+        printf("!! FUNCTION RETURNED NULLPTR !!\n");
+        return -1;
+    }
+    for(i = 0; i < 22; i++){\
+        cur_land = (*gameboard)[i];
+        printf("%d %s %d %s\n", cur_land.land_position, cur_land.name, cur_land.land_price, cur_land.landmark_name);
     }
 
     system("pause");
