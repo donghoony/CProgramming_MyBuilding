@@ -8,6 +8,7 @@
 
 #define NOT_OK -1
 #define OK 0
+
 int money_spend(Player* p, int value){
    if (p->money < value) return NOT_OK;
    p->money -= value;

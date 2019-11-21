@@ -7,12 +7,11 @@
 #include <string.h>
 
 // returns Land* array => Land**
-Land** file_get_land_info(){
+Land* file_get_land_info(){
     char c;
     int land_price, land_number, i;
     char land_name[100], landmark_name[100];
     Land temp_land, tmp;
-    Land** ret;
     // land array <Struct array>
     Land* land_array = (Land*) malloc(sizeof(Land) * 22);
 
@@ -36,7 +35,6 @@ Land** file_get_land_info(){
         fscanf(f, "%d", &land_price);
         fscanf(f, "%s", landmark_name);
 
-
         temp_land.name = (char*) malloc(sizeof(char) * strlen(land_name) + 1);
         strcpy(temp_land.name, land_name);
         temp_land.landmark_name = (char*) malloc(sizeof(char) * strlen(landmark_name) + 1);
@@ -52,9 +50,6 @@ Land** file_get_land_info(){
         //test code ends
 
     }
-    if (&land_array == NULL){
-        printf("NULLPTR RETURNS");
-    }
-    ret = &land_array;
-    return ret;
+
+    return land_array;
 }
