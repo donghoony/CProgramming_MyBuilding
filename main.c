@@ -19,6 +19,7 @@ int main() {
         cur_land = gameboard[i];
         printf("%d %s %d %s\n", cur_land.land_position, cur_land.name, cur_land.land_price, cur_land.landmark_name);
     }
-
+    system("cls");
+    show_gameboard_grid();
     system("pause");
 }
