@@ -6,9 +6,27 @@
 #include "land.h"
 #include <string.h>
 
+#define START_CHAR '!'
+
+int is_nullptr(FILE* f){
+    if (f == NULL){
+        printf("NULLPTR\n");
+        return 1;
+    }
+    else return 0;
+}
+
+void get_chars_until_specific_char(FILE* f, char specific_char){
+    char c;
+    while (1){
+        c = fgetc(f);
+        if(c == specific_char) break;
+        else printf("%c", c);
+    }
+}
+
 // returns Land* array => Land**
 Land* file_get_land_info(){
-    char c;
     int land_price, land_number, i;
     char land_name[100], landmark_name[100];
     Land temp_land;
@@ -18,15 +36,10 @@ Land* file_get_land_info(){
 
     // LAND_INFO
     FILE* f = fopen("C:\\Users\\DongHoony\\CLionProjects\\KONKUK\\CProgramming_TeamProject_MyBuilding\\LAND_INFO", "r");
-    if (f == NULL){
-        printf("NULLPTR");
-        return NULL;
-    }
-    while (1){
-        c = fgetc(f);
-        if(c == '!') break;
-        else printf("%c", c);
-    }
+
+    if (is_nullptr(f)) return NULL;
+    get_chars_until_specific_char(f, START_CHAR);
+
     for(i = 0; i < 21; i++){
         memset(land_name, 0x0, 100);
         memset(landmark_name, 0x0, 100);
@@ -52,7 +65,14 @@ Land* file_get_land_info(){
         //test code ends
 
     }
+    fclose(f);
     return land_array;
 }
 
-int file_get_land_
+int file_get_land_pos(Land **land_arr_addr){
+    Land* arr = *land_arr_addr;
+    FILE* f = fopen("C:\\Users\\DongHoony\\CLionProjects\\KONKUK\\CProgramming_TeamProject_MyBuilding\\LAND_POS_INFO", "r");
+
+
+    fclose(f);
+}
