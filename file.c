@@ -52,6 +52,5 @@ Land* file_get_land_info(){
         //test code ends
 
     }
-
     return land_array;
 }
