@@ -16,8 +16,8 @@ Land* file_get_land_info(){
     // land array <Struct array>
     Land* land_array = (Land*) malloc(sizeof(Land) * 21);
 
-    // File
-    FILE* f = fopen("C:\\Users\\DongHoony\\CLionProjects\\KONKUK\\CProgramming_TeamProject_MyBuilding\\File", "r");
+    // LAND_INFO
+    FILE* f = fopen("C:\\Users\\DongHoony\\CLionProjects\\KONKUK\\CProgramming_TeamProject_MyBuilding\\LAND_INFO", "r");
     if (f == NULL){
         printf("NULLPTR");
         return NULL;
@@ -54,3 +54,5 @@ Land* file_get_land_info(){
     }
     return land_array;
 }
+
+int file_get_land_
