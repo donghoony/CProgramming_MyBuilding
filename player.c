@@ -1,8 +1,9 @@
 //
 // Created by DongHoony on 2019-11-20.
 //
-
-
+#include <stdio.h>
+#include<stdlib.h>
+#include <time.h>
 #include "player.h"
 
 // constants for after use
@@ -10,10 +11,41 @@
 #define PLAYER 1
 #define COMPUTER 2
 
-void player_move(Player* p, int move_value){
-    int cur_position, nxt_position;
-    cur_position = p->position;
-    if (cur_position + move_value >= 22) {}
-    nxt_position = (cur_position + move_value) % 22;
+int rand_roll_dice(Player* user) {
+	int count = 0;
 
+	while (1) {
+		int dice_1 = rand() % 5 + 1;
+		int dice_2 = rand() % 5 + 1;
+
+		printf("%d,%d\n", dice_1, dice_2);
+
+
+		if (count == 2) {
+			printf("지속적인 더블로 무인도행");
+			break;
+		}
+
+		user->position += dice_1 + dice_2;
+
+		if (user->position > 21) {
+			user->position -= 21;
+			user->lap++;
+		}
+
+		if (dice_1 != dice_2)
+			break;
+		count++;
+	}
+}
+
+void* make_user_name(Player* user) {
+	user->name = (Player*)malloc(sizeof(Player));
+	printf("사용자 이름 : ");
+	scanf("%s", user->name);
+	user->label = PLAYER;
+}
+
+int rand_house_person(Land) {
+	
 }

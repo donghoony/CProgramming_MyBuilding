@@ -7,9 +7,13 @@
 #include "file.h"
 
 int main() {
+	srand((unsigned)time(NULL));
+
     int i;
+	Player user = { 100,0,"",1,0 };
     Land* gameboard;
     Land cur_land;
+	make_user_name(&user);
     gameboard = file_get_land_info();
     if (gameboard == NULL){
         printf("!! FUNCTION RETURNED NULLPTR !!\n");
