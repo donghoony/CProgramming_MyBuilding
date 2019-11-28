@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
 #include "show.h"
 #include "player.h"
 #include "gotoyx.h"
@@ -10,7 +10,8 @@ int main() {
 	srand((unsigned)time(NULL));
 
     int i;
-	Player user = { 100,0,"",1,0 };
+	Player user = { 100, 0, "", PLAYER, 0 };
+
     Land* gameboard;
     Land cur_land;
 	make_user_name(&user);

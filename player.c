@@ -7,9 +7,7 @@
 #include "player.h"
 
 // constants for after use
-#define NO_ONE 0
-#define PLAYER 1
-#define COMPUTER 2
+
 
 void* make_user_name(Player* user) {
 	user->name = (Player*)malloc(sizeof(Player));
