@@ -3,27 +3,27 @@
 -* Land number / Land name / Land price / Landmark name *-
 !
 0 START_LAND 0 NULL
-1 A 100 LANDMARK_A
-2 B 100 LANDMARK_B
-3 C 100 LANDMARK_C
-4 D 100 LANDMARK_D
-5 E 100 LANDMARK_E
-6 F 100 LANDMARK_F
-7 G 100 LANDMARK_G
-8 H 100 LANDMARK_H
-9 I 100 LANDMARK_I
-10 J 100 LANDMARK_J
-11 K 100 LANDMARK_K
-12 L 100 LANDMARK_L
-13 M 100 LANDMARK_M
-14 N 100 LANDMARK_N
-15 O 100 LANDMARK_O
-16 P 100 LANDMARK_P
-17 Q 100 LANDMARK_Q
-18 R 100 LANDMARK_R
-19 S 100 LANDMARK_S
-20 T 100 LANDMARK_T
-21 U 100 LANDMARK_U
+1 Tokyo 100 Tokyo_Tower
+2 Beijing 100 Imperial_Palace
+3 Hanoi 100 AON
+4 Uninhabited_island 0 NULL
+5 Taipei 100 101_Tower
+6 Bangkok 100 Iconsiam
+7 Brasilia 100 Cathedral_of_Brasilia
+8 Buenos_Aires 100 Recoleta
+9 Santiago 100 Rue_Banana
+10 Lima 100 Plaza_Norte
+11 Festival 0 NULL
+12 Mexico_City 100 Metropolitan_Cathedral
+13 Ottawa 100 Beechwood_Cemetery
+14 Washington_DC 100 Washington_Monument
+15 Travel 0 NULL
+16 Paris 100 Eiffel_Tower
+17 Amsterdam 100 I_Am_Amsterdam
+18 Rome 100 Colosseum
+19 Berlin 100 Brandenburger
+20 London 100 London_Eye
+21 Seoul 100 63_Building
 
 <<<<<<< HEAD
 HELLO! hello heiihihihhifsdfsdfdsafsadfasdfasdfasd
