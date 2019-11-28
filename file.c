@@ -35,7 +35,7 @@ Land* file_get_land_info(){
     Land* land_array = (Land*) malloc(sizeof(Land) * 21);
 
     // LAND_INFO
-    FILE* f = fopen("..\\CProgramming_Teamproject_Mybuilding\\LAND_INFO", "r");
+    FILE* f = fopen("..\\LAND_INFO", "r");
 
     if (is_nullptr(f)) return NULL;
     get_chars_until_specific_char(f, START_CHAR);
@@ -72,7 +72,7 @@ Land* file_get_land_info(){
 int file_get_land_pos(Land **land_arr_addr){
     int i, num;
     Land* arr = *land_arr_addr;
-    FILE* f = fopen("..\\CProgramming_Teamproject_Mybuilding\\LAND_POS_INFO", "r");
+    FILE* f = fopen("..\\LAND_POS_INFO", "r");
 
     if (is_nullptr(f)) return NULL;
     get_chars_until_specific_char(f, START_CHAR);
