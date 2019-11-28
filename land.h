@@ -4,6 +4,11 @@
 #pragma  once
 #include "player.h"
 
+#define START_LAND 0
+#define ABANDONED_ISLAND 4
+#define FESTIVAL 11
+#define TRAVEL 15
+
 typedef struct point{
     int y;
     int x;
