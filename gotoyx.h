@@ -1,7 +1,7 @@
 //
 // Created by DongHoony on 2019-11-20.
 //
-
+#pragma once
 #ifndef KONKUK_GOTOYX_H
 #define KONKUK_GOTOYX_H
 

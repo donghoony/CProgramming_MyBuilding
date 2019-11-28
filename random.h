@@ -1,7 +1,7 @@
 //
 // Created by DongHoony on 2019-11-20.
 //
-
+#pragma once
 #ifndef KONKUK_RANDOM_H
 #define KONKUK_RANDOM_H
 

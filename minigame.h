@@ -1,7 +1,7 @@
 //
 // Created by DongHoony on 2019-11-20.
 //
-
+#pragma once
 #include "player.h"
 
 #ifndef KONKUK_MINIGAME_H
