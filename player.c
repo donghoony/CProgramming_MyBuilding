@@ -15,3 +15,7 @@ void* make_user_name(Player* user) {
 //	scanf("%s", user->name);
 //	user->label = PLAYER;
 }
+
+void player_move(Player* p, int move_value){
+    p->position += move_value;
+};

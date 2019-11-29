@@ -1,7 +1,7 @@
 //
 // Created by DongHoony on 2019-11-20.
 //
-#pragma  once
+#pragma once
 #include "player.h"
 
 #define START_LAND 0

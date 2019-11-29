@@ -6,6 +6,6 @@
 #define KONKUK_RANDOM_H
 
 #endif //KONKUK_RANDOM_H
-
+int rand_roll_dice_only();
 int rand_roll_dice();
 int rand_house_person();
