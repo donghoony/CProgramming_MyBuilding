@@ -5,6 +5,7 @@
 #include "player.h"
 #include "gotoyx.h"
 #include "file.h"
+#include "cycle.h"
 
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
@@ -33,13 +34,19 @@ int main() {
 //    show_test_gameboard(gameboard);
 
 
-
-    for(i = 0; i < 21; i++){
-        show_player_move(gameboard, &user, i, i+1);
-        _sleep(200);
-        show_player_move(gameboard, &bot, i, i+1);
-        _sleep(200);
+    for(i = 0; i < 22; i++){
+        if (gameboard[i].land_type == SPECIAL_TYPE) continue;
+        build_building(gameboard, (rand()%2 == 1) ? &user : &bot, i, 3);
     }
+
+
+// animation test
+//    for(i = 0; i < 21; i++){
+//        show_player_move(gameboard, &user, i, i+1);
+//        _sleep(200);
+//        show_player_move(gameboard, &bot, i, i+1);
+//        _sleep(200);
+//    }
 
     gotoyx(35, 0);
     system("pause");

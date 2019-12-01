@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include "player.h"
+#include "random.h"
 
-#define DICE_MAX 5
 
 int rand_roll_dice_only(){
     int ret;

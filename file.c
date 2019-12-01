@@ -55,7 +55,9 @@ Land* file_get_land_info(){
         strcpy(temp_land.landmark_name, landmark_name);
         temp_land.land_price = land_price;
         temp_land.land_position = land_number;
+        temp_land.land_type = (i == ABANDONED_ISLAND || i == START_LAND || i == FESTIVAL || i == TRAVEL) ? SPECIAL_TYPE : NORMAL_TYPE;
         land_array[i] = temp_land;
+
 
         // test codes below
         /*

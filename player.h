@@ -17,4 +17,5 @@ int rand_roll_dice(Player* user);
 void* make_user_name(Player* user);
 int rand_house_person();
 
-void player_move(Player* p, int move_value);
+void player_move_value(Player* p, int move_value);
+void player_move_toward(Player* p, int land_num);

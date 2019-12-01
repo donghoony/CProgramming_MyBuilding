@@ -9,6 +9,9 @@
 #define FESTIVAL 11
 #define TRAVEL 15
 
+#define NORMAL_TYPE 0
+#define SPECIAL_TYPE 1
+
 typedef struct point{
     int y;
     int x;
@@ -19,6 +22,7 @@ typedef struct land{
     int land_position;
     char* name;
     char* landmark_name;
+    int land_type; // NORMAL_TYPE, SPECIAL_TYPE - 일반 땅, 스페셜 땅
     int land_price;
     int land_multiply; //배수 설정 (페스티벌)
     int label; //누구건지 NO_ONE, PLAYER, COMPUTER

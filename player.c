@@ -16,6 +16,10 @@ void* make_user_name(Player* user) {
 //	user->label = PLAYER;
 }
 
-void player_move(Player* p, int move_value){
+void player_move_value(Player* p, int move_value){
     p->position += move_value;
 };
+
+void player_move_toward(Player* p, int land_num){
+    p->position = land_num;
+}
