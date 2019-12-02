@@ -35,12 +35,12 @@ Land* file_get_land_info(){
     Land* land_array = (Land*) malloc(sizeof(Land) * 21);
 
     // LAND_INFO
-    FILE* f = fopen("..\\CProgramming_Teamproject_Mybuilding\\LAND_INFO", "r");
+    FILE* f = fopen("..\\LAND_INFO", "r");
 
     if (is_nullptr(f)) return NULL;
     get_chars_until_specific_char(f, START_CHAR);
 
-    for(i = 0; i < 21; i++){
+    for(i = 0; i < 22; i++){
         memset(land_name, 0x0, 100);
         memset(landmark_name, 0x0, 100);
 
@@ -55,7 +55,9 @@ Land* file_get_land_info(){
         strcpy(temp_land.landmark_name, landmark_name);
         temp_land.land_price = land_price;
         temp_land.land_position = land_number;
+        temp_land.land_type = (i == ABANDONED_ISLAND || i == START_LAND || i == FESTIVAL || i == TRAVEL) ? SPECIAL_TYPE : NORMAL_TYPE;
         land_array[i] = temp_land;
+
 
         // test codes below
         /*
@@ -71,17 +73,30 @@ Land* file_get_land_info(){
 
 int file_get_land_pos(Land **land_arr_addr){
     int i, num;
-    Land* arr = *land_arr_addr;
-    FILE* f = fopen("..\\CProgramming_Teamproject_Mybuilding\\LAND_POS_INFO", "r");
+    Point p_b1, p_b2, p_b3, p_player, p_bot;
+    Land* land_arr = *land_arr_addr;
+    FILE* f = fopen("..\\LAND_POS_INFO", "r");
 
     if (is_nullptr(f)) return NULL;
     get_chars_until_specific_char(f, START_CHAR);
 
-    for(i = 0; i < 21; i++){
+    for(i = 0; i < 22; i++){
         fscanf(f, "%d", &num);
-        if (num != i) printf("WRONG MATCH!\n");
+        if (num != i) {
+            printf("WRONG MATCH!\n");
+            return NULL;
+        }
+        fscanf(f, "%d %d", &p_b1.y, &p_b1.x);
+        fscanf(f, "%d %d", &p_b2.y, &p_b2.x);
+        fscanf(f, "%d %d", &p_b3.y, &p_b3.x);
+        fscanf(f, "%d %d", &p_player.y, &p_player.x);
+        fscanf(f, "%d %d", &p_bot.y, &p_bot.x);
 
-
+        land_arr[i].p_b1 = p_b1;
+        land_arr[i].p_b2 = p_b2;
+        land_arr[i].p_b3 = p_b3;
+        land_arr[i].p_bot = p_bot;
+        land_arr[i].p_player = p_player;
     }
 
     fclose(f);
