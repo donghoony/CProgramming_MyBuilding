@@ -16,6 +16,6 @@ typedef struct land{
 
 }Land;
 
-
 int land_buy(Player*, Land*, int);
 //-> 반환값 따라서 성공여부
+
