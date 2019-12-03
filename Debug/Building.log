@@ -1,0 +1,135 @@
+﻿  CMakeCXXCompilerId.cpp
+  CMakeCCompilerId.c
+  cycle.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\land.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\cycle.c(30): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdlib.h(1274): note: '_sleep' 선언을 참조하십시오.
+  file.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\land.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(38): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: 'fopen' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(47): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(48): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(49): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(50): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(53): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\string.h(133): note: 'strcpy' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(55): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\string.h(133): note: 'strcpy' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(80): warning C4047: 'return': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(87): warning C4047: 'return': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(78): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): note: 'fopen' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(84): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(89): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(90): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(91): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(92): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(93): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
+  gotoyx.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\um\winnt.h(154): fatal error C1189: #error:  "No Target Architecture"
+  land.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\land.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  main.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\main.c : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\land.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\main.c(12): warning C4101: 'y' :참조되지 않은 지역 변수입니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\main.c(12): warning C4101: 'x' :참조되지 않은 지역 변수입니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\main.c(14): warning C4101: 'cur_land' :참조되지 않은 지역 변수입니다.
+  minigame.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  money.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\land.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(12): warning C4005: 'SALARY': 매크로 재정의
+  C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.h(9): note: 'SALARY'의 이전 정의를 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(43): warning C4013: 'all_land_rent_fee'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(43): error C2065: 'l': 선언되지 않은 식별자입니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(49): error C2065: 'land': 선언되지 않은 식별자입니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(49): error C2109: 첨자는 배열 또는 포인터 형식을 사용해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(57): error C2065: 'land': 선언되지 않은 식별자입니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(57): error C2109: 첨자는 배열 또는 포인터 형식을 사용해야 합니다.
+  player.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  Prototype.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(5): error C2178: 'player'은(는) 'typedef' 지정자를 사용하여 선언할 수 없습니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(5): error C2054: 'player' 다음에 '('가 필요합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(12): error C2146: 구문 오류: ')'이(가) 'from' 식별자 앞에 없습니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(12): error C2061: 구문 오류: 식별자 'from'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(12): error C2059: 구문 오류: ';'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(12): error C2059: 구문 오류: ','
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(12): error C2059: 구문 오류: ')'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(19): error C2059: 구문 오류: '<parameter-list>'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(28): error C2146: 구문 오류: ')'이(가) 'p' 식별자 앞에 없습니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(28): error C2061: 구문 오류: 식별자 'p'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(28): error C2059: 구문 오류: ';'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(28): error C2059: 구문 오류: ','
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(28): error C2059: 구문 오류: ')'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(32): error C2146: 구문 오류: ')'이(가) 'p' 식별자 앞에 없습니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(32): error C2061: 구문 오류: 식별자 'p'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(32): error C2059: 구문 오류: ';'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(32): error C2059: 구문 오류: ','
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(32): error C2059: 구문 오류: ')'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(33): error C2146: 구문 오류: ')'이(가) 'p' 식별자 앞에 없습니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(33): error C2061: 구문 오류: 식별자 'p'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(33): error C2059: 구문 오류: ';'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(33): error C2059: 구문 오류: ','
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(33): error C2059: 구문 오류: ')'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(34): error C2146: 구문 오류: ')'이(가) 'p_from' 식별자 앞에 없습니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(34): error C2061: 구문 오류: 식별자 'p_from'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(34): error C2059: 구문 오류: ';'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(34): error C2059: 구문 오류: ','
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(34): error C2059: 구문 오류: ')'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(35): error C2146: 구문 오류: ')'이(가) 'p' 식별자 앞에 없습니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(35): error C2061: 구문 오류: 식별자 'p'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(35): error C2059: 구문 오류: ';'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(35): error C2059: 구문 오류: ')'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(36): error C2146: 구문 오류: ')'이(가) 'p' 식별자 앞에 없습니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(36): error C2061: 구문 오류: 식별자 'p'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(36): error C2059: 구문 오류: ';'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(36): error C2059: 구문 오류: ','
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(36): error C2059: 구문 오류: ')'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(40): error C2143: 구문 오류: ')'이(가) '*' 앞에 없습니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(40): error C2143: 구문 오류: '{'이(가) '*' 앞에 없습니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(40): error C2059: 구문 오류: ')'
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c(47): error C2122: 'level': 이름 목록의 프로토타입 매개 변수가 잘못되었습니다.
+  random.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\random.c : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  resident.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\resident.c(7): warning C4013: 'rand'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  show.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\land.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\um\winnt.h(154): fatal error C1189: #error:  "No Target Architecture"
+  코드를 생성하고 있습니다...
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\random.c(48): warning C4716: 'rand_house_person': 값을 반환해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\random.c(44): warning C4716: 'rand_roll_dice': 값을 반환해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.c(17): warning C4716: 'make_user_name': 값을 반환해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\land.c(10): warning C4716: 'land_buy': 값을 반환해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\file.c(103): warning C4715: 'file_get_land_pos': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\cycle.c(32): warning C4716: 'move_cycle': 값을 반환해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\cycle.c(56): warning C4716: 'land_buy_cycle': 값을 반환해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\cycle.c(60): warning C4716: 'land_upgrade_cycle': 값을 반환해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\cycle.c(73): warning C4716: 'land_cycle': 값을 반환해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\cycle.c(90): warning C4700: 초기화되지 않은 'pos' 지역 변수를 사용했습니다.

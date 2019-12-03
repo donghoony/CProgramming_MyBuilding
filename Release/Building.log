@@ -1,0 +1,30 @@
+﻿  gotoyx.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\um\winnt.h(154): fatal error C1189: #error:  "No Target Architecture"
+  money.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\land.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(12): warning C4005: 'SALARY': 매크로 재정의
+  C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.h(9): note: 'SALARY'의 이전 정의를 참조하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(43): warning C4013: 'all_land_rent_fee'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(43): error C2065: 'l': 선언되지 않은 식별자입니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(49): error C2065: 'land': 선언되지 않은 식별자입니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(49): error C2109: 첨자는 배열 또는 포인터 형식을 사용해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(57): error C2065: 'land': 선언되지 않은 식별자입니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\money.c(57): error C2109: 첨자는 배열 또는 포인터 형식을 사용해야 합니다.
+  player.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  Prototype.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\Prototype.c : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  random.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\random.c : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  show.c
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\land.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.h : warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\um\winnt.h(154): fatal error C1189: #error:  "No Target Architecture"
+  코드를 생성하고 있습니다...
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\random.c(48): warning C4716: 'rand_house_person': 값을 반환해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\random.c(44): warning C4716: 'rand_roll_dice': 값을 반환해야 합니다.
+C:\Users\DongHoony\Desktop\git-test\CProgramming_MyBuilding\player.c(17): warning C4716: 'make_user_name': 값을 반환해야 합니다.

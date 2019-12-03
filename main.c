@@ -6,7 +6,7 @@
 #include "gotoyx.h"
 #include "file.h"
 #include "cycle.h"
-#include "resident.h"
+
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
     int i, y, x;
@@ -14,7 +14,11 @@ int main() {
     Land cur_land;
     Player user = {100, 0, "", PLAYER, 0};
     Player bot = {100, 0, "", COMPUTER, 0};
+<<<<<<< HEAD
 	Resident people = { {0},{0},{0} };
+=======
+	Land l;
+>>>>>>> af410fa471bee8113a5e10fa5643abfde4804c2e
 
     show_set_cursor_disable();
     srand((unsigned) time(NULL));
