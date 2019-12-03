@@ -24,3 +24,27 @@
 19 Berlin 110 Brandenburger
 20 London 110 London_Eye
 21 Seoul 110 63_Building
+
+!
+0 시작 0 NULL
+1 도쿄 100 도쿄타워
+2 베이징 100 자금성
+3 하노이 100 아온72
+4 무인도 0 NULL
+5 타이페이 100 101타워
+6 방콕 100 아이콘시암
+7 브라질리아 100 브라질리아대성당
+8 부에노스아이레스 100 레코레타
+9 산티에고 100 Rue_Banana
+10 리마 100 플라자노르테
+11 페스티벌 0 NULL
+12 멕시코시티 100 Metropolitan_Cathedral
+13 오타와 100 Beechwood_Cemetery
+14 워싱턴DC 100 Washington_Monument
+15 세계여행 0 NULL
+16 파리 100 에펠탑
+17 암스테르담 100 I_Am_Amsterdam
+18 로마 100 콜로세움
+19 베를린 100 브란덴부르크문
+20 런던 100 런던아이
+21 서울 100 63빌딩

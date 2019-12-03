@@ -35,7 +35,6 @@ int determine_double(Dice d){
     return (d.d1 == d.d2) ? DOUBLE : NORMAL;
 }
 
-
 int build_building(Land* gameboard, Player* p, int pos, int level){
     int label, i, color;
     Point building_pos[3] = {gameboard[pos].p_b1, gameboard[pos].p_b2, gameboard[pos].p_b3};

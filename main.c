@@ -15,6 +15,7 @@ int main() {
     Player user = {100, 0, "", PLAYER, 0};
     Player bot = {100, 0, "", COMPUTER, 0};
 	Resident people = { {0},{0},{0} };
+
     show_set_cursor_disable();
     srand((unsigned) time(NULL));
 

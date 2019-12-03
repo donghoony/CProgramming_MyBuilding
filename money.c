@@ -38,7 +38,7 @@ int enemy_land_spend(Player* p,int value){//적이나 내가 상대방의 땅을
    condition=money_spend(p,value);//돈을 낼수 있는 상황인지 확인
    return condition;//ok or not
 }
-void start_pont_income(Player* p,Land I,int member){
+void start_pont_income(Player* p,Land l,int member){
    money_get_income(p);
    all_land_rent_fee(l,p,member);
 }
@@ -46,7 +46,7 @@ void all_Myland_rent_fee(Land* l,Player* p,int member){//모든 땅에 대한 �
    int i;
    for(i=0;i<22;i++){
       if(l[i].label==1){
-         p->money+=(land[i].land_price/100)*member;
+         p->money+=(l[i].land_price/100)*member;
       }
    }
 }
@@ -54,7 +54,7 @@ void all_Comland_rent_fee(Land* l,Player* p,int member){//모든 땅에 대한 �
    int i;
    for(i=0;i<22;i++){
       if(l[i].label==2){
-         p->money+=(land[i].land_price/100)*member;
+         p->money+=(l[i].land_price/100)*member;
       }
    }
 }

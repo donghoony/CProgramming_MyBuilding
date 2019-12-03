@@ -1,3 +1,4 @@
+/*
 //file.h
 void file_get_land_info();
 
@@ -50,3 +51,4 @@ int minigame_oddeven(Player, int level); //-> 3레벨까지 진행가능 (재귀
 
 
 
+*/
