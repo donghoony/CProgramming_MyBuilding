@@ -52,7 +52,6 @@ int build_building(Land* gameboard, Player* p, int pos, int level){
 int land_buy_cycle(Land* gameboard, Player *p, int pos){
     int lap = p->lap;
     int level = gameboard[pos].level;
-
 }
 
 int land_upgrade_cycle(Land* gameboard, Player *p, int pos){

@@ -7,9 +7,6 @@
 #include "land.h"
 #include<stdio.h>
 
-#define NOT_OK -1
-#define OK 0
-#define SALARY 200
 
 int money_spend(Player* p, int value){//단순 돈 관리
    if (p->money < value) return NOT_OK;
