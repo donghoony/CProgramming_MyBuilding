@@ -98,3 +98,17 @@ void show_test_gameboard(Land* gameboard){
     gotoyx(35, 0);
     system("pause");
 }
+
+int show_build_building(Land* gameboard, Player* p, int pos, int level){
+    int label, i, color;
+    Point building_pos[3] = {gameboard[pos].p_b1, gameboard[pos].p_b2, gameboard[pos].p_b3};
+    char* building_str[3] = {"SS", "MM", "LL"};
+    label = p->label;
+    color = (label == PLAYER ? C_BLUE : C_RED);
+    gotoyx_set_color(color);
+    for(i = 0; i < level; i++){
+        gotoyx_print(building_pos[i].y, building_pos[i].x, building_str[i]);
+    }
+    gotoyx_set_color(C_WHITE);
+    return 0;
+}

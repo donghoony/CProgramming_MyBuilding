@@ -14,11 +14,8 @@ int main() {
     Land cur_land;
     Player user = {100, 0, "", PLAYER, 0};
     Player bot = {100, 0, "", COMPUTER, 0};
-<<<<<<< HEAD
 	Resident people = { {0},{0},{0} };
-=======
 	Land l;
->>>>>>> af410fa471bee8113a5e10fa5643abfde4804c2e
 
     show_set_cursor_disable();
     srand((unsigned) time(NULL));

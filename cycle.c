@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include "player.h"
 #include "random.h"
-#include "money.h"
 #include "show.h"
 #include "gotoyx.h"
 #include "cycle.h"
@@ -16,6 +15,11 @@ Dice dice_roll(){
     return d;
 }
 
+int determine_double(Dice d){
+    return (d.d1 == d.d2) ? DOUBLE : NORMAL;
+}
+
+// includes animation
 int move_cycle(Land* gameboard, Player* p, Dice d){
     int i;
     for(i = 0; i < d.d1 + d.d2; i++){
@@ -26,27 +30,10 @@ int move_cycle(Land* gameboard, Player* p, Dice d){
         if (p->position == 22) {
             money_get_income(p);
             p->position = 0;
+            show_player_move(gameboard, p,21, 0);
         }
         _sleep(100);
     }
-}
-
-int determine_double(Dice d){
-    return (d.d1 == d.d2) ? DOUBLE : NORMAL;
-}
-
-int build_building(Land* gameboard, Player* p, int pos, int level){
-    int label, i, color;
-    Point building_pos[3] = {gameboard[pos].p_b1, gameboard[pos].p_b2, gameboard[pos].p_b3};
-    char* building_str[3] = {"SS", "MM", "LL"};
-    label = p->label;
-    color = (label == PLAYER ? C_BLUE : C_RED);
-    gotoyx_set_color(color);
-    for(i = 0; i < level; i++){
-        gotoyx_print(building_pos[i].y, building_pos[i].x, building_str[i]);
-    }
-    gotoyx_set_color(C_WHITE);
-    return 0;
 }
 
 int land_buy_cycle(Land* gameboard, Player *p, int pos){
@@ -70,8 +57,6 @@ int land_cycle(Land* gameboard, Player* p, int pos){
 
     }
 }
-
-
 
 int cycle(Land* gameboard, Player* p){
     int pos, land_owner, label, double_count = 0;
