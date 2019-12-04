@@ -10,7 +10,6 @@
 
 int rand_roll_dice_only(){
     int ret;
-    srand((unsigned)time(NULL));
     ret = rand() % DICE_MAX + 1;
     return ret;
 }

@@ -41,14 +41,17 @@ int main() {
         show_build_building(gameboard, (rand()%2 == 1) ? &user : &bot, i, 3);
     }
 
+    show_dice_grid();
+    cycle(gameboard, &user);
 
 //  animation test
-    for(i = 0; i < 21; i++){
-        show_player_move(gameboard, &user, i, i+1);
-        _sleep(200);
-        show_player_move(gameboard, &bot, i, i+1);
-        _sleep(200);
-    }
+//    for(i = 0; i < 21; i++){
+//        show_player_move(gameboard, &user, i, i+1);
+//        _sleep(200);
+//        show_player_move(gameboard, &bot, i, i+1);
+//        _sleep(200);
+//    }
+
 
     gotoyx(35, 0);
     system("pause");

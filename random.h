@@ -9,7 +9,7 @@
 
 #define DICE_MAX 5
 #define DOUBLE 1
-#define NORMAL 0
+#define NOT_DOUBLE 0
 
 
 int rand_roll_dice_only();

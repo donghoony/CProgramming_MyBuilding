@@ -9,11 +9,11 @@
 #include "money.h"
 
 // suppose player has enough money  (functions below)
-
 int land_buy_build(Player* p, Land* land, Resident* r, int level){
-    const int PEOPLE[] = {0, 2, 3, 4};
+    const int PEOPLE[] = {0, 0, 2, 3, 4};
     int pos = land->land_position;
     land->label = p->label;
+
     if (level == ONLY_LAND) return OK;
     r->resident_info[level-1][pos] = rand() % PEOPLE[level] + 1;
 }
@@ -51,7 +51,7 @@ int land_check_valid(){
 int land_buy(Player* p, Land* land, Resident* res, int level){
     // [12345 land villa building hotel landmark]
     // User buys land with level
-    const double MULTIPLY[] = {1.0, 1.2, 1.5, 1.7, 2.0};
+    const double MULTIPLY[] = {0, 1.0, 1.2, 1.5, 1.7, 2.0};
     int price = land->land_price * MULTIPLY[level];
     // if you have enough money
     if (money_compare(p->money, price)){
