@@ -12,9 +12,6 @@ void show_set_cursor_disable();
 void show_land_info(Land);
 void show_gameboard(Land* gameboard);
 void show_gameboard_grid();
-
 void show_player_move(Land* gameboard, Player* p, int from, int to);
-
 void show_test_gameboard(Land* gameboard);
-
 int show_build_building(Land* gameboard, Player* p, int pos, int level);

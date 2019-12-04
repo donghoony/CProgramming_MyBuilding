@@ -19,3 +19,5 @@ void money_earn(Player* p, int value);
 int money_trade(Player* p_from, Player* p_to, int value);
 void money_get_income(Player* p); //-> earn_money로 가져옴
 void money_get_rent_fee(Player* p, Land l);
+
+int money_compare(int have, int need);

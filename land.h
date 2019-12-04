@@ -13,14 +13,14 @@
 #define NORMAL_TYPE 0
 #define SPECIAL_TYPE 1
 
-#define villa_value 1.3
-#define buliding_value 1.5
-#define hotel_value 1.7
-#define landmark_value 2
-
 #define NOT_OK -1
 #define OK 0
 
+#define ONLY_LAND 0
+#define VILLA 1
+#define BUILDING 2
+#define HOTEL 3
+#define LANDMARK 4
 
 typedef struct point{
     int y;
@@ -40,11 +40,6 @@ typedef struct land{
     Point p_b1, p_b2, p_b3, p_player, p_bot;
 }Land;
 
-int land_buy(Player* user, Land* l) ;
-int buy_only_land(Player *user, Land *l, int i);
-int buy_villa(Player* user, Land* l, int i);
-int buy_building(Player* user, Land* l, int i);
-int buy_hotel(Player* user, Land* l, int i);
-int buy_landmark(Player* user, Land* l, int i);
+int land_buy(Player* user, Land* l, Resident* res, int level);
 
 void land_buy_menu();

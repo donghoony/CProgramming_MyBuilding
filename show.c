@@ -25,12 +25,16 @@ void show_gameboard(Land* gameboard){
 void show_player_move(Land* gameboard, Player* p, int from, int to){
     int label = p->label;
     if (label == PLAYER){
+        gotoyx_set_color(C_BLUE);
         gotoyx_print(gameboard[from].p_player.y, gameboard[from].p_player.x, "  ");
         gotoyx_print(gameboard[to].p_player.y, gameboard[to].p_player.x, "PL");
+        gotoyx_set_color(C_WHITE);
     }
     else{
+        gotoyx_set_color(C_RED);
         gotoyx_print(gameboard[from].p_bot.y, gameboard[from].p_bot.x, "  ");
         gotoyx_print(gameboard[to].p_bot.y, gameboard[to].p_bot.x, "PC");
+        gotoyx_set_color(C_WHITE);
     }
 }
 

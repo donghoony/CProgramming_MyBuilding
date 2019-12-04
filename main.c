@@ -12,9 +12,9 @@ int main() {
     int i, y, x;
     Land *gameboard;
     Land cur_land;
-    Player user = {100, 0, "", PLAYER, 0};
-    Player bot = {100, 0, "", COMPUTER, 0};
-	Resident people = { {0},{0},{0} };
+    Player user = {2000, 0, "", PLAYER, 0};
+    Player bot = {2000, 0, "", COMPUTER, 0};
+	Resident resident = { {0},{0},{0} };
 	Land l;
 
     show_set_cursor_disable();
@@ -38,17 +38,17 @@ int main() {
 
     for(i = 0; i < 22; i++){
         if (gameboard[i].land_type == SPECIAL_TYPE) continue;
-        build_building(gameboard, (rand()%2 == 1) ? &user : &bot, i, 3);
+        show_build_building(gameboard, (rand()%2 == 1) ? &user : &bot, i, 3);
     }
 
 
-// animation test
-//    for(i = 0; i < 21; i++){
-//        show_player_move(gameboard, &user, i, i+1);
-//        _sleep(200);
-//        show_player_move(gameboard, &bot, i, i+1);
-//        _sleep(200);
-//    }
+//  animation test
+    for(i = 0; i < 21; i++){
+        show_player_move(gameboard, &user, i, i+1);
+        _sleep(200);
+        show_player_move(gameboard, &bot, i, i+1);
+        _sleep(200);
+    }
 
     gotoyx(35, 0);
     system("pause");

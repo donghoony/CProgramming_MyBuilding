@@ -6,6 +6,7 @@ typedef struct resident {
 	int rand_person_villa[21];
 	int rand_person_building[21];
 	int rand_person_hotel[21];
+	int* resident_info[3];
 }Resident;
 
 void resident_init(Resident* res_list);
