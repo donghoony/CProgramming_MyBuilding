@@ -116,3 +116,58 @@ int show_build_building(Land* gameboard, Player* p, int pos, int level){
     gotoyx_set_color(C_WHITE);
     return 0;
 }
+
+Level show_choice_buliding(Land* land, Player* p){
+    Level level = land->level;
+    const int X_COR[] = {54, 61, 68, 75, 82};
+    int lap = p->lap;
+    int i, cur;
+    cur = 0;
+
+    gotoyx_set_color(C_GREEN);
+    gotoyx_print(18, 50, "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖");
+    gotoyx_print(19, 50, "弛         SELECT BUILDING.          弛");
+    gotoyx_print(20, 50, "弛                                   弛");
+    gotoyx_print(21, 50, "弛   --     --     --     --     --  弛");
+    gotoyx_print(22, 50, "弛  LAND   VILA   BLDG   HTEL   LMRK 弛");
+    gotoyx_print(23, 50, "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎");
+    for(i = 0; i < 5; i++){
+        if (i > lap){
+            gotoyx_set_color(C_RED);
+            gotoyx_print(21, X_COR[i], "XX");
+        }
+        else if (level.building[i] == 1){
+            gotoyx_set_color(C_GREEN)''
+            gotoyx_print(21, X_COR[i], "OK");
+        }
+
+    }
+}
+
+void show_dice_roll(int dice_v1, int dice_v2){
+    const char* Y[6] = {NULL, " 1 ", " 2 ", " 3 ", " 4 ", " 5 "};
+    const int DICEY = 14;
+    const int DICEX[2] = {63, 73};
+    int k;
+    int rand1, rand2;
+    for(k = 20; k < 50; k++){
+        rand1 = rand() % 5 + 1;
+        rand2 = rand() % 5 + 1;
+        gotoyx_print(DICEY, DICEX[0], Y[rand1]);
+        gotoyx_print(DICEY, DICEX[1], Y[rand2]);
+        _sleep(k);
+    }
+    gotoyx_print(DICEY, DICEX[0], Y[dice_v1]);
+    gotoyx_print(DICEY, DICEX[1], Y[dice_v2]);
+}
+
+void show_dice_grid(){
+    int i, x = 10;
+    gotoyx_set_color(C_CYAN);
+    for(i = 0; i < 2; i++){
+        gotoyx_print(13, 60 + i*x, "忙式式式式式忖");
+        gotoyx_print(14, 60 + i*x, "弛     弛");
+        gotoyx_print(15, 60 + i*x, "戌式式式式式戎");
+    }
+    gotoyx_set_color(C_WHITE);
+}

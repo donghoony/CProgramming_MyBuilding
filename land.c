@@ -9,11 +9,11 @@
 #include "money.h"
 
 // suppose player has enough money  (functions below)
-
 int land_buy_build(Player* p, Land* land, Resident* r, int level){
     const int PEOPLE[] = {0, 0, 2, 3, 4};
     int pos = land->land_position;
     land->label = p->label;
+
     if (level == ONLY_LAND) return OK;
     r->resident_info[level-1][pos] = rand() % PEOPLE[level] + 1;
 }
