@@ -40,6 +40,8 @@ int enemy_land_spend(Player* p,int value){//적이나 내가 상대방의 땅을
    return condition;//ok or not
 }
 
+int cal_land_price(Land* l);//내가 빌딩을 살때랑 상대가 내야하는 임대료 값은 달라짐(우리가 설정한 배수를 달리해야함)
+
 // money_get_income 있음
 //void start_pont_income(Player* p,Land l,int member){
 //   money_get_income(p);
@@ -47,7 +49,7 @@ int enemy_land_spend(Player* p,int value){//적이나 내가 상대방의 땅을
 //}
 
 // 함수이름 전부 소문자로
-void all_Myland_rent_fee(Land* l,Player* p,Resident r){//모든 땅에 대한 임대료 나
+void all_myland_rent_fee(Land* l,Player* p,Resident r){//모든 땅에 대한 임대료 나
    int i;
    for(i=0;i<22;i++){
       if(l[i].label==1){
@@ -60,7 +62,7 @@ void all_Myland_rent_fee(Land* l,Player* p,Resident r){//모든 땅에 대한 �
 
 
 //함수이름 소문자로
-void all_Comland_rent_fee(Land* l,Player* p,int member){//모든 땅에 대한 임대료 상대
+void all_comland_rent_fee(Land* l,Player* p,int member){//모든 땅에 대한 임대료 상대
    int i;
    for(i=0;i<22;i++){
       if(l[i].label==2){
