@@ -47,11 +47,13 @@ int enemy_land_spend(Player* p,int value){//적이나 내가 상대방의 땅을
 //}
 
 // 함수이름 전부 소문자로
-void all_Myland_rent_fee(Land* l,Player* p,int member){//모든 땅에 대한 임대료 나
+void all_Myland_rent_fee(Land* l,Player* p,Resident r){//모든 땅에 대한 임대료 나
    int i;
    for(i=0;i<22;i++){
       if(l[i].label==1){
-         p->money+=(l[i].land_price/100)*member;
+         p->money+=(l[i].land_price/100)*r.rand_person_villa[i];
+		 p->money+=(l[i].land_price/100)*r.rand_person_building[i];
+		 p->money+=(l[i].land_price/100)*r.rand_person_hotel[i];
       }
    }
 }
@@ -62,7 +64,9 @@ void all_Comland_rent_fee(Land* l,Player* p,int member){//모든 땅에 대한 �
    int i;
    for(i=0;i<22;i++){
       if(l[i].label==2){
-         p->money+=(l[i].land_price/100)*member;
+         p->money+=(l[i].land_price/100)*r.rand_person_villa[i];
+		 p->money+=(l[i].land_price/100)*r.rand_person_building[i];
+		 p->money+=(l[i].land_price/100)*r.rand_person_hotel[i];
       }
    }
 }
