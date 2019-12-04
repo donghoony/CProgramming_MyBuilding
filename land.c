@@ -61,3 +61,10 @@ int land_buy(Player* p, Land* land, Resident* res, int level){
     }
     else return NOT_OK;
 }
+void land_check(Player* p,Land* l){//땅의 상태를 파악함(이미 내가 산땅, 상대땅, 빈땅)-> 각 상황에 맞게 함수를 불러와 해결(빈땅에 건물 짓는 함수,상대방한테 임대료 주는 함수, 원래 내땅에 건물 더 지을지 판단하는 함수)
+	if(l->label==0);
+	else if(l->label==p->label);
+	else if(l->label!=p->label);
+}
+
+
