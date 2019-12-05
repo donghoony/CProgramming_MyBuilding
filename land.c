@@ -20,14 +20,9 @@ int land_buy_build(Player* p, Land* land, Resident* r, int level){
     int label = p->label;
     int pos = land->land_position;
 
-    gotoyx_print(35, 15, "LANDBUYBUILD FUNC");
-    getchar();
-    gotoyx_print(35, 15, "                  ");
-
     land->label = label;
 	land->level[level] = 1; //해당 건물 소유함으로 변경
 	if(level == ONLY_LAND-1) return OK;
-
 	// level is 0-based
 	if(level == 4) {
 		for(i = 0; i < LANDMARK-1; i++) {
@@ -36,9 +31,8 @@ int land_buy_build(Player* p, Land* land, Resident* r, int level){
 	}
 	else {
 	    book_people = rand() % PEOPLE[level] + 1;
-	    (r->resident_info[level-1])[pos] = book_people;
+        *((r->resident_info[level-1]) + pos) = book_people;
 	}
-
     gotoyx_set_color(label == COMPUTER ? C_RED : C_BLUE);
 	gotoyx_print(y_pos[level], x_pos[level], STR[level]);
 	gotoyx_print(y_pos[level], x_pos[level] + 1, NUM[book_people]);

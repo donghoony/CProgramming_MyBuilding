@@ -40,7 +40,7 @@ Land* file_get_land_info(){
     if (is_nullptr(f)) return NULL;
     get_chars_until_specific_char(f, START_CHAR);
 
-    for(i = 0; i < 22; i++){
+    for(i = 0; i < MAX_TILE; i++){
         memset(land_name, 0x0, 100);
         memset(landmark_name, 0x0, 100);
 
@@ -83,7 +83,7 @@ int file_get_land_pos(Land **land_arr_addr){
     if (is_nullptr(f)) return NULL;
     get_chars_until_specific_char(f, START_CHAR);
 
-    for(i = 0; i < 22; i++){
+    for(i = 0; i < MAX_TILE; i++){
         fscanf(f, "%d", &num);
         if (num != i) {
             printf("WRONG MATCH!\n");

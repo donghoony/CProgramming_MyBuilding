@@ -24,10 +24,10 @@ int determine_double(Dice d){
 int move_cycle(Land* gameboard, Player* p, Dice d){
     int i;
     for(i = 0; i < d.d1 + d.d2; i++){
-        show_player_move(gameboard, p, p->position, (p->position + 1) % 22);
+        show_player_move(gameboard, p, p->position, (p->position + 1) % MAX_TILE);
         player_move_value(p, 1);
 
-        if (p->position == 22) {
+        if (p->position == MAX_TILE) {
             money_get_income(p);
             p->position = 0;
             show_player_move(gameboard, p,21, 0);
@@ -64,6 +64,12 @@ int cycle(Land* gameboard, Player* p, Resident* res){
     while (1){
         // 주사위 굴리기
         dice = dice_roll();
+
+        //test for control dice
+//        gotoyx(35, 50);
+//        printf("DICE : ");
+//        scanf("%d %d", &dice.d1, &dice.d2);
+
         show_dice_roll(dice.d1, dice.d2);
 
         is_double = determine_double(dice);
@@ -71,6 +77,7 @@ int cycle(Land* gameboard, Player* p, Resident* res){
 
         // 더블 두 번인지 체크하기, 2회 이상이면 무인도행
         if (double_count >= 2) {
+            show_player_move(gameboard, p, p->position, ABANDONED_ISLAND);
             player_move_toward(p, ABANDONED_ISLAND);
             return 1;
         }
@@ -79,7 +86,7 @@ int cycle(Land* gameboard, Player* p, Resident* res){
         p->position = move_cycle(gameboard, p, dice);
         pos = p->position;
         lap = p->lap;
-        gotoyx(35,0);
+        gotoyx(33,0);
         printf("NOW AT %02d", p->position);
 
         // 도착한 곳 확인 (출발, 무인도와 같은 특별 타일인지, 일반 땅 타일인지 확인)
@@ -96,7 +103,7 @@ int cycle(Land* gameboard, Player* p, Resident* res){
                 // !!!!!!!!!!! 합을 구한 뒤에 현재 금액이 더 많이 갖고있는지 확인 필요함  !!!!!!!!!!!!
                 for(i = 0; i < 5; i++){
                     if (selected_building[i] == 1){
-                        gotoyx_print(34, 0, "Attempt to buy..");
+//                        gotoyx_print(34, 0, "Attempt to buy..");
                         land_buy(p, &gameboard[pos], res, i);
                     }
                 }

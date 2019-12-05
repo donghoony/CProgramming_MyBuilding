@@ -10,7 +10,7 @@
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
     Land *gameboard;
-    Player user = {200000, 15, "", PLAYER, 5};
+    Player user = {2000, 0, "", PLAYER, 0};
     Player bot = {2000, 0, "", COMPUTER, 0};
 	Resident resident = { {0},{0},{0} };
 
@@ -62,9 +62,7 @@ int main() {
 //    }
      */
     while(1){
-        gotoyx_print(34, 0,"              ");
         cycle(gameboard, &user, &resident);
-        gotoyx(33, 10);
     }
 
     gotoyx(35, 0);

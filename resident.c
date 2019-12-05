@@ -1,6 +1,4 @@
 
-#pragma once
-
 #include <stdlib.h>
 #include "resident.h"
 #include "player.h"

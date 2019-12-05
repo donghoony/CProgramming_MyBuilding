@@ -1,11 +1,13 @@
 #pragma once
 #include <stdio.h>
+
 #include "player.h"
+#define MAX_TILE 22
 
 typedef struct resident {
-	int rand_person_villa[21];
-	int rand_person_building[21];
-	int rand_person_hotel[21];
+	int rand_person_villa[MAX_TILE];
+	int rand_person_building[MAX_TILE];
+	int rand_person_hotel[MAX_TILE];
 	int* resident_info[3];
 }Resident;
 

@@ -5,6 +5,7 @@
 #include "player.h"
 #include "resident.h"
 
+
 #define START_LAND 0
 #define ABANDONED_ISLAND 4
 #define FESTIVAL 11
@@ -21,6 +22,8 @@
 #define BUILDING 3
 #define HOTEL 4
 #define LANDMARK 5
+
+#define MAX_TILE 22
 
 typedef struct point{
     int y;

@@ -5,6 +5,7 @@
 #include "player.h"
 #include "money.h"
 #include "land.h"
+#include "resident.h"
 #include<stdio.h>
 
 

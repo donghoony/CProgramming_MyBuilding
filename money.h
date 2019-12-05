@@ -13,7 +13,6 @@
 
 #define NOT_OK -1
 #define OK 0
-#define SALARY 200
 
 int money_spend(Player*, int);
 void money_earn(Player* p, int value);
