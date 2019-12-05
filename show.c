@@ -8,6 +8,9 @@
 #include <stdlib.h>
 #include <wincon.h>
 #include <winbase.h>
+#include <conio.h>
+#include "land.h"
+#include "show.h"
 
 void show_set_cursor_disable(){
     CONSOLE_CURSOR_INFO cci;
@@ -117,12 +120,26 @@ int show_build_building(Land* gameboard, Player* p, int pos, int level){
     return 0;
 }
 
-Level show_choice_buliding(Land* land, Player* p){
-    Level level = land->level;
-    const int X_COR[] = {54, 61, 68, 75, 82};
+int show_landmark_satisfy(int* arr){
+    int i;
+    for(i = 0; i < 5; i++){
+        if (arr[i] == 0) return NOT_OK;
+    }
+    return OK;
+}
+
+int* show_choice_building(Land* land, Player* p){
+    const int X_COR[] = {53, 60, 67, 74, 81};
+    const char* STR_SET[] = {"LAND", "VILA", "BLDG", "HTEL", "LMRK"};
+    const int CUR_MAX = 4;
     int lap = p->lap;
-    int i, cur;
-    cur = 0;
+    int i, cur = 0;
+    int key;
+    int* selected_buliding;
+    int valid_check;
+
+    selected_buliding = (int*) malloc(sizeof(int) * 5);
+    memset(selected_buliding, 0x0, sizeof(selected_buliding));
 
     gotoyx_set_color(C_GREEN);
     gotoyx_print(18, 50, "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖");
@@ -131,17 +148,60 @@ Level show_choice_buliding(Land* land, Player* p){
     gotoyx_print(21, 50, "弛   --     --     --     --     --  弛");
     gotoyx_print(22, 50, "弛  LAND   VILA   BLDG   HTEL   LMRK 弛");
     gotoyx_print(23, 50, "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎");
+
     for(i = 0; i < 5; i++){
-        if (i > lap){
+        valid_check = show_landmark_satisfy(land->level);
+        if (i > lap || (i == 4 && valid_check == NOT_OK)){
             gotoyx_set_color(C_RED);
-            gotoyx_print(21, X_COR[i], "XX");
+            gotoyx_print(21, X_COR[i], " XX ");
+            selected_buliding[i] = -1;
         }
-        else if (level.building[i] == 1){
-            gotoyx_set_color(C_GREEN)''
-            gotoyx_print(21, X_COR[i], "OK");
+        else if (land->level[i] == 1){
+            gotoyx_set_color(C_GREEN);
+            gotoyx_print(21, X_COR[i], " OK ");
+            selected_buliding[i] = -1;
+        }
+    }
+
+    gotoyx_set_color(C_CYAN);
+    gotoyx_print(22, X_COR[cur], STR_SET[cur]);
+
+    while(1){
+        key = getch();
+        if (key == KEY_ENTER) break;
+        if (key == KEY_INTRO || key == KEY_SPACE){
+            if (key == KEY_INTRO) key = getch();
+            gotoyx_set_color(C_GREEN);
+            switch(key){
+                case KEY_RIGHT:
+                    gotoyx_print(22, X_COR[cur], STR_SET[cur]);
+                    cur = (cur == CUR_MAX) ? cur : cur + 1;
+                    gotoyx_set_color(C_CYAN);
+                    gotoyx_print(22, X_COR[cur], STR_SET[cur]);
+                    break;
+
+                case KEY_LEFT:
+                    gotoyx_print(22, X_COR[cur], STR_SET[cur]);
+                    cur = (cur == 0) ? cur : cur - 1;
+                    gotoyx_set_color(C_CYAN);
+                    gotoyx_print(22, X_COR[cur], STR_SET[cur]);
+                    break;
+
+                case KEY_SPACE:
+                    if(selected_buliding[cur] == -1) continue;
+                    selected_buliding[cur] = (selected_buliding[cur] == 1) ? 0 : 1;
+                    gotoyx_set_color(selected_buliding[cur] == 1 ? C_YELLOW : C_GREEN);
+                    gotoyx_print(21, X_COR[cur], selected_buliding[cur] == 1 ? " VV " : " -- ");
+                    break;
+
+                default:
+                    break;
+            }
         }
 
     }
+    gotoyx_set_color(C_WHITE);
+    return selected_buliding;
 }
 
 void show_dice_roll(int dice_v1, int dice_v2){

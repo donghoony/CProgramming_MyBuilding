@@ -9,39 +9,45 @@
 
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
-    int i, y, x;
+    int i;
     Land *gameboard;
-    Land cur_land;
-    Player user = {2000, 0, "", PLAYER, 0};
+    Player user = {2000, 15, "", PLAYER, 5};
     Player bot = {2000, 0, "", COMPUTER, 0};
 	Resident resident = { {0},{0},{0} };
-	Land l;
 
     show_set_cursor_disable();
     srand((unsigned) time(NULL));
 
-    // make_user_name보다는 그냥 한번에 setting해주는 함수로 짜는 게 나을듯, 위에 100, 0, "", PLAYER 넣어주는 걸로 (단, 세세히 모듈화)
+    // make_user_name보다는 그냥 한번에 setting해주는 함수로 짜는 게 나을듯, 위에 100, 0, "",
+    // PLAYER 넣어주는 걸로 (단, 세세히 모듈화)
     make_user_name(&user);
-
     gameboard = (Land *) file_get_land_info();
+
     if (gameboard == NULL) {
         printf("!! FUNCTION RETURNED NULLPTR !!\n");
         return -1;
     }
-
     file_get_land_pos(&gameboard);
     system("cls");
 
+
     show_gameboard_grid();
+    show_dice_grid();
+
+    //test code below
+    show_choice_building(&gameboard[20], &user);
+
+    show_player_move(gameboard, &user, user.position, user.position);
+    show_player_move(gameboard, &bot, bot.position, bot.position);
 //    show_test_gameboard(gameboard);
 
+    // test building randomly
+//    for(i = 0; i < 22; i++){
+//        if (gameboard[i].land_type == SPECIAL_TYPE) continue;
+//        show_build_building(gameboard, (rand()%2 == 1) ? &user : &bot, i, 3);
+//    }
 
-    for(i = 0; i < 22; i++){
-        if (gameboard[i].land_type == SPECIAL_TYPE) continue;
-        show_build_building(gameboard, (rand()%2 == 1) ? &user : &bot, i, 3);
-    }
 
-    show_dice_grid();
     cycle(gameboard, &user);
 
 //  animation test

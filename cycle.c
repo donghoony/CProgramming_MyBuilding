@@ -24,8 +24,7 @@ int determine_double(Dice d){
 int move_cycle(Land* gameboard, Player* p, Dice d){
     int i;
     for(i = 0; i < d.d1 + d.d2; i++){
-
-        show_player_move(gameboard, p, p->position, (p->position + 1) % 21);
+        show_player_move(gameboard, p, p->position, (p->position + 1) % 22);
         player_move_value(p, 1);
 
         if (p->position == 22) {
@@ -58,6 +57,7 @@ int cycle(Land* gameboard, Player* p){
     Dice dice;
 
     srand((unsigned)time(NULL));
+    // label indicates whose turn now
     label = p->label;
 
     while (1){
@@ -66,7 +66,7 @@ int cycle(Land* gameboard, Player* p){
         show_dice_roll(dice.d1, dice.d2);
 
         is_double = determine_double(dice);
-        double_count += is_double;
+        double_count += is_double ? 1 : 0;
 
         // 더블 두 번인지 체크하기, 2회 이상이면 무인도행
         if (double_count >= 2) {
@@ -78,7 +78,7 @@ int cycle(Land* gameboard, Player* p){
         pos = move_cycle(gameboard, p, dice);
         lap = p->lap;
 
-        // 도착한 곳 확인
+        // 도착한 곳 확인 (출발, 무인도와 같은 특별 타일인지, 일반 땅 타일인지 확인)
         land_type = gameboard[pos].land_type;
 
         //도착한 곳이 땅 타일이면
@@ -88,7 +88,7 @@ int cycle(Land* gameboard, Player* p){
             // 빈 땅, 내 땅, 남 땅 확인 및 통행료 지급
             // 빈 땅이면 살 수 있음
             if (land_owner == NO_ONE){
-                Level
+                show_choice_building(&gameboard[pos], p);
             }
             // 내 땅이면 증가시킬 수 있음
             else if (land_owner == label){
