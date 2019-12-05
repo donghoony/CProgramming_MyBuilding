@@ -34,13 +34,24 @@ int money_compare(int have, int need){
 }
 
 
-int enemy_land_spend(Player* p,int value){//적이나 내가 상대방의 땅을 걸릴시 돈을  지불하는 함수,소유권 확인
+int enemy_land_spend(Player* p,Land* l){//적이나 내가 상대방의 땅을 걸릴시 돈을  지불하는 함수,소유권 확인
    int condition;
+   int value=0;
+   value=cal_land_price(l);
    condition=money_spend(p,value);//돈을 낼수 있는 상황인지 확인
    return condition;//ok or not
 }
 
-int cal_land_price(Land* l);//내가 빌딩을 살때랑 상대가 내야하는 임대료 값은 달라짐(우리가 설정한 배수를 달리해야함)
+int cal_land_price(Land* l){//내가 빌딩을 살때랑 상대가 내야하는 임대료 값은 달라짐(우리가 설정한 배수를 달리해야함)
+	int sum=0;
+	int i;
+	const double MULTIPLY2[] = {0, 1.0, 1.1, 1.3, 1.5, 1.7};
+	for(i=0;i<5;i++){
+		if(l->level[i]==1){
+			sum+=l->land_price*MULTIPLY2[i+1];
+		}
+	return sum;
+	}
 
 // money_get_income 있음
 //void start_pont_income(Player* p,Land l,int member){
