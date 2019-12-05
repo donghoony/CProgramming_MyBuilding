@@ -34,10 +34,30 @@ int money_compare(int have, int need){
 }
 
 
-int enemy_land_spend(Player* p,int value){//적이나 내가 상대방의 땅을 걸릴시 돈을  지불하는 함수,소유권 확인
+int enemy_land_spend(Player* p,Land* l){//적이나 내가 상대방의 땅을 걸릴시 돈을  지불하는 함수,소유권 확인
    int condition;
+   int value=0;
+   value=col_land_price(l);
    condition=money_spend(p,value);//돈을 낼수 있는 상황인지 확인
    return condition;//ok or not
+}
+
+int col_land_price(Land* l){
+	int i;
+	int sum=0;
+	  const double MULTIPLY2[] = {0, 1.0, 1.2, 1.5, 1.7, 2.0};
+	for(i=0;i<5;i++){
+		if(l->level[i]==1){
+			sum+=l->land_price*MULTIPLY2[i+1];
+
+		}
+	}
+	sum=sum*l->land_multiply;
+	return sum;
+}
+void col_festival(Land* l){
+	//memset()//모든 땅의 배수를 초기화 할필요(원래 페스티벌 지역이 아닐경우)
+	multiply=multiply*2;
 }
 
 // money_get_income 있음
