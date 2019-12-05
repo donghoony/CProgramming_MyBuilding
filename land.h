@@ -2,9 +2,8 @@
 // Created by DongHoony on 2019-11-20.
 //
 #pragma once
-#include "player.h"
-#include "resident.h"
 
+#include "resident.h"
 
 #define START_LAND 0
 #define ABANDONED_ISLAND 4

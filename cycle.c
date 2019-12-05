@@ -3,11 +3,12 @@
 //
 #include <stdlib.h>
 #include <time.h>
+#include "cycle.h"
 #include "player.h"
 #include "random.h"
 #include "show.h"
 #include "gotoyx.h"
-#include "cycle.h"
+#include "money.h"
 
 Dice dice_roll(){
     Dice d;
@@ -108,7 +109,8 @@ int cycle(Land* gameboard, Player* p, Resident* res){
                     if (selected_building[i] == 1){
 //                        gotoyx_print(34, 0, "Attempt to buy..");
                         land_buy(p, &gameboard[pos], res, i);
-
+                        _sleep(300);
+                        show_money_update(p);
                     }
                 }
                 free(selected_building);

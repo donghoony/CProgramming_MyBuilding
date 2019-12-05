@@ -3,12 +3,7 @@
 //
 #pragma once
 
-#include <stdlib.h>
-#include "player.h"
-#include "random.h"
-#include "money.h"
-#include "show.h"
-#include "gotoyx.h"
+#include "land.h"
 
 typedef struct dice{
     int d1;
