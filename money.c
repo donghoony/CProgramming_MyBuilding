@@ -33,6 +33,7 @@ int money_compare(int have, int need){
     return (have >= need) ? OK : NOT_OK;
 }
 
+
 int enemy_land_spend(Player* p,int value){//적이나 내가 상대방의 땅을 걸릴시 돈을  지불하는 함수,소유권 확인
    int condition;
    condition=money_spend(p,value);//돈을 낼수 있는 상황인지 확인
