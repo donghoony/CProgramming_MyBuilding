@@ -75,6 +75,7 @@ int land_buy(Player* p, Land* land, Resident* res, int level){
     int price = land->land_price * MULTIPLY[level];
     // if you have enough money
     land_buy_build(p, land, res, level);
+    money_spend(p, price);
     return OK;
 }
 

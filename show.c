@@ -246,3 +246,11 @@ void show_dice_grid(){
     }
     gotoyx_set_color(C_WHITE);
 }
+
+void show_money_update(Player* p){
+    int label = p->label;
+    const int X_POS[3] = {NULL, 32, 103};
+    gotoyx_print(22, X_POS[label], "       ");
+    gotoyx(22, X_POS[label]);
+    printf("%d", p->money);
+}

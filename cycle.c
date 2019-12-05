@@ -29,6 +29,7 @@ int move_cycle(Land* gameboard, Player* p, Dice d){
 
         if (p->position == MAX_TILE) {
             money_get_income(p);
+            show_money_update(p);
             p->position = 0;
             p->lap++;
             show_player_move(gameboard, p,21, 0);
@@ -51,13 +52,6 @@ int land_cycle(Land* gameboard, Player* p, int pos){
     }
 }
 
-int sum_array(int* arr, int length){
-    int i, ret = 0;
-    for(i = 0; i < length; i++){
-        ret += arr[i];
-    }
-    return ret;
-}
 
 int cycle(Land* gameboard, Player* p, Resident* res){
     int pos, land_owner, label, double_count = 0;
@@ -65,7 +59,7 @@ int cycle(Land* gameboard, Player* p, Resident* res){
     int land_label, land_type;
     int* selected_building = NULL;
     Dice dice;
-
+    show_money_update(p);
     srand((unsigned)time(NULL));
     // label indicates whose turn now
     label = p->label;
@@ -114,15 +108,14 @@ int cycle(Land* gameboard, Player* p, Resident* res){
                     if (selected_building[i] == 1){
 //                        gotoyx_print(34, 0, "Attempt to buy..");
                         land_buy(p, &gameboard[pos], res, i);
+
                     }
                 }
                 free(selected_building);
+                money_spend(p, predicted_price);
+                show_money_update(p);
             }
-            // 내 땅이면 증가시킬 수 있음
-            else if (land_owner == label){
-                selected_building = show_choice_building(&gameboard[pos], p);
 
-            }
             // 남 땅이면 통행료 냄
             else if (land_owner != label && land_owner != NO_ONE){
 
@@ -136,6 +129,8 @@ int cycle(Land* gameboard, Player* p, Resident* res){
 
         // 더블이 아니면 루프 탈출하기
         if (is_double == NOT_DOUBLE) break;
+
+
     }
     return 0;
 }

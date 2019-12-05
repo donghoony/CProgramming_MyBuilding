@@ -10,8 +10,8 @@
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
     Land *gameboard;
-    Player user = {2000, 0, "", PLAYER, 5};
-    Player bot = {2000, 0, "", COMPUTER, 0};
+    Player user = {20000, 0, "", PLAYER, 5};
+    Player bot = {20000, 0, "", COMPUTER, 0};
 	Resident resident = { {0},{0},{0}, {0},
                        {resident.rand_person_villa, resident.rand_person_building,
                                     resident.rand_person_hotel, resident.res_person_landmark}};
