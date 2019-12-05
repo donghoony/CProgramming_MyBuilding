@@ -60,7 +60,7 @@ void all_Myland_rent_fee(Land* l,Player* p,Resident r){//모든 땅에 대한 �
 
 
 //함수이름 소문자로
-void all_Comland_rent_fee(Land* l,Player* p,int member){//모든 땅에 대한 임대료 상대
+void all_comland_rent_fee(Land* l,Player* p,Resident r){//모든 땅에 대한 임대료 상대
    int i;
    for(i=0;i<22;i++){
       if(l[i].label==2){
