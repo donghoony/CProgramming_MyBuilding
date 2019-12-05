@@ -30,9 +30,10 @@ int move_cycle(Land* gameboard, Player* p, Dice d){
         if (p->position == MAX_TILE) {
             money_get_income(p);
             p->position = 0;
+            p->lap++;
             show_player_move(gameboard, p,21, 0);
         }
-        _sleep(300);
+        _sleep(150);
     }
     return p->position;
 }
@@ -50,9 +51,17 @@ int land_cycle(Land* gameboard, Player* p, int pos){
     }
 }
 
+int sum_array(int* arr, int length){
+    int i, ret = 0;
+    for(i = 0; i < length; i++){
+        ret += arr[i];
+    }
+    return ret;
+}
+
 int cycle(Land* gameboard, Player* p, Resident* res){
     int pos, land_owner, label, double_count = 0;
-    int is_double = 0, lap, i;
+    int is_double = 0, lap, i, predicted_price = 0;
     int land_label, land_type;
     int* selected_building = NULL;
     Dice dice;
@@ -66,11 +75,12 @@ int cycle(Land* gameboard, Player* p, Resident* res){
         dice = dice_roll();
 
         //test for control dice
-//        gotoyx(35, 50);
-//        printf("DICE : ");
-//        scanf("%d %d", &dice.d1, &dice.d2);
+        gotoyx(33, 50);
+        printf("DICE :         ");
+        gotoyx(33, 57);
+        scanf("%d %d", &dice.d1, &dice.d2);
 
-        show_dice_roll(dice.d1, dice.d2);
+//        show_dice_roll(dice.d1, dice.d2);
 
         is_double = determine_double(dice);
         double_count += is_double ? 1 : 0;
@@ -85,7 +95,6 @@ int cycle(Land* gameboard, Player* p, Resident* res){
         // 움직이기
         p->position = move_cycle(gameboard, p, dice);
         pos = p->position;
-        lap = p->lap;
         gotoyx(33,0);
         printf("NOW AT %02d", p->position);
 
@@ -99,8 +108,8 @@ int cycle(Land* gameboard, Player* p, Resident* res){
             // 빈 땅, 내 땅, 남 땅 확인 및 통행료 지급
             // 빈 땅이면 살 수 있음
             if (land_owner == NO_ONE || land_owner == label){
+                // 합 및 현재금액 -> show_choice에서 비교함
                 selected_building = show_choice_building(&gameboard[pos], p);
-                // !!!!!!!!!!! 합을 구한 뒤에 현재 금액이 더 많이 갖고있는지 확인 필요함  !!!!!!!!!!!!
                 for(i = 0; i < 5; i++){
                     if (selected_building[i] == 1){
 //                        gotoyx_print(34, 0, "Attempt to buy..");

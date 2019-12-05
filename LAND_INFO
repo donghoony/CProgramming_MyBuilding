@@ -3,27 +3,27 @@
 -* Land number / Land name / Land price / Landmark name *-
 !
 0 START_LAND 0 NULL
-1 Tokyo 100 Tokyo_Tower
-2 Beijing 110 Imperial_Palace
-3 Hanoi 120 AON
+1 Tokyo 1000 Tokyo_Tower
+2 Beijing 1100 Imperial_Palace
+3 Hanoi 1200 AON
 4 Uninhabited_island 0 NULL
-5 Taipei 130 101_Tower
-6 Bangkok 140 Iconsiam
-7 Brasilia 150 Cathedral_of_Brasilia
-8 Buenos_Aires 160 Recoleta
-9 Santiago 170 Rue_Banana
-10 Lima 180 Plaza_Norte
+5 Taipei 1300 101_Tower
+6 Bangkok 1400 Iconsiam
+7 Brasilia 1500 Cathedral_of_Brasilia
+8 Buenos_Aires 1600 Recoleta
+9 Santiago 1700 Rue_Banana
+10 Lima 1800 Plaza_Norte
 11 Festival 0 NULL
-12 Mexico_City 190 Metropolitan_Cathedral
-13 Ottawa 200 Beechwood_Cemetery
-14 Washington_DC 210 Washington_Monument
+12 Mexico_City 1900 Metropolitan_Cathedral
+13 Ottawa 2000 Beechwood_Cemetery
+14 Washington_DC 2100 Washington_Monument
 15 Travel 0 NULL
-16 Paris 220 Eiffel_Tower
-17 Amsterdam 230 I_Am_Amsterdam
-18 Rome 240 Colosseum
-19 Berlin 250 Brandenburger
-20 London 260 London_Eye
-21 Seoul 300 63_Building
+16 Paris 2200 Eiffel_Tower
+17 Amsterdam 2300 I_Am_Amsterdam
+18 Rome 2400 Colosseum
+19 Berlin 2500 Brandenburger
+20 London 2600 London_Eye
+21 Seoul 3000 63_Building
 
 !
 0 시작 0 NULL

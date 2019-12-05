@@ -10,9 +10,11 @@
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
     Land *gameboard;
-    Player user = {2000, 0, "", PLAYER, 0};
+    Player user = {2000, 0, "", PLAYER, 5};
     Player bot = {2000, 0, "", COMPUTER, 0};
-	Resident resident = { {0},{0},{0} };
+	Resident resident = { {0},{0},{0}, {0},
+                       {resident.rand_person_villa, resident.rand_person_building,
+                                    resident.rand_person_hotel, resident.res_person_landmark}};
 
     show_set_cursor_disable();
     srand((unsigned) time(NULL));
@@ -31,9 +33,10 @@ int main() {
     system("cls");
 
     // Showing initialization
+
     show_gameboard_grid();
     show_dice_grid();
-    resident_init(&resident);
+//    resident_init(&resident);
     show_player_move(gameboard, &user, user.position, user.position);
     show_player_move(gameboard, &bot, bot.position, bot.position);
 

@@ -11,12 +11,11 @@
 
 // suppose player has enough money  (functions below)
 int land_buy_build(Player* p, Land* land, Resident* r, int level){
-    const char* STR[4] = {"T", "S", "M", "L"};
-    const char* NUM[7] = {"0", "1", "2", "3", "4", "5", "6"};
+    const char* STR[5] = {"T", "S", "M", "L", "LMRK"};
     const int PEOPLE[] = {0, 2, 3, 4};
-	int i, book_people;
-	int x_pos[4] = {NULL, land->p_b1.x, land->p_b2.x, land->p_b3.x};
-	int y_pos[4] = {NULL, land->p_b1.y, land->p_b2.y, land->p_b3.y};
+    int book_people;
+    int x_pos[5] = {NULL, land->p_b1.x, land->p_b2.x, land->p_b3.x, land->p_b1.x-1};
+    int y_pos[5] = {NULL, land->p_b1.y, land->p_b2.y, land->p_b3.y, land->p_b1.y};
     int label = p->label;
     int pos = land->land_position;
 
@@ -25,9 +24,8 @@ int land_buy_build(Player* p, Land* land, Resident* r, int level){
 	if(level == ONLY_LAND-1) return OK;
 	// level is 0-based
 	if(level == 4) {
-		for(i = 0; i < LANDMARK-1; i++) {
-			r->resident_info[LANDMARK-1][pos] += r->resident_info[i][pos];
-		}
+	    book_people = r->rand_person_hotel[pos] + r->rand_person_building[pos] + r->rand_person_villa[pos];
+        r->res_person_landmark[pos] = book_people;
 	}
 	else {
 	    book_people = rand() % PEOPLE[level] + 1;
@@ -35,7 +33,7 @@ int land_buy_build(Player* p, Land* land, Resident* r, int level){
 	}
     gotoyx_set_color(label == COMPUTER ? C_RED : C_BLUE);
 	gotoyx_print(y_pos[level], x_pos[level], STR[level]);
-	gotoyx_print(y_pos[level], x_pos[level] + 1, NUM[book_people]);
+	gotoyx_print_int(y_pos[level], x_pos[level] + 1, book_people);
 	gotoyx_set_color(C_WHITE);
 }
 /*

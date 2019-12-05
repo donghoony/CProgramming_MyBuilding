@@ -26,3 +26,4 @@ void gotoyx_set_color(int color){
     color &= 0xf;
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0xf & 0) | color);
 }
+

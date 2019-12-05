@@ -43,6 +43,7 @@ void show_player_move(Land* gameboard, Player* p, int from, int to){
 }
 
 void show_gameboard_grid(){
+    gotoyx_set_color(C_WHITE);
     printf("忙式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式忖\n"); //0
     printf("弛                弛                弛                弛                弛                弛                弛                弛                弛\n"); //1
     printf("弛                弛                弛                弛                弛                弛                弛                弛                弛\n"); //2
@@ -65,7 +66,7 @@ void show_gameboard_grid(){
     printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //19
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //20
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //21
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //22
+    printf("弛          弛     弛   弛  MONEY :             弛                                               弛  MONEY :             弛   弛     弛          弛\n"); //22
     printf("弛          弛     弛   戌式式式式式式式式式式式式式式式式式式式式式式戎                                               戌式式式式式式式式式式式式式式式式式式式式式式戎   弛     弛          弛\n"); //23
     printf("弛          弛     弛                                                                                                     弛     弛          弛\n"); //24
     printf("戍式式式式式式式式式式扛式式式式式托式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式托式式式式式扛式式式式式式式式式式扣\n"); //25
@@ -123,7 +124,7 @@ int show_build_building(Land* gameboard, Player* p, int pos, int level){
 
 int show_landmark_satisfy(int* arr){
     int i;
-    for(i = 0; i < 5; i++){
+    for(i = 0; i < 4; i++){
         if (arr[i] != 1) return NOT_OK;
     }
     return OK;
@@ -131,21 +132,21 @@ int show_landmark_satisfy(int* arr){
 
 int* show_choice_building(Land* land, Player* p){
     const int X_COR[] = {53, 60, 67, 74, 81};
+    const double MULTIPLY[5] = {1.0, 1.2, 1.5, 1.6, 2.0};
     const char* STR_SET[] = {"LAND", "VILA", "BLDG", "HTEL", "LMRK"};
     const int CUR_MAX = 4;
     int lap = p->lap;
     int i, cur = 0;
     int key;
     int* selected_buliding;
-    int valid_check;
-
+    int valid_check, predict_price = 0;
     selected_buliding = (int*) malloc(sizeof(int) * 5);
     memset(selected_buliding, 0x0, _msize(selected_buliding));
 
     gotoyx_set_color(C_GREEN);
     gotoyx_print(18, 50, "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖");
     gotoyx_print(19, 50, "弛         SELECT BUILDING.          弛");
-    gotoyx_print(20, 50, "弛                                   弛");
+    gotoyx_print(20, 50, "弛          COST :                   弛");
     gotoyx_print(21, 50, "弛   --     --     --     --     --  弛");
     gotoyx_print(22, 50, "弛  LAND   VILA   BLDG   HTEL   LMRK 弛");
     gotoyx_print(23, 50, "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎");
@@ -174,7 +175,9 @@ int* show_choice_building(Land* land, Player* p){
 
     while(1){
         key = getch();
-        if (key == KEY_ENTER) break;
+        if (key == KEY_ENTER) {
+            if (money_compare(p->money, predict_price) == OK) break;
+        }
         if (key == KEY_INTRO || key == KEY_SPACE){
             if (key == KEY_INTRO) key = getch();
             gotoyx_set_color(C_GREEN);
@@ -196,10 +199,13 @@ int* show_choice_building(Land* land, Player* p){
                 case KEY_SPACE:
                     if(selected_buliding[cur] == -1) continue;
                     selected_buliding[cur] = (selected_buliding[cur] == 1) ? 0 : 1;
+                    predict_price += (int) (land->land_price * MULTIPLY[cur] * ((selected_buliding[cur] == 1) ? 1 : -1));
+                    gotoyx_print(20, 68, "          ");
+                    gotoyx_set_color((money_compare(p->money, predict_price) == OK) ? C_CYAN : C_RED);
+                    gotoyx_print_int(20, 68, predict_price);
                     gotoyx_set_color(selected_buliding[cur] == 1 ? C_YELLOW : C_GREEN);
                     gotoyx_print(21, X_COR[cur], selected_buliding[cur] == 1 ? " VV " : " -- ");
                     break;
-
                 default:
                     break;
             }
@@ -207,6 +213,9 @@ int* show_choice_building(Land* land, Player* p){
 
     }
     gotoyx_set_color(C_WHITE);
+    for(i = 0; i < 6; i++){
+        gotoyx_print(18+i, 50, "                                     ");
+    }
     return selected_buliding;
 }
 
