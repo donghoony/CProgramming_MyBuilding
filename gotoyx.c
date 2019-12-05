@@ -2,8 +2,7 @@
 // Created by DongHoony on 2019-11-20.
 //
 
-#include <wincon.h>
-#include <winbase.h>
+#include <windows.h>
 #include <stdio.h>
 
 

@@ -70,5 +70,6 @@ int main() {
 
     gotoyx(35, 0);
     system("pause");
+	return 0;
 }
 

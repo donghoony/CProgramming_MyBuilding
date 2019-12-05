@@ -47,4 +47,4 @@ typedef struct land{
 
 int land_buy(Player* user, Land* l, Resident* res, int level);
 
-void land_buy_menu();
+//void land_buy_menu();

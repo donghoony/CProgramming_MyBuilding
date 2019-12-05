@@ -35,6 +35,7 @@ int land_buy_build(Player* p, Land* land, Resident* r, int level){
 	gotoyx_print(y_pos[level], x_pos[level], STR[level]);
 	gotoyx_print_int(y_pos[level], x_pos[level] + 1, book_people);
 	gotoyx_set_color(C_WHITE);
+	return 0;
 }
 /*
 int land_buy_only_land(Player* p, Land* land, Resident* r){

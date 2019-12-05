@@ -103,4 +103,5 @@ int file_get_land_pos(Land **land_arr_addr){
     }
 
     fclose(f);
+	return OK;
 }

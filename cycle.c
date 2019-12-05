@@ -51,6 +51,7 @@ int land_cycle(Land* gameboard, Player* p, int pos){
     else if (land_owner != p->label){
 
     }
+	return 0;
 }
 
 
@@ -70,12 +71,13 @@ int cycle(Land* gameboard, Player* p, Resident* res){
         dice = dice_roll();
 
         //test for control dice
+		/*
         gotoyx(33, 50);
         printf("DICE :         ");
         gotoyx(33, 57);
         scanf("%d %d", &dice.d1, &dice.d2);
-
-//        show_dice_roll(dice.d1, dice.d2);
+		*/
+        show_dice_roll(dice.d1, dice.d2);
 
         is_double = determine_double(dice);
         double_count += is_double ? 1 : 0;
