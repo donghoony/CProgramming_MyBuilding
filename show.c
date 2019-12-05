@@ -2,12 +2,12 @@
 // Created by DongHoony on 2019-11-20.
 //
 
+#include <wincon.h>
+#include <winbase.h>
 #include "land.h"
 #include "gotoyx.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <wincon.h>
-#include <winbase.h>
 #include <conio.h>
 #include <malloc.h>
 #include "land.h"
