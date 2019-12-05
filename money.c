@@ -50,9 +50,14 @@ int cal_land_price(Land* l){//내가 빌딩을 살때랑 상대가 내야하는 
 		if(l->level[i]==1){
 			sum+=l->land_price*MULTIPLY2[i+1];
 		}
+	sum=sum*l->land_multiply;
 	return sum;
 	}
-
+}
+void cal_festival(Land* l){//페스티벌 배수 설정
+	l->land_multiply=1;
+	l->land_multiply*2;
+}
 // money_get_income 있음
 //void start_pont_income(Player* p,Land l,int member){
 //   money_get_income(p);
