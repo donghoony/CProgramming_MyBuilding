@@ -26,4 +26,4 @@ int show_build_building(Land* gameboard, Player* p, int pos, int level);
 int* show_choice_building(Land* land, Player* p);
 void show_dice_grid();
 void show_dice_roll(int, int);
-int show_landmark_satisfy(int*, int);
+int show_landmark_satisfy(int*);

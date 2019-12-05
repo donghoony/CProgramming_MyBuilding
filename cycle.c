@@ -50,10 +50,11 @@ int land_cycle(Land* gameboard, Player* p, int pos){
     }
 }
 
-int cycle(Land* gameboard, Player* p){
+int cycle(Land* gameboard, Player* p, Resident* res){
     int pos, land_owner, label, double_count = 0;
-    int is_double = 0, lap;
+    int is_double = 0, lap, i;
     int land_label, land_type;
+    int* selected_building = NULL;
     Dice dice;
 
     srand((unsigned)time(NULL));
@@ -75,8 +76,11 @@ int cycle(Land* gameboard, Player* p){
         }
 
         // 움직이기
-        pos = move_cycle(gameboard, p, dice);
+        p->position = move_cycle(gameboard, p, dice);
+        pos = p->position;
         lap = p->lap;
+        gotoyx(35,0);
+        printf("NOW AT %02d", p->position);
 
         // 도착한 곳 확인 (출발, 무인도와 같은 특별 타일인지, 일반 땅 타일인지 확인)
         land_type = gameboard[pos].land_type;
@@ -87,11 +91,20 @@ int cycle(Land* gameboard, Player* p){
 
             // 빈 땅, 내 땅, 남 땅 확인 및 통행료 지급
             // 빈 땅이면 살 수 있음
-            if (land_owner == NO_ONE){
-                show_choice_building(&gameboard[pos], p);
+            if (land_owner == NO_ONE || land_owner == label){
+                selected_building = show_choice_building(&gameboard[pos], p);
+                // !!!!!!!!!!! 합을 구한 뒤에 현재 금액이 더 많이 갖고있는지 확인 필요함  !!!!!!!!!!!!
+                for(i = 0; i < 5; i++){
+                    if (selected_building[i] == 1){
+                        gotoyx_print(34, 0, "Attempt to buy..");
+                        land_buy(p, &gameboard[pos], res, i);
+                    }
+                }
+                free(selected_building);
             }
             // 내 땅이면 증가시킬 수 있음
             else if (land_owner == label){
+                selected_building = show_choice_building(&gameboard[pos], p);
 
             }
             // 남 땅이면 통행료 냄

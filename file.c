@@ -27,7 +27,7 @@ void get_chars_until_specific_char(FILE* f, char specific_char){
 
 // returns Land* array => Land**
 Land* file_get_land_info(){
-    int land_price, land_number, i;
+    int land_price, land_number, i, j;
     char land_name[100], landmark_name[100];
     Land temp_land;
     // land tmp;
@@ -49,12 +49,15 @@ Land* file_get_land_info(){
         fscanf(f, "%d", &land_price);
         fscanf(f, "%s", landmark_name);
 
+        //initialization
+        memset(temp_land.level, 0x0, sizeof(temp_land.level));
         temp_land.name = (char*) malloc(sizeof(char) * strlen(land_name) + 1);
         strcpy(temp_land.name, land_name);
         temp_land.landmark_name = (char*) malloc(sizeof(char) * strlen(landmark_name) + 1);
         strcpy(temp_land.landmark_name, landmark_name);
         temp_land.land_price = land_price;
         temp_land.land_position = land_number;
+        temp_land.label = NO_ONE;
         temp_land.land_type = (i == ABANDONED_ISLAND || i == START_LAND || i == FESTIVAL || i == TRAVEL) ? SPECIAL_TYPE : NORMAL_TYPE;
         land_array[i] = temp_land;
 

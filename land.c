@@ -7,21 +7,42 @@
 #include "land.h"
 #include "resident.h"
 #include "money.h"
+#include "gotoyx.h"
 
 // suppose player has enough money  (functions below)
 int land_buy_build(Player* p, Land* land, Resident* r, int level){
-	int i=0;
-    const int PEOPLE[] = {0, 0, 2, 3, 4};
+    const char* STR[4] = {"T", "S", "M", "L"};
+    const char* NUM[7] = {"0", "1", "2", "3", "4", "5", "6"};
+    const int PEOPLE[] = {0, 2, 3, 4};
+	int i, book_people;
+	int x_pos[4] = {NULL, land->p_b1.x, land->p_b2.x, land->p_b3.x};
+	int y_pos[4] = {NULL, land->p_b1.y, land->p_b2.y, land->p_b3.y};
+    int label = p->label;
     int pos = land->land_position;
-    land->label = p->label;
-	land->level[level-1] = 1; //해당 건물 소유함으로 변경
-	if(level == ONLY_LAND) return OK;
-	if(level == LANDMARK) {
-		for(i=0; i<LANDMARK-1; i++) {
+
+    gotoyx_print(35, 15, "LANDBUYBUILD FUNC");
+    getchar();
+    gotoyx_print(35, 15, "                  ");
+
+    land->label = label;
+	land->level[level] = 1; //해당 건물 소유함으로 변경
+	if(level == ONLY_LAND-1) return OK;
+
+	// level is 0-based
+	if(level == 4) {
+		for(i = 0; i < LANDMARK-1; i++) {
 			r->resident_info[LANDMARK-1][pos] += r->resident_info[i][pos];
 		}
 	}
-	else r->resident_info[level-1][pos] = rand() % PEOPLE[level] + 1;
+	else {
+	    book_people = rand() % PEOPLE[level] + 1;
+	    (r->resident_info[level-1])[pos] = book_people;
+	}
+
+    gotoyx_set_color(label == COMPUTER ? C_RED : C_BLUE);
+	gotoyx_print(y_pos[level], x_pos[level], STR[level]);
+	gotoyx_print(y_pos[level], x_pos[level] + 1, NUM[book_people]);
+	gotoyx_set_color(C_WHITE);
 }
 /*
 int land_buy_only_land(Player* p, Land* land, Resident* r){
@@ -54,18 +75,15 @@ int land_check_valid(){
 // 1.0 1.2 1.5 1.7 2.0
 
 // level은 ONLY_LAND, VILLA, BUILDING, HOTEL, LANDMARK로 전달할 것!
+// 이미 돈 충분하다고 가정한다
 int land_buy(Player* p, Land* land, Resident* res, int level){
     // [12345] land villa building hotel landmark
     // User buys land with level
-    const double MULTIPLY[] = {0, 1.0, 1.2, 1.5, 1.7, 2.0};
+    const double MULTIPLY[] = {1.0, 1.2, 1.5, 1.7, 2.0};
     int price = land->land_price * MULTIPLY[level];
     // if you have enough money
-    if (money_compare(p->money, price)){
-        land_buy_build(p, land, res, level);
-        money_spend(p, price);
-        return OK;
-    }
-    else return NOT_OK;
+    land_buy_build(p, land, res, level);
+    return OK;
 }
 
 

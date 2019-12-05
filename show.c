@@ -9,6 +9,7 @@
 #include <wincon.h>
 #include <winbase.h>
 #include <conio.h>
+#include <malloc.h>
 #include "land.h"
 #include "show.h"
 
@@ -123,7 +124,7 @@ int show_build_building(Land* gameboard, Player* p, int pos, int level){
 int show_landmark_satisfy(int* arr){
     int i;
     for(i = 0; i < 5; i++){
-        if (arr[i] == 0) return NOT_OK;
+        if (arr[i] != 1) return NOT_OK;
     }
     return OK;
 }
@@ -139,7 +140,7 @@ int* show_choice_building(Land* land, Player* p){
     int valid_check;
 
     selected_buliding = (int*) malloc(sizeof(int) * 5);
-    memset(selected_buliding, 0x0, sizeof(selected_buliding));
+    memset(selected_buliding, 0x0, _msize(selected_buliding));
 
     gotoyx_set_color(C_GREEN);
     gotoyx_print(18, 50, "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖");
@@ -149,21 +150,26 @@ int* show_choice_building(Land* land, Player* p){
     gotoyx_print(22, 50, "弛  LAND   VILA   BLDG   HTEL   LMRK 弛");
     gotoyx_print(23, 50, "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎");
 
+    valid_check = show_landmark_satisfy(land->level);
     for(i = 0; i < 5; i++){
-        valid_check = show_landmark_satisfy(land->level);
-        if (i > lap || (i == 4 && valid_check == NOT_OK)){
+        if (i > lap){
             gotoyx_set_color(C_RED);
             gotoyx_print(21, X_COR[i], " XX ");
             selected_buliding[i] = -1;
         }
         else if (land->level[i] == 1){
-            gotoyx_set_color(C_GREEN);
+            gotoyx_set_color(C_BLUE);
             gotoyx_print(21, X_COR[i], " OK ");
             selected_buliding[i] = -1;
         }
+        if (i == 4 && valid_check == NOT_OK){
+            gotoyx_set_color(C_RED);
+            gotoyx_print(21, X_COR[i], " XX ");
+            selected_buliding[i] = -1;
+        }
     }
-
     gotoyx_set_color(C_CYAN);
+
     gotoyx_print(22, X_COR[cur], STR_SET[cur]);
 
     while(1){

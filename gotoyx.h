@@ -18,3 +18,4 @@
 void gotoyx(int y, int x);
 void gotoyx_print(int y, int x, char* arg);
 void gotoyx_set_color(int color);
+void gotoyx_print_int(int y, int x, int n);

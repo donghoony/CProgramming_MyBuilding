@@ -21,4 +21,4 @@ int determine_double(Dice d);
 int land_buy_cycle(Land* gameboard, Player *p, int pos);
 int land_upgrade_cycle(Land* gameboard, Player *p, int pos);
 int land_cycle(Land* gameboard, Player* p, int pos);
-int cycle(Land* gameboard, Player* p);
+int cycle(Land* gameboard, Player* p, Resident* res);
