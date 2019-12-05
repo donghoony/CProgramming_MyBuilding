@@ -1,0 +1,50 @@
+-* File used for C_Programming Mybuilding Teamproject *-
+-* Aja-Aja-Fighting Team, C_Marble *-
+-* Land number / Land name / Land price / Landmark name *-
+!
+0 START_LAND 0 NULL
+1 Tokyo 1000 Tokyo_Tower
+2 Beijing 1100 Imperial_Palace
+3 Hanoi 1200 AON
+4 Uninhabited_island 0 NULL
+5 Taipei 1300 101_Tower
+6 Bangkok 1400 Iconsiam
+7 Brasilia 1500 Cathedral_of_Brasilia
+8 Buenos_Aires 1600 Recoleta
+9 Santiago 1700 Rue_Banana
+10 Lima 1800 Plaza_Norte
+11 Festival 0 NULL
+12 Mexico_City 1900 Metropolitan_Cathedral
+13 Ottawa 2000 Beechwood_Cemetery
+14 Washington_DC 2100 Washington_Monument
+15 Travel 0 NULL
+16 Paris 2200 Eiffel_Tower
+17 Amsterdam 2300 I_Am_Amsterdam
+18 Rome 2400 Colosseum
+19 Berlin 2500 Brandenburger
+20 London 2600 London_Eye
+21 Seoul 3000 63_Building
+
+!
+0 시작 0 NULL
+1 도쿄 100 도쿄타워
+2 베이징 100 자금성
+3 하노이 100 아온72
+4 무인도 0 NULL
+5 타이페이 100 101타워
+6 방콕 100 아이콘시암
+7 브라질리아 100 브라질리아대성당
+8 부에노스아이레스 100 레코레타
+9 산티에고 100 Rue_Banana
+10 리마 100 플라자노르테
+11 페스티벌 0 NULL
+12 멕시코시티 100 Metropolitan_Cathedral
+13 오타와 100 Beechwood_Cemetery
+14 워싱턴DC 100 Washington_Monument
+15 세계여행 0 NULL
+16 파리 100 에펠탑
+17 암스테르담 100 I_Am_Amsterdam
+18 로마 100 콜로세움
+19 베를린 100 브란덴부르크문
+20 런던 100 런던아이
+21 서울 100 63빌딩

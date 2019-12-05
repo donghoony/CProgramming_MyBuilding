@@ -1,0 +1,96 @@
+﻿  cycle.c
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\land.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\player.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\money.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\cycle.c(38,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\cycle.c(77,1): warning C4996:  'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message :  'scanf' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\cycle.c(113,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\cycle.c(60,24): warning C4101:  'lap' :참조되지 않은 지역 변수입니다.
+  file.c
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\cycle.c(61,9): warning C4101:  'land_label' :참조되지 않은 지역 변수입니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\land.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\player.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(55,15): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(57,15): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(38,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(47,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(48,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(49,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(50,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(30,37): warning C4101:  'j' :참조되지 않은 지역 변수입니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(83,35): warning C4047:  'return': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(90,24): warning C4047:  'return': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(81,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(87,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(92,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(93,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(94,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(95,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\file.c(96,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  gotoyx.c
+  land.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\player.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\land.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\money.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\land.c(35,53): warning C4090:  '함수': 'const' 한정자가 서로 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\land.c(17,1): warning C4047:  '초기화 중': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\land.c(18,1): warning C4047:  '초기화 중': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+  main.c
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\land.c(76,1): warning C4244:  '초기화 중': 'const double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\main.c(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\land.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  minigame.c
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\player.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  money.c
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\player.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\money.c(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\player.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\money.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  player.c
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\land.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  random.c
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\player.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\random.c(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  resident.c
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\player.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  show.c
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\player.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\land.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\player.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(173,46): warning C4090:  '함수': 'const' 한정자가 서로 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(178,30): warning C4013:  'money_compare'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(185,62): warning C4090:  '함수': 'const' 한정자가 서로 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(188,62): warning C4090:  '함수': 'const' 한정자가 서로 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(192,62): warning C4090:  '함수': 'const' 한정자가 서로 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(195,62): warning C4090:  '함수': 'const' 한정자가 서로 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(176,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(181,1): warning C4996:  'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\conio.h(453): message :  'getch' 선언을 참조하십시오.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(230,47): warning C4090:  '함수': 'const' 한정자가 서로 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(231,47): warning C4090:  '함수': 'const' 한정자가 서로 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(234,45): warning C4090:  '함수': 'const' 한정자가 서로 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(235,45): warning C4090:  '함수': 'const' 한정자가 서로 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(232,1): warning C4996:  '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message :  '_sleep' 선언을 참조하십시오.
+  코드를 생성하고 있습니다...
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\show.c(251,1): warning C4047:  '초기화 중': 'const int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\player.c(17): warning C4716:  'make_user_name': 값을 반환해야 합니다.
+LINK : warning LNK4075: '/INCREMENTAL'이(가) '/OPT:ICF' 사양으로 인해 무시됩니다.
+MSVCRT.lib(exe_winmain.obj) : error LNK2019: _WinMain@16 외부 기호(참조 위치: "int __cdecl __scrt_common_main_seh(void)" (?__scrt_common_main_seh@@YAHXZ) 함수)에서 확인하지 못했습니다.
+C:\Users\황선욱\Desktop\c언어\프로젝트-팀프\CProgramming_MyBuilding\Release\Mybuilding.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.

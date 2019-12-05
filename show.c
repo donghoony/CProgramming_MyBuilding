@@ -2,8 +2,7 @@
 // Created by DongHoony on 2019-11-20.
 //
 
-#include <wincon.h>
-#include <winbase.h>
+#include <windows.h>
 #include "land.h"
 #include "gotoyx.h"
 #include <stdio.h>
@@ -58,13 +57,13 @@ void show_gameboard_grid(){
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //11
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //12
     printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //13
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //14
+    printf("弛          弛     弛   弛  FULL AMOUNT         弛                                               弛  FULL AMOUNT         弛   弛     弛          弛\n"); //14
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //15
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //16
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //17
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //18
     printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //19
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //20
+    printf("弛          弛     弛   弛  LAP :               弛                                               弛  LAP :               弛   弛     弛          弛\n"); //20
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //21
     printf("弛          弛     弛   弛  MONEY :             弛                                               弛  MONEY :             弛   弛     弛          弛\n"); //22
     printf("弛          弛     弛   戌式式式式式式式式式式式式式式式式式式式式式式戎                                               戌式式式式式式式式式式式式式式式式式式式式式式戎   弛     弛          弛\n"); //23

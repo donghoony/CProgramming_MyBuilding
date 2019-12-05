@@ -40,8 +40,9 @@ int rand_roll_dice(Player* user) {
             break;
         count++;
     }
+	return 0;
 }
 
 int rand_house_person(){
-
+	return 0;
 }

@@ -13,5 +13,5 @@
 
 
 int rand_roll_dice_only();
-int rand_roll_dice();
+//int rand_roll_dice();
 int rand_house_person();
