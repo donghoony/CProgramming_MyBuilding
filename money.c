@@ -5,10 +5,10 @@
 #include "player.h"
 #include "money.h"
 #include "land.h"
-#include<stdio.h>
+#include <stdio.h>
 
 int col_land_price(Land* l);
-int money_spend(Player* p, int value){//ë‹¨ìˆœ ëˆ ê´€ë¦¬
+int money_spend(Player* p, int value){//´Ü¼ø µ· °ü¸®
    if (p->money < value) return NOT_OK;
    p->money -= value;
    return OK;
@@ -27,76 +27,73 @@ int money_trade(Player* p_from, Player* p_to, int value){
 
 void money_get_income(Player* p){
     money_earn(p, SALARY);
-} //-> earn_moneyë¡œ ê°€ì ¸ì˜´
+} //-> earn_money·Î °¡Á®¿È
 
 int money_compare(int have, int need){
     return (have >= need) ? OK : NOT_OK;
 }
 
+int find_festival_pos(Land* l){//¾îµğ°¡ Æä½ºÆ¼¹ú °³ÃÖÁöÀÎÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+    int i, sum = 0;
+    for(i = 0; i < MAX_TILE; i++){
+        if(l[i].land_multiply>1){
+            sum=i;
+            break;
+        }
+    }
+    return sum;
+}
 
-int enemy_land_spend(Player* p,Land* l){//ì ì´ë‚˜ ë‚´ê°€ ìƒëŒ€ë°©ì˜ ë•…ì„ ê±¸ë¦´ì‹œ ëˆì„  ì§€ë¶ˆí•˜ëŠ” í•¨ìˆ˜,ì†Œìœ ê¶Œ í™•ì¸
+int enemy_land_spend(Player* p,Land* l){//ÀûÀÌ³ª ³»°¡ »ó´ë¹æÀÇ ¶¥À» °É¸±½Ã µ·À»  ÁöºÒÇÏ´Â ÇÔ¼ö,¼ÒÀ¯±Ç È®ÀÎ
    int condition;
-   int value=0;
-   value=col_land_price(l);
-   condition=money_spend(p,value);//ëˆì„ ë‚¼ìˆ˜ ìˆëŠ” ìƒí™©ì¸ì§€ í™•ì¸
+   int value = 0;
+   value = col_land_price(l);
+   condition = money_spend(p,value);//µ·À» ³¾¼ö ÀÖ´Â »óÈ²ÀÎÁö È®ÀÎ
    return condition;//ok or not
 }
 
 int col_land_price(Land* l){
 	int i;
 	int sum=0;
-	  const double MULTIPLY2[] = {0, 1.0, 1.2, 1.5, 1.7, 2.0};
-	for(i=0;i<5;i++){
-		if(l->level[i]==1){
-			sum+=l->land_price*MULTIPLY2[i+1];
-
+	const double MULTIPLY_FEE[5] = {1.0, 1.2, 1.5, 1.7, 2.0};
+	for(i = 0; i < 5; i++){
+		if(l->level[i] == 0){
+			sum+=l->land_price*MULTIPLY_FEE[i];
 		}
 	}
-	sum=sum*l->land_multiply;
-	return sum;
-}
-void col_festival(Land* l,int pos){
-	//memset()//ëª¨ë“  ë•…ì˜ ë°°ìˆ˜ë¥¼ ì´ˆê¸°í™” í• í•„ìš”(ì›ë˜ í˜ìŠ¤í‹°ë²Œ ì§€ì—­ì´ ì•„ë‹ê²½ìš°)
-	int a=find_festival_pos[l];
-	if(a!=pos) l[a].land_multiply=1;
-	l[pos].land_multiply=l[pos].land_multiply*2;
-}
-
-int find_festival_pos(Land* l){//ì–´ë””ê°€ í˜ìŠ¤í‹°ë²Œ ê°œìµœì§€ì¸ì§€ í™•ì¸í•˜ëŠ” í•¨ìˆ˜
-	int i=0;
-	int sum=0;
-	for(i=0,i<MAX_TILE;i++){
-		if(l[i].land_multiply>1){
-			sum=i;
-			break;
-		}
-	}
+	sum *= l->land_multiply;
 	return sum;
 }
 
-// money_get_income ìˆìŒ
-void start_pont_income(Player* p,Land l,int member){//ì´ˆë°˜ë•… í†µê³¼í•˜ë©´ ì›”ê¸‰ê³¼ ì„ëŒ€ë£Œë¥¼ ê°™ì´ ë°›ìŒ
+void col_festival(Land* gameboard,int pos){
+	//memset()//¸ğµç ¶¥ÀÇ ¹è¼ö¸¦ ÃÊ±âÈ­ ÇÒÇÊ¿ä(¿ø·¡ Æä½ºÆ¼¹ú Áö¿ªÀÌ ¾Æ´Ò°æ¿ì)
+	int a = find_festival_pos(gameboard);
+	if(a != pos) gameboard[a].land_multiply = 1;
+    gameboard[pos].land_multiply=gameboard[pos].land_multiply * 2;
+}
+
+// ÇÔ¼öÀÌ¸§ ÀüºÎ ¼Ò¹®ÀÚ·Î
+void all_land_rent_fee(Land* l,Player* p, Resident* r){//¸ğµç ¶¥¿¡ ´ëÇÑ ÀÓ´ë·á ³ª
+    int i;
+    for(i=0; i < MAX_TILE; i++){
+        if(l[i].label==1){
+            p->money+=(l[i].land_price/100)*r->rand_person_villa[i];
+            p->money+=(l[i].land_price/100)*r->rand_person_building[i];
+            p->money+=(l[i].land_price/100)*r->rand_person_hotel[i];
+        }
+    }
+}
+
+// money_get_income ÀÖÀ½
+void start_pont_income(Player* p,Land* l,Resident* r){//ÃÊ¹İ¶¥ Åë°úÇÏ¸é ¿ù±Ş°ú ÀÓ´ë·á¸¦ °°ÀÌ ¹ŞÀ½
    money_get_income(p);
-   all_land_rent_fee(l,p,member);
+   all_land_rent_fee(l, p, r);
 }
 
-// í•¨ìˆ˜ì´ë¦„ ì „ë¶€ ì†Œë¬¸ìë¡œ
-void all_Myland_rent_fee(Land* l,Player* p,Resident r){//ëª¨ë“  ë•…ì— ëŒ€í•œ ì„ëŒ€ë£Œ ë‚˜
+//ÇÔ¼öÀÌ¸§ ¼Ò¹®ÀÚ·Î
+void all_comland_rent_fee(Land* l,Player* p,Resident r){//¸ğµç ¶¥¿¡ ´ëÇÑ ÀÓ´ë·á »ó´ë
    int i;
-   for(i=0;i<22;i++){
-      if(l[i].label==1){
-         p->money+=(l[i].land_price/100)*r.rand_person_villa[i];
-		 p->money+=(l[i].land_price/100)*r.rand_person_building[i];
-		 p->money+=(l[i].land_price/100)*r.rand_person_hotel[i];
-      }
-   }
-}
-
-
-//í•¨ìˆ˜ì´ë¦„ ì†Œë¬¸ìë¡œ
-void all_comland_rent_fee(Land* l,Player* p,Resident r){//ëª¨ë“  ë•…ì— ëŒ€í•œ ì„ëŒ€ë£Œ ìƒëŒ€
-   int i;
-   for(i=0;i<22;i++){
+   for(i=0; i < MAX_TILE; i++){
       if(l[i].label==2){
          p->money+=(l[i].land_price/100)*r.rand_person_villa[i];
 		 p->money+=(l[i].land_price/100)*r.rand_person_building[i];

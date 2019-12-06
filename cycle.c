@@ -63,6 +63,7 @@ int land_cycle(Land* land, Player* p, Resident* res){
 
             // 남 땅이면 통행료 냄
         else if (land_owner != label && land_owner != NO_ONE){
+
         }
     }
     //도착한 곳이 특별 타일이면
