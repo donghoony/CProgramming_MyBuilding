@@ -28,5 +28,5 @@ void show_dice_grid();
 void show_dice_roll(int, int);
 int show_landmark_satisfy(int*);
 void show_money_update(Player*);
-
+int show_predict_price(Land* land, Player* p, int* selected_building, int now_price, int cur);
 void show_player_update(Player*);

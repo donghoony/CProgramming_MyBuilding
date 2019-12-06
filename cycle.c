@@ -89,13 +89,13 @@ int game_cycle(Land* gameboard, Player* p, Resident* res){
         dice = rand_dice_roll();
 
         //test for control dice
-		/*
+
         gotoyx(33, 50);
         printf("DICE :         ");
         gotoyx(33, 57);
         scanf("%d %d", &dice.d1, &dice.d2);
-		*/
-        show_dice_roll(dice.d1, dice.d2);
+
+       // show_dice_roll(dice.d1, dice.d2);
 
         is_double = determine_double(dice);
         double_count += is_double ? 1 : 0;
@@ -115,12 +115,11 @@ int game_cycle(Land* gameboard, Player* p, Resident* res){
         gotoyx(33,0);
         printf("NOW AT %02d", p->position);
 
+        //LAND CYCLE
         land_cycle(&gameboard[pos], p, res);
 
         // 더블이 아니면 루프 탈출하기
         if (is_double == NOT_DOUBLE) break;
-
-
     }
     return 0;
 }

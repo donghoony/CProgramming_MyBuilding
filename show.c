@@ -129,18 +129,27 @@ int show_landmark_satisfy(int* arr){
     return OK;
 }
 
+int show_predict_price(Land* land, Player* p, int* selected_building, int now_price, int cur){
+    const double MULTIPLY[5] = {1.0, 1.2, 1.5, 1.6, 2.0};
+    int predict_price = now_price;
+    predict_price += (int) (land->land_price * MULTIPLY[cur] * ((selected_building[cur] == 1) ? 1 : -1));
+    gotoyx_print(20, 68, "          ");
+    gotoyx_set_color((money_compare(p->money, predict_price) == OK) ? C_CYAN : C_RED);
+    gotoyx_print_int(20, 68, predict_price);
+    return predict_price;
+}
+
 int* show_choice_building(Land* land, Player* p){
     const int X_COR[] = {53, 60, 67, 74, 81};
-    const double MULTIPLY[5] = {1.0, 1.2, 1.5, 1.6, 2.0};
     const char* STR_SET[] = {"LAND", "VILA", "BLDG", "HTEL", "LMRK"};
     const int CUR_MAX = 4;
     int lap = p->lap;
     int i, cur = 0;
     int key;
-    int* selected_buliding;
+    int* selected_building;
     int valid_check, predict_price = 0;
-    selected_buliding = (int*) malloc(sizeof(int) * 5);
-    memset(selected_buliding, 0x0, _msize(selected_buliding));
+    selected_building = (int*) malloc(sizeof(int) * 5);
+    memset(selected_building, 0x0, _msize(selected_building));
 
     gotoyx_set_color(C_GREEN);
     gotoyx_print(18, 50, "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖");
@@ -155,17 +164,17 @@ int* show_choice_building(Land* land, Player* p){
         if (i > lap){
             gotoyx_set_color(C_RED);
             gotoyx_print(21, X_COR[i], " XX ");
-            selected_buliding[i] = -1;
+            selected_building[i] = -1;
         }
         else if (land->level[i] == 1){
             gotoyx_set_color(C_BLUE);
             gotoyx_print(21, X_COR[i], " OK ");
-            selected_buliding[i] = -1;
+            selected_building[i] = -1;
         }
         if (i == 4 && valid_check == NOT_OK){
             gotoyx_set_color(C_RED);
             gotoyx_print(21, X_COR[i], " XX ");
-            selected_buliding[i] = -1;
+            selected_building[i] = -1;
         }
     }
     gotoyx_set_color(C_CYAN);
@@ -191,14 +200,14 @@ int* show_choice_building(Land* land, Player* p){
                     break;
 
                 case KEY_SPACE:
-                    if(selected_buliding[cur] == -1) continue;
-                    selected_buliding[cur] = (selected_buliding[cur] == 1) ? 0 : 1;
-                    predict_price += (int) (land->land_price * MULTIPLY[cur] * ((selected_buliding[cur] == 1) ? 1 : -1));
-                    gotoyx_print(20, 68, "          ");
-                    gotoyx_set_color((money_compare(p->money, predict_price) == OK) ? C_CYAN : C_RED);
-                    gotoyx_print_int(20, 68, predict_price);
-                    gotoyx_set_color(selected_buliding[cur] == 1 ? C_YELLOW : C_GREEN);
-                    gotoyx_print(21, X_COR[cur], selected_buliding[cur] == 1 ? " VV " : " -- ");
+                    if(selected_building[cur] == -1) continue;
+                    selected_building[cur] = (selected_building[cur] == 1) ? 0 : 1;
+
+                    //print predicted price
+                    predict_price = show_predict_price(land, p, selected_building, predict_price, cur);
+
+                    gotoyx_set_color(selected_building[cur] == 1 ? C_YELLOW : C_GREEN);
+                    gotoyx_print(21, X_COR[cur], selected_building[cur] == 1 ? " VV " : " -- ");
                     break;
             }
         }
@@ -207,7 +216,7 @@ int* show_choice_building(Land* land, Player* p){
     for(i = 0; i < 6; i++){
         gotoyx_print(18+i, 50, "                                     ");
     }
-    return selected_buliding;
+    return selected_building;
 }
 
 void show_dice_roll(int dice_v1, int dice_v2){
@@ -226,7 +235,6 @@ void show_dice_roll(int dice_v1, int dice_v2){
     gotoyx_print(DICEY, DICEX[0], Y[dice_v1]);
     gotoyx_print(DICEY, DICEX[1], Y[dice_v2]);
 }
-
 
 void show_dice_grid(){
     int i, x = 10;
@@ -249,5 +257,4 @@ void show_money_update(Player* p){
 
 void show_player_update(Player* p){
     show_money_update(p);
-
 }

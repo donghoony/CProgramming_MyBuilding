@@ -46,5 +46,9 @@ typedef struct land{
 }Land;
 
 int land_buy(Player* user, Land* l, Resident* res, int level);
+void land_check_label(Player* p,Land* land, Resident* res, int level);
+int land_check_land(Land* land, int level);
+int land_check_lap(Player* p, int level);
+int land_buy_build(Player* p, Land* land, Resident* r, int level);
 
 //void land_buy_menu();

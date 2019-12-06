@@ -22,5 +22,5 @@ void money_get_income(Player* p); //-> earn_money로 가져옴
 //void all_Comland_rent_fee(Land* l,Player* p,Resident r);
 void all_Myland_rent_fee(Land* l,Player* p,Resident r);
 int enemy_land_spend(Player* p,int value);
-
+int col_land_price(Land* l);
 int money_compare(int have, int need);
