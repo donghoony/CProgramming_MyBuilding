@@ -8,7 +8,7 @@
 
 #define START_CHAR '!'
 
-int is_nullptr(FILE* f){
+int file_is_nullptr(FILE* f){
     if (f == NULL){
         printf("NULLPTR\n");
         return 1;
@@ -37,7 +37,7 @@ Land* file_get_land_info(){
     // LAND_INFO
     FILE* f = fopen("..\\LAND_INFO", "r");
 
-    if (is_nullptr(f)) return NULL;
+    if (file_is_nullptr(f)) return NULL;
     get_chars_until_specific_char(f, START_CHAR);
 
     for(i = 0; i < MAX_TILE; i++){
@@ -80,7 +80,7 @@ int file_get_land_pos(Land **land_arr_addr){
     Land* land_arr = *land_arr_addr;
     FILE* f = fopen("..\\LAND_POS_INFO", "r");
 
-    if (is_nullptr(f)) return NULL;
+    if (file_is_nullptr(f)) return NULL;
     get_chars_until_specific_char(f, START_CHAR);
 
     for(i = 0; i < MAX_TILE; i++){

@@ -37,6 +37,45 @@ int land_buy_build(Player* p, Land* land, Resident* r, int level){
 	gotoyx_set_color(C_WHITE);
 	return 0;
 }
+
+// level은 ONLY_LAND, VILLA, BUILDING, HOTEL, LANDMARK로 전달할 것!
+// 이미 돈 충분하다고 가정한다
+int land_buy(Player* p, Land* land, Resident* res, int level){
+    // [12345] land villa building hotel landmark
+    // User buys land with level
+    const double MULTIPLY[] = {1.0, 1.2, 1.5, 1.7, 2.0};
+    int price = land->land_price * MULTIPLY[level];
+    // if you have enough money
+    land_buy_build(p, land, res, level);
+    money_spend(p, price);
+    return OK;
+}
+void land_check_label(Player* p,Land* land){//땅의 상태를 파악함(이미 내가 산땅, 상대땅, 빈땅)-> 각 상황에 맞게 함수를 불러와 해결(빈땅에 건물 짓는 함수,상대방한테 임대료 주는 함수, 원래 내땅에 건물 더 지을지 판단하는 함수)
+	if(land->label==0);
+	else if(land->label==p->label);
+	else if(land->label!=p->label);
+} //광일
+
+int land_check_land(Land* land, int level) { //건물을 올리려면 반드시 땅을 보유중이어야 함을 확인해주는 함수
+	int i=0;
+	if(level > ONLY_LAND && land->level[ONLY_LAND-1] == 0) return NOT_OK;  //땅을 보유하지 않고 건물 올리는 경우 -1 반환
+	else return OK; //그 외의 경우 1반환
+}
+
+int land_check_lap(Player* p, int level) {  //lap수에 따라 살 수 있는 건물 제한하는 함수   ->   굳이 함수로 처리 해야하는가에 대해서는 의문.
+	if(p->lap + 1 >= level) return OK; 
+	else return NOT_OK;
+}
+
+/*  랜드마크 지으려면 랜드마크 하위 건물들이 모두 존재해야 지을 수 있음.
+int i=0, sum=0;
+for(i=0; i<LANDMARK-1; i++) {
+	sum += land->level[i];
+}
+if(sum == 4) return OK
+else return NOT_OK;
+*/
+
 /*
 int land_buy_only_land(Player* p, Land* land, Resident* r){
     land->label = p->label;
@@ -66,43 +105,3 @@ int land_check_valid(){
 }
 */
 // 1.0 1.2 1.5 1.7 2.0
-
-// level은 ONLY_LAND, VILLA, BUILDING, HOTEL, LANDMARK로 전달할 것!
-// 이미 돈 충분하다고 가정한다
-int land_buy(Player* p, Land* land, Resident* res, int level){
-    // [12345] land villa building hotel landmark
-    // User buys land with level
-    const double MULTIPLY[] = {1.0, 1.2, 1.5, 1.7, 2.0};
-    int price = land->land_price * MULTIPLY[level];
-    // if you have enough money
-    land_buy_build(p, land, res, level);
-    money_spend(p, price);
-    return OK;
-}
-
-
-void land_check_label(Player* p,Land* land){//땅의 상태를 파악함(이미 내가 산땅, 상대땅, 빈땅)-> 각 상황에 맞게 함수를 불러와 해결(빈땅에 건물 짓는 함수,상대방한테 임대료 주는 함수, 원래 내땅에 건물 더 지을지 판단하는 함수)
-	if(land->label==0);
-	else if(land->label==p->label);
-	else if(land->label!=p->label);
-} //광일
-
-int land_check_land(Land* land, int level) { //건물을 올리려면 반드시 땅을 보유중이어야 함을 확인해주는 함수
-	int i=0;
-	if(level > ONLY_LAND && land->level[ONLY_LAND-1] == 0) return NOT_OK;  //땅을 보유하지 않고 건물 올리는 경우 -1 반환
-	else return OK; //그 외의 경우 1반환
-}
-
-int land_check_lap(Player* p, int level) {  //lap수에 따라 살 수 있는 건물 제한하는 함수   ->   굳이 함수로 처리 해야하는가에 대해서는 의문.
-	if(p->lap + 1 >= level) return OK; 
-	else return NOT_OK;
-}
-
-/*  랜드마크 지으려면 랜드마크 하위 건물들이 모두 존재해야 지을 수 있음.
-int i=0, sum=0;
-for(i=0; i<LANDMARK-1; i++) {
-	sum += land->level[i];
-}
-if(sum == 4) return OK
-else return NOT_OK;
-*/

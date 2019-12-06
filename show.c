@@ -9,8 +9,8 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <malloc.h>
-#include "land.h"
 #include "show.h"
+#include "money.h"
 
 void show_set_cursor_disable(){
     CONSOLE_CURSOR_INFO cci;
@@ -53,14 +53,14 @@ void show_gameboard_grid(){
     printf("戍式式式式式式式式式式成式式式式式托式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式托式式式式式成式式式式式式式式式式扣\n"); //7
     printf("弛          弛     弛                                                                                                     弛     弛          弛\n"); //8
     printf("弛          弛     弛   忙式式式式式式式式式式式式式式式式式式式式式式忖                                               忙式式式式式式式式式式式式式式式式式式式式式式忖   弛     弛          弛\n"); //9
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //10
+    printf("弛          弛     弛   弛      P L A Y E R     弛                                               弛    C O M P U T E R   弛   弛     弛          弛\n"); //10
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //11
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //12
     printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //13
-    printf("弛          弛     弛   弛  FULL AMOUNT         弛                                               弛  FULL AMOUNT         弛   弛     弛          弛\n"); //14
+    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //14
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //15
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //16
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //17
+    printf("弛          弛     弛   弛  TOTAL ASSETS:       弛                                               弛  TOTAL ASSETS:       弛   弛     弛          弛\n"); //17
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //18
     printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //19
     printf("弛          弛     弛   弛  LAP :               弛                                               弛  LAP :               弛   弛     弛          弛\n"); //20
@@ -182,15 +182,10 @@ int* show_choice_building(Land* land, Player* p){
             gotoyx_set_color(C_GREEN);
             switch(key){
                 case KEY_RIGHT:
-                    gotoyx_print(22, X_COR[cur], STR_SET[cur]);
-                    cur = (cur == CUR_MAX) ? cur : cur + 1;
-                    gotoyx_set_color(C_CYAN);
-                    gotoyx_print(22, X_COR[cur], STR_SET[cur]);
-                    break;
-
                 case KEY_LEFT:
                     gotoyx_print(22, X_COR[cur], STR_SET[cur]);
-                    cur = (cur == 0) ? cur : cur - 1;
+                    if (key == KEY_RIGHT) cur = (cur == CUR_MAX) ? 0 : cur + 1;
+                    else cur = (cur == 0) ? CUR_MAX : cur - 1;
                     gotoyx_set_color(C_CYAN);
                     gotoyx_print(22, X_COR[cur], STR_SET[cur]);
                     break;
@@ -205,11 +200,8 @@ int* show_choice_building(Land* land, Player* p){
                     gotoyx_set_color(selected_buliding[cur] == 1 ? C_YELLOW : C_GREEN);
                     gotoyx_print(21, X_COR[cur], selected_buliding[cur] == 1 ? " VV " : " -- ");
                     break;
-                default:
-                    break;
             }
         }
-
     }
     gotoyx_set_color(C_WHITE);
     for(i = 0; i < 6; i++){
@@ -235,6 +227,7 @@ void show_dice_roll(int dice_v1, int dice_v2){
     gotoyx_print(DICEY, DICEX[1], Y[dice_v2]);
 }
 
+
 void show_dice_grid(){
     int i, x = 10;
     gotoyx_set_color(C_CYAN);
@@ -252,4 +245,9 @@ void show_money_update(Player* p){
     gotoyx_print(22, X_POS[label], "       ");
     gotoyx(22, X_POS[label]);
     printf("%d", p->money);
+}
+
+void show_player_update(Player* p){
+    show_money_update(p);
+
 }
