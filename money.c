@@ -6,7 +6,7 @@
 #include "money.h"
 #include "land.h"
 #include <stdio.h>
-
+#include<stdlib.h>
 int col_land_price(Land* l);
 int money_spend(Player* p, int value){//단순 돈 관리
    if (p->money < value) return NOT_OK;
@@ -33,7 +33,7 @@ int money_compare(int have, int need){
     return (have >= need) ? OK : NOT_OK;
 }
 
-int find_festival_pos(Land* l){//어디가 페스티벌 개최지인지 확인하는 함수
+int find_festival_pos(Land* l){//어디가 원래 페스티벌 개최지인지 확인하는 함수
     int i, sum = 0;
     for(i = 0; i < MAX_TILE; i++){
         if(l[i].land_multiply>1){
@@ -43,7 +43,6 @@ int find_festival_pos(Land* l){//어디가 페스티벌 개최지인지 확인하는 함수
     }
     return sum;
 }
-
 int enemy_land_spend(Player* p,Land* l){//적이나 내가 상대방의 땅을 걸릴시 돈을  지불하는 함수,소유권 확인
    int condition;
    int value = 0;
@@ -55,7 +54,7 @@ int enemy_land_spend(Player* p,Land* l){//적이나 내가 상대방의 땅을 걸릴시 돈을 
 int col_land_price(Land* l){
 	int i;
 	int sum=0;
-	const double MULTIPLY_FEE[5] = {1.0, 1.2, 1.5, 1.7, 2.0};
+	const double MULTIPLY_FEE[5] = {1.0, 1.1, 1.3, 1.5, 1.7};
 	for(i = 0; i < 5; i++){
 		if(l->level[i] == 0){
 			sum+=l->land_price*MULTIPLY_FEE[i];
@@ -64,12 +63,20 @@ int col_land_price(Land* l){
 	sum *= l->land_multiply;
 	return sum;
 }
-
-void col_festival(Land* gameboard,int pos){
-	//memset()//모든 땅의 배수를 초기화 할필요(원래 페스티벌 지역이 아닐경우)
-	int a = find_festival_pos(gameboard);
-	if(a != pos) gameboard[a].land_multiply = 1;
-    gameboard[pos].land_multiply=gameboard[pos].land_multiply * 2;
+int make_festival(Land* gameboard,Player* p){//내 땅중 랜덤하게 하나 선택//페스티벌 지역 설정
+	int i=0;
+	srand((unsigned)time(NULL));
+	while(1){
+		i=rand()%MAX_TITLE;
+		if(p->label==gameboard[i].label) break;
+	}
+	return i;
+}
+void col_festival(Land* gameboard,Player* p){//2배설정함수
+	int origin_pos = find_festival_pos(gameboard);//원래 페스티벌 지역
+	int new_pos=make_festival(gameboard,p)//새로운 페스티벌 장소
+	if(origin_pos != new_pos) gameboard[origin_pos].land_multiply = 1;
+    gameboard[new_pos].land_multiply=gameboard[new_pos].land_multiply * 2;
 }
 
 // 함수이름 전부 소문자로
