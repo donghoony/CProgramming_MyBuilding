@@ -71,3 +71,17 @@ void all_comland_rent_fee(Land* l,Player* p,Resident r){//모든 땅에 대한 �
       }
    }
 }
+
+int col_land_price(Land* l){
+   int i;
+   int sum=0;
+     const double MULTIPLY2[] = {0, 1.0, 1.2, 1.5, 1.7, 2.0};
+   for(i=0;i<5;i++){
+      if(l->level[i]==1){
+         sum+=l->land_price*MULTIPLY2[i+1];
+
+      }
+   }
+   sum=sum*l->land_multiply;
+   return sum;
+}

@@ -20,10 +20,11 @@ int land_buy_build(Player* p, Land* land, Resident* r, int level){
     int pos = land->land_position;
 
     land->label = label;
+	if(land_check_lap(p, level)==OK && land_check_land(land, level)==OK) {
 	land->level[level] = 1; //ÇØ´ç °Ç¹° ¼ÒÀ¯ÇÔÀ¸·Î º¯°æ
 	if(level == ONLY_LAND-1) return OK;
 	// level is 0-based
-	if(level == 4) {
+	if(level == 4 && land_check_landmark(land, level == OK)) {
 	    book_people = r->rand_person_hotel[pos] + r->rand_person_building[pos] + r->rand_person_villa[pos];
         r->res_person_landmark[pos] = book_people;
 	}
@@ -36,6 +37,7 @@ int land_buy_build(Player* p, Land* land, Resident* r, int level){
 	gotoyx_print_int(y_pos[level], x_pos[level] + 1, book_people);
 	gotoyx_set_color(C_WHITE);
 	return 0;
+	}
 }
 /*
 int land_buy_only_land(Player* p, Land* land, Resident* r){
@@ -81,11 +83,17 @@ int land_buy(Player* p, Land* land, Resident* res, int level){
 }
 
 
-void land_check_label(Player* p,Land* land){//¶¥ÀÇ »óÅÂ¸¦ ÆÄ¾ÇÇÔ(ÀÌ¹Ì ³»°¡ »ê¶¥, »ó´ë¶¥, ºó¶¥)-> °¢ »óÈ²¿¡ ¸Â°Ô ÇÔ¼ö¸¦ ºÒ·¯¿Í ÇØ°á(ºó¶¥¿¡ °Ç¹° Áş´Â ÇÔ¼ö,»ó´ë¹æÇÑÅ× ÀÓ´ë·á ÁÖ´Â ÇÔ¼ö, ¿ø·¡ ³»¶¥¿¡ °Ç¹° ´õ ÁöÀ»Áö ÆÇ´ÜÇÏ´Â ÇÔ¼ö)
-	if(land->label==0);
-	else if(land->label==p->label);
-	else if(land->label!=p->label);
-} //±¤ÀÏ
+void land_check_label(Player* p,Land* land, Resident* res, int level){ //¶¥ÀÇ »óÅÂ¸¦ ÆÄ¾ÇÇÔ(ÀÌ¹Ì ³»°¡ »ê¶¥, »ó´ë¶¥, ºó¶¥)-> °¢ »óÈ²¿¡ ¸Â°Ô ÇÔ¼ö¸¦ ºÒ·¯¿Í ÇØ°á(ºó¶¥¿¡ °Ç¹° Áş´Â ÇÔ¼ö,»ó´ë¹æÇÑÅ× ÀÓ´ë·á ÁÖ´Â ÇÔ¼ö, ¿ø·¡ ³»¶¥¿¡ °Ç¹° ´õ ÁöÀ»Áö ÆÇ´ÜÇÏ´Â ÇÔ¼ö)
+
+	int price = col_land_price(land);
+
+	if(land->label==0 || land->label==p->label) {
+		land_buy(p, land, res, level);
+	}
+	else if(land->label!=p->label) {
+		enemy_land_spend(p, price);
+	}
+}
 
 int land_check_land(Land* land, int level) { //°Ç¹°À» ¿Ã¸®·Á¸é ¹İµå½Ã ¶¥À» º¸À¯ÁßÀÌ¾î¾ß ÇÔÀ» È®ÀÎÇØÁÖ´Â ÇÔ¼ö
 	int i=0;
@@ -98,11 +106,11 @@ int land_check_lap(Player* p, int level) {  //lap¼ö¿¡ µû¶ó »ì ¼ö ÀÖ´Â °Ç¹° Á¦ÇÑÇ
 	else return NOT_OK;
 }
 
-/*  ·£µå¸¶Å© ÁöÀ¸·Á¸é ·£µå¸¶Å© ÇÏÀ§ °Ç¹°µéÀÌ ¸ğµÎ Á¸ÀçÇØ¾ß ÁöÀ» ¼ö ÀÖÀ½.
+int land_check_landmark(Land* land, int level) {
 int i=0, sum=0;
 for(i=0; i<LANDMARK-1; i++) {
 	sum += land->level[i];
 }
-if(sum == 4) return OK
+if(sum == 4) return OK;
 else return NOT_OK;
-*/
+}
