@@ -65,7 +65,7 @@ int main() {
 //    }
      */
     while(1){
-        cycle(gameboard, &user, &resident);
+        game_cycle(gameboard, &user, &resident);
     }
 
     gotoyx(35, 0);

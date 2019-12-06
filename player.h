@@ -13,7 +13,7 @@ typedef struct player {
 	int lap; // 몇 바퀴 돌았는지
 }Player;
 
-int rand_roll_dice(Player* user);
+
 void* make_user_name(Player* user);
 
 void player_move_value(Player* p, int move_value);
