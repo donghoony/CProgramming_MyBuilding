@@ -19,8 +19,6 @@ int move_cycle(Land* gameboard, Player* p, Dice d){
 
         if (p->position == MAX_TILE) {
             money_get_income(p);
-
-            show_money_update(p, TRUE);
             p->position = 0;
             p->lap++;
             show_player_move(gameboard, p,21, 0);
@@ -46,21 +44,18 @@ int land_normal_cycle(Land* land, Player* p, Player* p_2, Resident* res){
             if (selected_building[i] == 1){
 //                        gotoyx_print(34, 0, "Attempt to buy..");
                 land_buy(p, land, res, i);
-                _sleep(300);
-                show_money_update(p, FALSE);
+//                _sleep(300);
             }
         }
         free(selected_building);
         money_spend(p, predicted_price);
-        show_money_update(p, FALSE);
     }
 
         // ≥≤ ∂•¿Ã∏È ≈Î«‡∑· ≥ø
     else {
         predicted_price = land_calculate_cost(land);
         valid = money_trade(p, p_2, predicted_price);
-        show_player_update(p);
-        show_player_update(p_2);
+
         if (valid == NOT_OK) return NOT_OK;
     }
 
@@ -72,7 +67,7 @@ int land_cycle(Land* land, Player* p, Player* p_2, Resident* res){
     int signal;
 
     //µµ¬¯«— ∞˜¿Ã ∂• ≈∏¿œ¿Ã∏È
-    if (land_type == NORMAL_TYPE){
+        if (land_type == NORMAL_TYPE){
             signal = land_normal_cycle(land, p, p_2, res);
             if (signal == NOT_OK) return NOT_OK;
     }

@@ -129,14 +129,45 @@ int show_landmark_satisfy(int* arr){
     return OK;
 }
 
+void show_update_predict_price(Player* p, int predict_price){
+    gotoyx_print(20, 68, "          ");
+    gotoyx_set_color((money_compare(p->money, predict_price) == OK) ? C_CYAN : C_RED);
+    gotoyx_print_int(20, 68, predict_price);
+    gotoyx_set_color(C_WHITE);
+}
+
 int show_predict_price(Land* land, Player* p, int* selected_building, int now_price, int cur){
     const int MULTIPLY[5] = {10, 12, 14, 18, 20};
     int predict_price = now_price;
     predict_price += (land->land_price * MULTIPLY[cur] * ((selected_building[cur] == 1) ? 1 : -1)) / 10;
-    gotoyx_print(20, 68, "          ");
-    gotoyx_set_color((money_compare(p->money, predict_price) == OK) ? C_CYAN : C_RED);
-    gotoyx_print_int(20, 68, predict_price);
+    show_update_predict_price(p, predict_price);
     return predict_price;
+}
+
+int show_predict_price_with_cur_zero(Land* land, Player* p, int* selected_building){
+    const int X_COR[] = {53, 60, 67, 74, 81};
+    int i;
+    if (selected_building[0] == 0){
+        gotoyx_set_color(C_RED);
+        for(i = 1; i < 5; i++){
+            gotoyx_print(21, X_COR[i], " XX ");
+            selected_building[i] = -1;
+        }
+        gotoyx_set_color(C_WHITE);
+        show_update_predict_price(p, 0);
+        return 0;
+    }
+    gotoyx_set_color(C_YELLOW);
+    gotoyx_print(21, X_COR[0], " VV ");
+    selected_building[0] = 1;
+    for(i = 1; i < 4; i++) {
+        gotoyx_set_color(C_GREEN);
+        gotoyx_print(21, X_COR[i], " -- ");
+        selected_building[i] = 0;
+        gotoyx_set_color(C_WHITE);
+    }
+    show_update_predict_price(p, land->land_price);
+    return land->land_price;
 }
 
 int* show_choice_building(Land* land, Player* p){
@@ -171,7 +202,7 @@ int* show_choice_building(Land* land, Player* p){
             gotoyx_print(21, X_COR[i], " OK ");
             selected_building[i] = -1;
         }
-        if (i == 4 && valid_check == NOT_OK){
+        if ((i == 4 && valid_check == NOT_OK) || (i > 0 && selected_building[0] != 1)){
             gotoyx_set_color(C_RED);
             gotoyx_print(21, X_COR[i], " XX ");
             selected_building[i] = -1;
@@ -204,7 +235,8 @@ int* show_choice_building(Land* land, Player* p){
                     selected_building[cur] = (selected_building[cur] == 1) ? 0 : 1;
 
                     //print predicted price
-                    predict_price = show_predict_price(land, p, selected_building, predict_price, cur);
+                    if (cur == 0) predict_price = show_predict_price_with_cur_zero(land, p, selected_building);
+                    else predict_price = show_predict_price(land, p, selected_building, predict_price, cur);
 
                     gotoyx_set_color(selected_building[cur] == 1 ? C_YELLOW : C_GREEN);
                     gotoyx_print(21, X_COR[cur], selected_building[cur] == 1 ? " VV " : " -- ");

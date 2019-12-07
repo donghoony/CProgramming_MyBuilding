@@ -6,8 +6,7 @@
 #include "money.h"
 #include "land.h"
 #include "show.h"
-#include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 #include <time.h>
 
 int col_land_price(Land* l);
@@ -43,6 +42,8 @@ int money_trade(Player* p_from, Player* p_to, int value){
         show_money_update(p_to, TRUE);
         _sleep(1);
     }
+    show_money_normal_update(p_from);
+    show_money_normal_update(p_to);
     return OK;
 }
 
