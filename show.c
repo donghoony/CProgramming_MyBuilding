@@ -247,14 +247,16 @@ void show_dice_grid(){
     gotoyx_set_color(C_WHITE);
 }
 
-void show_money_update(Player* p){
+void show_money_update(Player* p, int is_increase){
     int label = p->label;
     const int X_POS[3] = {NULL, 32, 103};
     gotoyx_print(22, X_POS[label], "       ");
     gotoyx(22, X_POS[label]);
+    gotoyx_set_color((is_increase == TRUE) ? C_GREEN : C_RED);
     printf("%d", p->money);
+    gotoyx_set_color(C_WHITE);
 }
 
 void show_player_update(Player* p){
-    show_money_update(p);
+
 }

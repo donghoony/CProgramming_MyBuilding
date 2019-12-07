@@ -20,7 +20,7 @@ int move_cycle(Land* gameboard, Player* p, Dice d){
         if (p->position == MAX_TILE) {
             money_get_income(p);
 
-            show_money_update(p);
+            show_money_update(p, TRUE);
             p->position = 0;
             p->lap++;
             show_player_move(gameboard, p,21, 0);
@@ -47,12 +47,12 @@ int land_normal_cycle(Land* land, Player* p, Player* p_2, Resident* res){
 //                        gotoyx_print(34, 0, "Attempt to buy..");
                 land_buy(p, land, res, i);
                 _sleep(300);
-                show_money_update(p);
+                show_money_update(p, FALSE);
             }
         }
         free(selected_building);
         money_spend(p, predicted_price);
-        show_money_update(p);
+        show_money_update(p, FALSE);
     }
 
         // ≥≤ ∂•¿Ã∏È ≈Î«‡∑· ≥ø
@@ -90,7 +90,6 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
     int is_double = 0, signal;
     Dice dice;
 
-    show_money_update(p);
     srand((unsigned)time(NULL));
 
     // label indicates whose turn now

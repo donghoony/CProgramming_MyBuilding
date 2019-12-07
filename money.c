@@ -5,25 +5,42 @@
 #include "player.h"
 #include "money.h"
 #include "land.h"
+#include "show.h"
 #include <stdio.h>
 #include<stdlib.h>
 #include <time.h>
 
 int col_land_price(Land* l);
 int money_spend(Player* p, int value){//´Ü¼ø µ· °ü¸®
+   int i, cur_money;
    if (p->money < value) return NOT_OK;
-   p->money -= value;
+   for(i = cur_money; i > cur_money - value; i -= 10){
+       p->money -= 10;
+       show_money_update(p, FALSE);
+       _sleep(1);
+   }
    return OK;
 }
 void money_earn(Player* p, int value){
-    p->money += value;
+    int i, cur_money = p->money;
+    for(i = cur_money; i < cur_money+value; i+=10){
+        p->money += 10;
+        show_money_update(p, TRUE);
+        _sleep(1);
+    }
     return;
 }
 int money_trade(Player* p_from, Player* p_to, int value){
-    int ret;
-    ret = money_spend(p_from, value);
+    int ret, i, cur_money = p_from->money;
+    ret = money_compare(p_from->money, value);
     if (ret == NOT_OK) return NOT_OK;
-    money_earn(p_to, value);
+    for(i = cur_money; i < cur_money+value; i+=10){
+        p_from->money -= 10;
+        p_to->money += 10;
+        show_money_update(p_from, FALSE);
+        show_money_update(p_to, TRUE);
+        _sleep(1);
+    }
     return OK;
 }
 
