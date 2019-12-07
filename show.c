@@ -130,9 +130,9 @@ int show_landmark_satisfy(int* arr){
 }
 
 int show_predict_price(Land* land, Player* p, int* selected_building, int now_price, int cur){
-    const double MULTIPLY[5] = {1.0, 1.2, 1.5, 1.6, 2.0};
+    const int MULTIPLY[5] = {10, 12, 14, 18, 20};
     int predict_price = now_price;
-    predict_price += (int) (land->land_price * MULTIPLY[cur] * ((selected_building[cur] == 1) ? 1 : -1));
+    predict_price += (land->land_price * MULTIPLY[cur] * ((selected_building[cur] == 1) ? 1 : -1)) / 10;
     gotoyx_print(20, 68, "          ");
     gotoyx_set_color((money_compare(p->money, predict_price) == OK) ? C_CYAN : C_RED);
     gotoyx_print_int(20, 68, predict_price);
@@ -248,15 +248,32 @@ void show_dice_grid(){
 }
 
 void show_money_update(Player* p, int is_increase){
+    gotoyx_set_color((is_increase == TRUE) ? C_GREEN : C_RED);
+    show_money_normal_update(p);
+    gotoyx_set_color(C_WHITE);
+}
+
+void show_money_normal_update(Player* p){
     int label = p->label;
     const int X_POS[3] = {NULL, 32, 103};
     gotoyx_print(22, X_POS[label], "       ");
     gotoyx(22, X_POS[label]);
-    gotoyx_set_color((is_increase == TRUE) ? C_GREEN : C_RED);
-    printf("%d", p->money);
-    gotoyx_set_color(C_WHITE);
+    printf("%7d", p->money);
 }
 
 void show_player_update(Player* p){
 
+}
+void show_lap_update(Player* p){
+    const int Y = 20;
+    const int X[] = {30, 101};
+    int label = p->label;
+    gotoyx(Y, X[(label == COMPUTER) ? 1 : 0]);
+    printf("%3d", p->lap);
+}
+void show_init_update(Player* p1, Player* p2){
+    show_lap_update(p1);
+    show_lap_update(p2);
+    show_money_normal_update(p1);
+    show_money_normal_update(p2);
 }

@@ -107,8 +107,8 @@ int land_check_valid(){
 int land_buy(Player* p, Land* land, Resident* res, int level){
     // [12345] land villa building hotel landmark
     // User buys land with level
-    const double MULTIPLY[] = {1.0, 1.2, 1.5, 1.7, 2.0}; // 구매가격 (랜드 살 때)
-    int price = land->land_price * MULTIPLY[level];
+    const int MULTIPLY[] = {10, 12, 15, 17, 20}; // 구매가격 (랜드 살 때)
+    int price = land->land_price * MULTIPLY[level] / 10;
     // if you have enough money
     land_buy_build(p, land, res, level);
     money_spend(p, price);
@@ -117,10 +117,10 @@ int land_buy(Player* p, Land* land, Resident* res, int level){
 
 int land_calculate_cost(Land* land){
     int i, ret = 0;
-    const double BUY_MULTIPLY[] = {1.0, 1.2, 1.5, 1.7, 2.0};
-    const double FEE_MULTIPLY[] = {1.0, 1.2, 1.4, 1.6, 1.8};
+    const int BUY_MULTIPLY[] = {10, 12, 15, 17, 20};
+    const int FEE_MULTIPLY[] = {10, 12, 14, 16, 18};
     for(i = 0; i < 5; i++){
-        if (land->level[i] == 1) ret += land->land_price * FEE_MULTIPLY[i];
+        if (land->level[i] == 1) ret += land->land_price * FEE_MULTIPLY[i] / 10;
     }
     return ret;
 }

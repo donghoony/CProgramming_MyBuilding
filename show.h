@@ -30,3 +30,6 @@ int show_landmark_satisfy(int*);
 void show_money_update(Player*, int);
 int show_predict_price(Land* land, Player* p, int* selected_building, int now_price, int cur);
 void show_player_update(Player*);
+void show_lap_update(Player*);
+void show_init_update(Player*, Player*);
+void show_money_normal_update(Player* p);

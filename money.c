@@ -19,6 +19,7 @@ int money_spend(Player* p, int value){//´Ü¼ø µ· °ü¸®
        show_money_update(p, FALSE);
        _sleep(1);
    }
+   show_money_normal_update(p);
    return OK;
 }
 void money_earn(Player* p, int value){
@@ -28,6 +29,7 @@ void money_earn(Player* p, int value){
         show_money_update(p, TRUE);
         _sleep(1);
     }
+    show_money_normal_update(p);
     return;
 }
 int money_trade(Player* p_from, Player* p_to, int value){
