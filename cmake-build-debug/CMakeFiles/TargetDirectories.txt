@@ -1,3 +1,0 @@
-C:/Users/DongHoony/Desktop/git-test/CProgramming_MyBuilding/cmake-build-debug/CMakeFiles/CProgramming_MyBuilding.dir
-C:/Users/DongHoony/Desktop/git-test/CProgramming_MyBuilding/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/DongHoony/Desktop/git-test/CProgramming_MyBuilding/cmake-build-debug/CMakeFiles/rebuild_cache.dir
