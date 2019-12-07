@@ -15,6 +15,7 @@ int main() {
 	Resident resident = { {0},{0},{0}, {0},
                        {resident.rand_person_villa, resident.rand_person_building,
                                     resident.rand_person_hotel, resident.res_person_landmark}};
+    int signal, turn;
 
     show_set_cursor_disable();
     srand((unsigned) time(NULL));
@@ -64,11 +65,14 @@ int main() {
 //        _sleep(200);
 //    }
      */
-    while(1){
-        game_cycle(gameboard, &user, &resident);
-        game_cycle(gameboard, &bot, &resident);
-    }
 
+    while(turn--){
+        signal = game_cycle(gameboard, (turn%2 == 1) ? &user : &bot, (turn%2 == 1) ? &bot : &user, &resident);
+        if (signal == NOT_OK) break;
+    }
+    gotoyx(36,0);
+    if(turn%2 == 0) printf("PLAYER WINS");
+    else printf("BOT WINS");
     gotoyx(35, 0);
     system("pause");
 	return 0;

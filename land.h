@@ -50,5 +50,5 @@ void land_check_label(Player* p,Land* land, Resident* res, int level);
 int land_check_land(Land* land, int level);
 int land_check_lap(Player* p, int level);
 int land_buy_build(Player* p, Land* land, Resident* r, int level);
-
-//void land_buy_menu();
+int land_calculate_cost(Land* land);
+//void land_buy_menu();;

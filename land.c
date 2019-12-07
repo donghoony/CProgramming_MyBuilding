@@ -114,3 +114,12 @@ int land_buy(Player* p, Land* land, Resident* res, int level){
     money_spend(p, price);
     return OK;
 }
+
+int land_calculate_cost(Land* land){
+    int i, ret = 0;
+    const double MULTIPLY[] = {1.0, 1.2, 1.4, 1.6, 1.8};
+    for(i = 0; i < 5; i++){
+        if (land->level[i] == 1) ret += land->land_price * MULTIPLY[i];
+    }
+    return ret;
+}
