@@ -1,13 +1,13 @@
 #include"ending.h"
+
 #include<stdio.h>
-#include<malloc.h>
-#include<string.h>
+
 void open_word(End e[]){
 	FILE* pfile=NULL;
 	//char str[100];
 	//char* pstr;
 	int i=0;
-	pfile=fopen("C:\\Users\\±Ë±§¿œ\\Desktop\\ending_credit.txt","r");
+	pfile=fopen("..\\ending_credit.txt","r");
 	for(i=0; i<50; i++){
 		if(fgets(e[i].word, sizeof(e[i].word), pfile)==NULL) break;
 		//if(i>1) printf("%s",e[i-1].word);
@@ -17,7 +17,7 @@ void open_word(End e[]){
 void open_x(End e[]){
 	FILE* pfile;
 	int i=0;
-	pfile=fopen("C:\\Users\\±Ë±§¿œ\\Desktop\\x_pos.txt","r");
+	pfile=fopen("..\\x_pos.txt","r");
 	for(i=0; i<50; i++){
 		fscanf(pfile, "%d",&e[i].x_pos);
     }
@@ -26,7 +26,7 @@ void open_x(End e[]){
 void open_y(End e[]){
 	FILE* pfile;
 	int i=0;
-	pfile=fopen("C:\\Users\\±Ë±§¿œ\\Desktop\\y_pos.txt","r");
+	pfile=fopen("..\\y_pos.txt","r");
 	for(i=0; i<50; i++){
 		fscanf(pfile, "%d",&e[i].y_pos);
     }

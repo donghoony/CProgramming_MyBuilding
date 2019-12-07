@@ -1,3 +1,4 @@
+#pragma once
 #include<stdio.h>
 typedef struct end{
 	int x_pos;

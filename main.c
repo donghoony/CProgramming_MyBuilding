@@ -6,6 +6,7 @@
 #include "gotoyx.h"
 #include "file.h"
 #include "cycle.h"
+#include "func.h"
 
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
@@ -65,6 +66,9 @@ int main() {
 //        _sleep(200);
 //    }
      */
+
+    ending_credit();
+
 
     while(turn--){
         signal = game_cycle(gameboard, (turn%2 == 1) ? &user : &bot, (turn%2 == 1) ? &bot : &user, &resident);

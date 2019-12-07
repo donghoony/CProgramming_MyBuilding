@@ -2,6 +2,9 @@
 // Created by DongHoony on 2019-11-20.
 //
 #pragma once
+
+#include "land.h"
+
 #ifndef KONKUK_FILE_H
 #define KONKUK_FILE_H
 

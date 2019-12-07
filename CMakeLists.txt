@@ -23,4 +23,11 @@ add_executable(CProgramming_MyBuilding
         resident.h
         show.c
         show.h
-        land.c)
+        land.c
+
+        ending.c
+        ending.h
+        ending_file.c
+        ending_file.h
+        func.c
+        func.h)
