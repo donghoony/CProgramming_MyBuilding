@@ -135,6 +135,7 @@ void show_update_predict_price(Player* p, int predict_price){
     gotoyx_print_int(20, 68, predict_price);
     gotoyx_set_color(C_WHITE);
 }
+
 int show_predict_price(Land* land, Player* p, int* selected_building, int now_price, int cur){
     const int MULTIPLY[5] = {10, 12, 14, 18, 20};
     int predict_price = now_price;
@@ -146,7 +147,7 @@ int show_predict_price(Land* land, Player* p, int* selected_building, int now_pr
 int show_predict_price_with_cur_zero(Land* land, Player* p, int* selected_building){
     const int X_COR[] = {53, 60, 67, 74, 81};
     int i;
-    if (selected_building[0] == 0){
+    if (selected_building[0] == 0 && land->level[0] == 0){
         gotoyx_set_color(C_RED);
         for(i = 1; i < 5; i++){
             gotoyx_print(21, X_COR[i], " XX ");
@@ -160,9 +161,16 @@ int show_predict_price_with_cur_zero(Land* land, Player* p, int* selected_buildi
     gotoyx_print(21, X_COR[0], " VV ");
     selected_building[0] = 1;
     for(i = 1; i < 4; i++) {
-        gotoyx_set_color(C_GREEN);
-        gotoyx_print(21, X_COR[i], " -- ");
-        selected_building[i] = 0;
+        if (i > p->lap){
+            gotoyx_set_color(C_RED);
+            gotoyx_print(21, X_COR[i], " XX ");
+            selected_building[i] = -1;
+        }
+        else{
+            gotoyx_set_color(C_GREEN);
+            gotoyx_print(21, X_COR[i], " -- ");
+            selected_building[i] = 0;
+        }
         gotoyx_set_color(C_WHITE);
     }
     show_update_predict_price(p, land->land_price);
@@ -201,7 +209,7 @@ int* show_choice_building(Land* land, Player* p){
             gotoyx_print(21, X_COR[i], " OK ");
             selected_building[i] = -1;
         }
-        if ((i == 4 && valid_check == NOT_OK) || (i != 4 && i > 0 && selected_building[0] != 1 && land->level[i] == 0)){
+        if ((i == 4 && valid_check == NOT_OK) || (i != 4 && i > 0 && selected_building[0] == 0 && land->level[i] == 0)){
             gotoyx_set_color(C_RED);
             gotoyx_print(21, X_COR[i], " XX ");
             selected_building[i] = -1;
