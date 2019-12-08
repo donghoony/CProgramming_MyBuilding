@@ -316,3 +316,60 @@ void show_init_update(Player* p1, Player* p2){
     show_money_normal_update(p1);
     show_money_normal_update(p2);
 }
+
+
+void show_travel_selected_highlight(Land* gameboard, int cur, int is_highlight, int is_clear){
+    int y, x;
+    if (cur == TRAVEL) return;
+    y = (gameboard[cur].p_player.y + gameboard[cur].p_bot.y) / 2;
+    x = (gameboard[cur].p_player.x + gameboard[cur].p_bot.x) / 2;
+    gotoyx_set_color((is_highlight == TRUE) ? C_YELLOW : C_CYAN);
+    if (is_clear == TRUE) gotoyx_print(y, x, "  ");
+    else gotoyx_print_int(y, x, cur);
+    gotoyx_set_color(C_CYAN);
+}
+
+int show_travel_choice(Land* gameboard){
+    int key, cur = 0, i;
+    gotoyx_set_color(C_CYAN);
+    gotoyx_print(18, 50, "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖");
+    gotoyx_print(19, 50, "弛       SELECT LAND TO TRAVEL       弛");
+    gotoyx_print(20, 50, "弛                                   弛");
+    gotoyx_print(21, 50, "弛  LAND NUMBER :                    弛");
+    gotoyx_print(22, 50, "弛                                   弛");
+    gotoyx_print(23, 50, "戌式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式戎");
+    for(i = 0; i < MAX_TILE; i++) show_travel_selected_highlight(gameboard, i, FALSE, FALSE);
+    gotoyx(21, 67);
+    printf("%02d", cur);
+    while(1){
+        key = getch();
+        if (key == KEY_ENTER) break;
+        if (key == KEY_INTRO){
+            key = getch();
+            switch(key){
+                case KEY_DOWN:
+                case KEY_UP:
+                    show_travel_selected_highlight(gameboard, cur, FALSE, FALSE);
+                    if (key == KEY_DOWN) {
+                        if (cur == 0) cur = MAX_TILE - 1;
+                        else if (cur == TRAVEL + 1) cur = TRAVEL - 1;
+                        else cur -= 1;
+                    }
+                    else {
+                        if (cur == MAX_TILE - 1) cur = 0;
+                        else if (cur == TRAVEL - 1) cur = TRAVEL + 1;
+                        else cur += 1;
+                    }
+                    gotoyx(21, 67);
+                    printf("%02d", cur);
+                    show_travel_selected_highlight(gameboard, cur, TRUE, FALSE);
+                    gotoyx_print(22, 60, "                          ");
+                    gotoyx(22, 60);
+                    printf("%25s", gameboard[cur].name);
+            }
+        }
+    }
+    for(i = 0; i < MAX_TILE; i++) show_travel_selected_highlight(gameboard, i, FALSE, TRUE);
+    for(i = 0; i < 6; i++) gotoyx_print(18+i, 50, "                                     ");
+    return cur;
+}

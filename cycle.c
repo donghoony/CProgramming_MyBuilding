@@ -63,7 +63,7 @@ int land_normal_cycle(Land* land, Player* p, Player* p_2, Resident* res){
     return OK;
 }
 
-int land_cycle(Land* land, Player* p, Player* p_2, Resident* res){
+int land_cycle(Land* gameboard, Land* land, Player* p, Player* p_2, Resident* res){
     int land_type = land->land_type;
     int signal;
 
@@ -75,9 +75,30 @@ int land_cycle(Land* land, Player* p, Player* p_2, Resident* res){
 
     //도착한 곳이 특별 타일이면
     if (land_type == SPECIAL_TYPE) {
-
+        switch(land->land_position){
+            case TRAVEL:
+                signal = travel_cycle(gameboard, p, p_2, res);
+                if (signal == NOT_OK) return NOT_OK;
+                break;
+            case FESTIVAL:
+                break;
+            case START_LAND:
+            case ABANDONED_ISLAND:
+                break;
+        }
     }
     return OK;
+}
+
+int travel_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
+    int signal, pos;
+    int destination = show_travel_choice(gameboard);
+    Dice d = {0, (destination > 15) ? destination-15 : 7 + destination};
+    p->position = move_cycle(gameboard, p, d);
+    pos = p->position;
+
+    signal = land_cycle(gameboard, &gameboard[pos], p, p_2, res);
+    if (signal == NOT_OK) return NOT_OK;
 }
 
 int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
@@ -123,7 +144,7 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
         printf("NOW AT %02d", p->position);
 
         // LAND PHASE
-        signal = land_cycle(&gameboard[pos], p, p_2, res);
+        signal = land_cycle(gameboard, &gameboard[pos], p, p_2, res);
         if (signal == NOT_OK) return NOT_OK;
 
         // END PHASE, 더블이 아니면 루프 탈출하기

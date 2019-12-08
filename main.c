@@ -71,6 +71,7 @@ int main() {
 //    ending_credit();
     show_init_update(&user, &bot);
 
+
     while(turn--){
         signal = game_cycle(gameboard, (turn%2 == 1) ? &user : &bot, (turn%2 == 1) ? &bot : &user, &resident);
         if (signal == NOT_OK) break;

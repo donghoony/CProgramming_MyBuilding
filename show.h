@@ -11,6 +11,8 @@
 #endif //KONKUK_SHOW_H
 
 #define KEY_LEFT 75
+#define KEY_UP 72
+#define KEY_DOWN 80
 #define KEY_RIGHT 77
 #define KEY_SPACE 32
 #define KEY_ENTER 13
@@ -33,3 +35,4 @@ void show_player_update(Player*);
 void show_lap_update(Player*);
 void show_init_update(Player*, Player*);
 void show_money_normal_update(Player* p);
+int show_travel_choice(Land* gameboard);
