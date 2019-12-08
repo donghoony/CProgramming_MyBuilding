@@ -83,7 +83,6 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
     // CYCLE : ROLL -> MOVE -> LAND -> END PHASE
     int pos, label, double_count = 0;
     int is_double = 0, signal;
-	int abandoned_count=0;
     Dice dice;
 
     srand((unsigned)time(NULL));
@@ -93,10 +92,6 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
 
     while (1){
         // ROLL PHASE
-		if(abandoned_count==1) {
-			abandoned_count=0;	
-			break; //무인도 카운트 1이면 루프 탈출 -> 한 턴 쉬기
-		}
 
         dice = rand_dice_roll();
 
@@ -115,7 +110,6 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
         if (double_count >= 2) {
             show_player_move(gameboard, p, p->position, ABANDONED_ISLAND);
             player_move_toward(p, ABANDONED_ISLAND);
-			abandoned_count=1;
             return 1;
         }
 

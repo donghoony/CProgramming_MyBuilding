@@ -11,7 +11,7 @@
 
 int col_land_price(Land* l);
 int money_spend(Player* p, int value){//´Ü¼ø µ· °ü¸®
-   int i, cur_money;
+   int i, cur_money = p->money;
    if (p->money < value) return NOT_OK;
    for(i = cur_money; i > cur_money - value; i -= 10){
        p->money -= 10;
