@@ -16,7 +16,7 @@ int main() {
 	Resident resident = { {0},{0},{0}, {0},
                        {resident.rand_person_villa, resident.rand_person_building,
                                     resident.rand_person_hotel, resident.res_person_landmark}};
-    int signal, turn;
+    int signal, turn = 30;
 
     show_set_cursor_disable();
     srand((unsigned) time(NULL));
