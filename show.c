@@ -323,15 +323,15 @@ void show_travel_selected_highlight(Land* gameboard, int cur, int is_highlight, 
     if (cur == TRAVEL) return;
     y = (gameboard[cur].p_player.y + gameboard[cur].p_bot.y) / 2;
     x = (gameboard[cur].p_player.x + gameboard[cur].p_bot.x) / 2;
-    gotoyx_set_color((is_highlight == TRUE) ? C_YELLOW : C_CYAN);
+    gotoyx_set_color((is_highlight == TRUE) ? C_GREEN : C_YELLOW);
     if (is_clear == TRUE) gotoyx_print(y, x, "  ");
     else gotoyx_print_int(y, x, cur);
-    gotoyx_set_color(C_CYAN);
+    gotoyx_set_color(C_GREEN);
 }
 
 int show_travel_choice(Land* gameboard){
     int key, cur = 0, i;
-    gotoyx_set_color(C_CYAN);
+    gotoyx_set_color(C_GREEN);
     gotoyx_print(18, 50, "忙式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式式忖");
     gotoyx_print(19, 50, "弛       SELECT LAND TO TRAVEL       弛");
     gotoyx_print(20, 50, "弛                                   弛");
