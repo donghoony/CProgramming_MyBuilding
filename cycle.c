@@ -48,6 +48,7 @@ int land_normal_cycle(Land* land, Player* p, Player* p_2, Resident* res){
             }
         }
         free(selected_building);
+        predicted_price = land_calculate_cost(land);
         money_spend(p, predicted_price);
     }
 
