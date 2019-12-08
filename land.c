@@ -57,7 +57,7 @@ int land_buy_build(Player* p, Land* land, Resident* r, int level){
 	land->level[level] = 1; //해당 건물 소유함으로 변경
 	if(level == ONLY_LAND-1) return OK;
 	// level is 0-based
-	if(level == 4 && land_check_landmark(land, level == OK)) {
+	if(level == 4 && land_check_landmark(land, level) == OK) {
 	    book_people = r->rand_person_hotel[pos] + r->rand_person_building[pos] + r->rand_person_villa[pos];
         r->res_person_landmark[pos] = book_people;
 	}
