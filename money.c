@@ -36,11 +36,13 @@ int money_trade(Player* p_from, Player* p_to, int value){
     ret = money_compare(p_from->money, value);
     if (ret == NOT_OK) return NOT_OK;
     for(i = cur_money; i < cur_money+value; i+=10){
+//        money_earn(p_to, 10);
+//        money_spend(p_from, 10);
         p_from->money -= 10;
         p_to->money += 10;
         show_money_update(p_from, FALSE);
         show_money_update(p_to, TRUE);
-        _sleep(1);
+        if (i % 250 == 0) _sleep(1);
     }
     show_money_normal_update(p_from);
     show_money_normal_update(p_to);
