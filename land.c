@@ -122,5 +122,6 @@ int land_calculate_cost(Land* land){
     for(i = 0; i < 5; i++){
         if (land->level[i] == 1) ret += land->land_price * FEE_MULTIPLY[i] / 10;
     }
+	ret*=l->land_multiply;
     return ret;
 }
