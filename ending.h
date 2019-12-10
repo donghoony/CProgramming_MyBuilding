@@ -1,5 +1,5 @@
 #pragma once
-#include<stdio.h>
+#include <stdio.h>
 typedef struct end{
 	int x_pos;
 	int y_pos;

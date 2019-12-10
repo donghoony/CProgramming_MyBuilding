@@ -1,6 +1,6 @@
-#include"ending.h"
+#include "ending.h"
 #include "gotoyx.h"
-#include<Windows.h>
+#include <Windows.h>
 #define MAX 40
 
 void show_ending(End e[],int index){//아마 재귀함수로 가야할듯

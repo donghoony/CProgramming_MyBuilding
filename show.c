@@ -30,13 +30,13 @@ void show_player_move(Land* gameboard, Player* p, int from, int to){
     if (label == PLAYER){
         gotoyx_set_color(C_BLUE);
         gotoyx_print(gameboard[from].p_player.y, gameboard[from].p_player.x, "  ");
-        gotoyx_print(gameboard[to].p_player.y, gameboard[to].p_player.x, "PL");
+        gotoyx_print(gameboard[to].p_player.y, gameboard[to].p_player.x, "P1");
         gotoyx_set_color(C_WHITE);
     }
     else{
         gotoyx_set_color(C_RED);
         gotoyx_print(gameboard[from].p_bot.y, gameboard[from].p_bot.x, "  ");
-        gotoyx_print(gameboard[to].p_bot.y, gameboard[to].p_bot.x, "PC");
+        gotoyx_print(gameboard[to].p_bot.y, gameboard[to].p_bot.x, "P2");
         gotoyx_set_color(C_WHITE);
     }
 }
@@ -44,7 +44,7 @@ void show_player_move(Land* gameboard, Player* p, int from, int to){
 void show_gameboard_grid(){
     gotoyx_set_color(C_WHITE);
     printf("忙式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式忖\n"); //0
-    printf("弛 MUINDO         弛                弛                弛                弛                弛                弛                弛 FESTIVAL       弛\n"); //1
+    printf("弛 MUINDO         弛        +       弛        +       弛        +       弛        +       弛        +       弛        +       弛 FESTIVAL       弛\n"); //1
     printf("弛                弛                弛                弛                弛                弛                弛                弛                弛\n"); //2
     printf("弛                弛                弛                弛                弛                弛                弛                弛                弛\n"); //3
     printf("弛                弛                弛                弛                弛                弛                弛                弛                弛\n"); //4
@@ -53,19 +53,19 @@ void show_gameboard_grid(){
     printf("戍式式式式式式式式式式成式式式式式托式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式托式式式式式成式式式式式式式式式式扣\n"); //7
     printf("弛          弛     弛                                                                                                     弛     弛          弛\n"); //8
     printf("弛          弛     弛   忙式式式式式式式式式式式式式式式式式式式式式式忖                                               忙式式式式式式式式式式式式式式式式式式式式式式忖   弛     弛          弛\n"); //9
-    printf("弛          弛     弛   弛      P L A Y E R     弛                                               弛    C O M P U T E R   弛   弛     弛          弛\n"); //10
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //11
+    printf("弛 +        弛     弛   弛      P L A Y E R     弛               T U R N  :                      弛    C O M P U T E R   弛   弛     弛         +弛\n"); //10
+    printf("弛          弛     弛   弛                      弛               TURN LEFT:                      弛                      弛   弛     弛          弛\n"); //11
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //12
     printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //13
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //14
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //15
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //16
+    printf("弛 +        弛     弛   弛                      弛                                               弛                      弛   弛     弛         +弛\n"); //16
     printf("弛          弛     弛   弛  TOTAL ASSETS:       弛                                               弛  TOTAL ASSETS:       弛   弛     弛          弛\n"); //17
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //18
     printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //19
     printf("弛          弛     弛   弛  LAP :               弛                                               弛  LAP :               弛   弛     弛          弛\n"); //20
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //21
-    printf("弛          弛     弛   弛  MONEY :             弛                                               弛  MONEY :             弛   弛     弛          弛\n"); //22
+    printf("弛 +        弛     弛   弛  MONEY :             弛                                               弛  MONEY :             弛   弛     弛         +弛\n"); //22
     printf("弛          弛     弛   戌式式式式式式式式式式式式式式式式式式式式式式戎                                               戌式式式式式式式式式式式式式式式式式式式式式式戎   弛     弛          弛\n"); //23
     printf("弛          弛     弛                                                                                                     弛     弛          弛\n"); //24
     printf("戍式式式式式式式式式式扛式式式式式托式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式托式式式式式扛式式式式式式式式式式扣\n"); //25
@@ -74,7 +74,7 @@ void show_gameboard_grid(){
     printf("弛                弛                弛                弛                弛                弛                弛                弛                弛\n"); //28
     printf("弛                弛                弛                弛                弛                弛                弛                弛                弛\n"); //29
     printf("弛                弛                弛                弛                弛                弛                弛                弛                弛\n"); //30
-    printf("弛                弛                弛                弛                弛                弛                弛                弛                弛\n"); //31
+    printf("弛                弛        +       弛        +       弛        +       弛        +       弛        +       弛        +       弛                弛\n"); //31
     printf("戌式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式扛式式式式式式式式式式式式式式式式戎\n"); //32
     // 17 Spaces per Block in row
 }
@@ -137,7 +137,7 @@ void show_update_predict_price(Player* p, int predict_price){
 }
 
 int show_predict_price(Land* land, Player* p, int* selected_building, int now_price, int cur){
-    const int MULTIPLY[5] = {10, 12, 14, 18, 20};
+    const int MULTIPLY[5] = {10, 12, 15, 17, 20};
     int predict_price = now_price;
     predict_price += (land->land_price * MULTIPLY[cur] * ((selected_building[cur] == 1) ? 1 : -1)) / 10;
     show_update_predict_price(p, predict_price);
@@ -372,4 +372,16 @@ int show_travel_choice(Land* gameboard){
     for(i = 0; i < MAX_TILE; i++) show_travel_selected_highlight(gameboard, i, FALSE, TRUE);
     for(i = 0; i < 6; i++) gotoyx_print(18+i, 50, "                                     ");
     return cur;
+}
+
+void show_turn_update(int turn, int label){
+    turn /= 2;
+    gotoyx(10, 70);
+    gotoyx_set_color(label == PLAYER ? C_GREEN : C_RED);
+    printf("%7s", label == PLAYER ? "P1" : "P2");
+    gotoyx_set_color(C_GREEN);
+    gotoyx(11, 70);
+    printf("%7d", turn);
+    gotoyx_set_color(C_WHITE);
+    return;
 }

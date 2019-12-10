@@ -11,12 +11,12 @@
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
     Land *gameboard;
-    Player user = {2000000, 0, "", PLAYER, 5};
-    Player bot = {20000, 0, "", COMPUTER, 5};
+    Player user = {100000, 0,  PLAYER, 0, 0};
+    Player bot = {100000, 0, COMPUTER, 0, 0};
 	Resident resident = { {0},{0},{0}, {0},
                        {resident.rand_person_villa, resident.rand_person_building,
                                     resident.rand_person_hotel, resident.res_person_landmark}};
-    int signal, turn = 30;
+    int signal, turn = 30 * 2;
 
     show_set_cursor_disable();
     srand((unsigned) time(NULL));
@@ -35,37 +35,10 @@ int main() {
     system("cls");
 
     // Showing initialization
-
     show_gameboard_grid();
     show_dice_grid();
-//    resident_init(&resident);
     show_player_move(gameboard, &user, user.position, user.position);
     show_player_move(gameboard, &bot, bot.position, bot.position);
-
-    /*
-//    test code below
-//    gameboard[20].level[0] = 1;
-//    gameboard[20].level[1] = 1;
-//    gameboard[20].level[2] = 1;
-//    gameboard[20].level[3] = 1;
-//    gameboard[20].level[4] = 1;
-//    show_choice_building(&gameboard[20], &user);
-
-//    show_test_gameboard(gameboard);
-
-//    for(i = 0; i < 22; i++){
-//        if (gameboard[i].land_type == SPECIAL_TYPE) continue;
-//        show_build_building(gameboard, (rand()%2 == 1) ? &user : &bot, i, 3);
-//    }
-
-//  animation test
-//    for(i = 0; i < 21; i++){
-//        show_player_move(gameboard, &user, i, i+1);
-//        _sleep(200);
-//        show_player_move(gameboard, &bot, i, i+1);
-//        _sleep(200);
-//    }
-     */
 
     //ending credit below
 //    ending_credit();
@@ -73,6 +46,7 @@ int main() {
 
 
     while(turn--){
+        show_turn_update(turn, (turn%2 == 1) ? PLAYER : COMPUTER);
         signal = game_cycle(gameboard, (turn%2 == 1) ? &user : &bot, (turn%2 == 1) ? &bot : &user, &resident);
         if (signal == NOT_OK) break;
     }

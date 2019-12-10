@@ -76,7 +76,7 @@ Land* file_get_land_info(){
 
 int file_get_land_pos(Land **land_arr_addr){
     int i, num;
-    Point p_b1, p_b2, p_b3, p_player, p_bot;
+    Point p_b1, p_b2, p_b3, p_player, p_bot, p_land;
     Land* land_arr = *land_arr_addr;
     FILE* f = fopen("..\\LAND_POS_INFO", "r");
 
@@ -94,12 +94,14 @@ int file_get_land_pos(Land **land_arr_addr){
         fscanf(f, "%d %d", &p_b3.y, &p_b3.x);
         fscanf(f, "%d %d", &p_player.y, &p_player.x);
         fscanf(f, "%d %d", &p_bot.y, &p_bot.x);
+        fscanf(f, "%d %d", &p_land.y, &p_land.x);
 
         land_arr[i].p_b1 = p_b1;
         land_arr[i].p_b2 = p_b2;
         land_arr[i].p_b3 = p_b3;
         land_arr[i].p_bot = p_bot;
         land_arr[i].p_player = p_player;
+        land_arr[i].p_land = p_land;
     }
 
     fclose(f);

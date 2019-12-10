@@ -36,3 +36,4 @@ void show_lap_update(Player*);
 void show_init_update(Player*, Player*);
 void show_money_normal_update(Player* p);
 int show_travel_choice(Land* gameboard);
+void show_turn_update(int turn, int label);

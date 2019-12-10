@@ -1,5 +1,4 @@
 #pragma once
-
 #include "ending.h"
 
 void open_word(End e[]);

@@ -1,6 +1,5 @@
-#include"ending.h"
-
-#include<stdio.h>
+#include "ending.h"
+#include <stdio.h>
 
 void open_word(End e[]){
 	FILE* pfile=NULL;

@@ -55,19 +55,31 @@ int land_buy_build(Player* p, Land* land, Resident* r, int level){
     land->label = label;
 	if(land_check_lap(p, level)==OK && land_check_land(land, level)==OK) {
 	land->level[level] = 1; //해당 건물 소유함으로 변경
+
+	gotoyx_set_color(p->label == PLAYER ? C_BLUE : C_RED);
+	gotoyx_print(land->p_land.y, land->p_land.x, "+");
+
+
 	if(level == ONLY_LAND-1) return OK;
 	// level is 0-based
 	if(level == 4 && land_check_landmark(land, level) == OK) {
 	    book_people = r->rand_person_hotel[pos] + r->rand_person_building[pos] + r->rand_person_villa[pos];
         r->res_person_landmark[pos] = book_people;
+        gotoyx_print(land->p_b1.y, land->p_b1.x, "  ");
+        gotoyx_print(land->p_b2.y, land->p_b2.x, "  ");
+        gotoyx_print(land->p_b3.y, land->p_b3.x, "  ");
+        gotoyx_print(land->p_b1.y, land->p_b1.x-1, "LMRK");
+        gotoyx(land->p_b3.y, land->p_b3.x);
+        printf("%2d", book_people * 2);
+        gotoyx_set_color(C_YELLOW);
+        gotoyx_print(land->p_b2.y, land->p_b2.x, "★");
 	}
 	else {
 	    book_people = rand() % PEOPLE[level] + 1;
         *((r->resident_info[level-1]) + pos) = book_people;
+        gotoyx_print(y_pos[level], x_pos[level], STR[level]);
+        gotoyx_print_int(y_pos[level], x_pos[level] + 1, book_people);
 	}
-    gotoyx_set_color(label == COMPUTER ? C_RED : C_BLUE);
-	gotoyx_print(y_pos[level], x_pos[level], STR[level]);
-	gotoyx_print_int(y_pos[level], x_pos[level] + 1, book_people);
 	gotoyx_set_color(C_WHITE);
 	return 0;
 	}
@@ -115,12 +127,22 @@ int land_buy(Player* p, Land* land, Resident* res, int level){
     return OK;
 }
 
-int land_calculate_cost(Land* land){
-    int i, ret = 0;
+int land_calculate_cost(Land* land, Resident* res){
+    // 통행료 = 땅값 + 빌라값 * 1.2^세대수 + 빌딩값 * 1.4^세대수 + 호텔값 * 1.5^세대수
+    int i, ret = 0, add, j;
     const int BUY_MULTIPLY[] = {10, 12, 15, 17, 20};
     const int FEE_MULTIPLY[] = {10, 12, 14, 16, 18};
+    const int RES_MULTIPLY[] = {0, 12, 14, 15, 16};
     for(i = 0; i < 5; i++){
-        if (land->level[i] == 1) ret += land->land_price * FEE_MULTIPLY[i] / 10;
+        if (land->level[i] == 1) {
+            add = land->land_price * FEE_MULTIPLY[i] / 10;
+            if (i > 0){
+                for(j = 0; j < res->resident_info[i-1][land->land_position]; j++){
+                    add = add * RES_MULTIPLY[i] / 10;
+                }
+            }
+            ret += add;
+        }
     }
     return ret;
 }

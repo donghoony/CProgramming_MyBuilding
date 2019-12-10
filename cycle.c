@@ -1,8 +1,6 @@
-//
-// Created by DongHoony on 2019-11-29.
-//
 #include <stdlib.h>
 #include <time.h>
+#include <conio.h>
 #include "cycle.h"
 #include "player.h"
 #include "random.h"
@@ -21,6 +19,7 @@ int move_cycle(Land* gameboard, Player* p, Dice d){
             money_get_income(p);
             p->position = 0;
             p->lap++;
+            show_lap_update(p);
             show_player_move(gameboard, p,21, 0);
         }
         _sleep(150);
@@ -48,13 +47,11 @@ int land_normal_cycle(Land* land, Player* p, Player* p_2, Resident* res){
             }
         }
         free(selected_building);
-        predicted_price = land_calculate_cost(land);
-        money_spend(p, predicted_price);
     }
 
         // ³² ¶¥ÀÌ¸é ÅëÇà·á ³¿
     else {
-        predicted_price = land_calculate_cost(land);
+        predicted_price = land_calculate_cost(land, res);
         valid = money_trade(p, p_2, predicted_price);
 
         if (valid == NOT_OK) return NOT_OK;
@@ -83,7 +80,10 @@ int land_cycle(Land* gameboard, Land* land, Player* p, Player* p_2, Resident* re
             case FESTIVAL:
                 break;
             case START_LAND:
+                show_lap_update(p);
+                break;
             case ABANDONED_ISLAND:
+                p->abandon_island_count = 1;
                 break;
         }
     }
@@ -113,17 +113,24 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
     label = p->label;
 
     while (1){
-        // ROLL PHASE
+        // CHECK ABANDON ISLAND PHASE
+        if (p->abandon_island_count > 0){
+            p->abandon_island_count--;
+            _sleep(500);
+            return 1;
+        }
 
+        // ROLL PHASE
+        getch();
         dice = rand_dice_roll();
 
         //test for control dice below 4 lines
-        gotoyx(33, 50);
-        printf("DICE :         ");
-        gotoyx(33, 57);
-        scanf("%d %d", &dice.d1, &dice.d2);
+//        gotoyx(33, 50);
+//        printf("DICE :         ");
+//        gotoyx(33, 57);
+//        scanf("%d %d", &dice.d1, &dice.d2);
         //enable below if normal stance
-        //show_dice_roll(dice.d1, dice.d2);
+        show_dice_roll(dice.d1, dice.d2);
 
         is_double = determine_double(dice);
         double_count += is_double ? 1 : 0;
@@ -132,6 +139,7 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
         if (double_count >= 2) {
             show_player_move(gameboard, p, p->position, ABANDONED_ISLAND);
             player_move_toward(p, ABANDONED_ISLAND);
+            p->abandon_island_count = 1;
             return 1;
         }
 
@@ -148,7 +156,7 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
         if (signal == NOT_OK) return NOT_OK;
 
         // END PHASE, ´õºíÀÌ ¾Æ´Ï¸é ·çÇÁ Å»ÃâÇÏ±â
-        if (is_double == NOT_DOUBLE) break;
+        if (is_double == NOT_DOUBLE || p->position == ABANDONED_ISLAND) break;
     }
     return OK;
 }

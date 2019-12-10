@@ -1,6 +1,5 @@
 #include "ending_file.h"
 #include "func.h"
-
 int ending_credit(){
 	End e[50];
 	open_word(e);

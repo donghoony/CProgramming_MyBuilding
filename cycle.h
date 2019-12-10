@@ -1,6 +1,3 @@
-//
-// Created by DongHoony on 2019-11-29.
-//
 #pragma once
 
 #include "land.h"

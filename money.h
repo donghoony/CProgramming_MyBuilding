@@ -1,13 +1,10 @@
-//
-// Created by DongHoony on 2019-11-20.
-//
 #pragma once
 
 #ifndef KONKUK_MONEY_H
 #define KONKUK_MONEY_H
 
 #endif //KONKUK_MONEY_H
-#define SALARY 1000
+#define SALARY 20000
 
 #include "land.h"
 
