@@ -16,7 +16,7 @@ int main() {
 	Resident resident = { {0},{0},{0}, {0},
                        {resident.rand_person_villa, resident.rand_person_building,
                                     resident.rand_person_hotel, resident.res_person_landmark}};
-    int signal, turn = 30 * 2;
+    int signal, turn = 30 * 2, winner = -1, cheat = 0;
     srand((unsigned) time(NULL));
 
     gameboard = (Land *) file_get_land_info();
@@ -26,25 +26,19 @@ int main() {
         return -1;
     }
     file_get_land_pos(&gameboard);
-    system("cls");
+    // Showing initialization
+    show_window_init(gameboard, &user, &bot);
 
 //    intro();
-
-
-    // Showing initialization
-    show_set_cursor_disable();
-    show_gameboard_grid();
-    show_dice_grid();
-    show_player_move(gameboard, &user, user.position, user.position);
-    show_player_move(gameboard, &bot, bot.position, bot.position);
-    show_init_update(&user, &bot);
-
+    cheat = getch();
     while(turn--){
         show_turn_update(turn, (turn%2 == 1) ? PLAYER : COMPUTER);
-        signal = game_cycle(gameboard, (turn%2 == 1) ? &user : &bot, (turn%2 == 1) ? &bot : &user, &resident);
+        signal = game_cycle(gameboard, (turn%2 == 1) ? &user : &bot, (turn%2 == 1) ? &bot : &user, &resident, cheat);
         if (signal == NOT_OK) break;
     }
-    show_winner(turn);
+    winner = (turn%2 == 1) ? PLAYER : COMPUTER;
+    if (signal == OK && turn == 0) winner = tie_breaker(gameboard, &resident);
+    show_winner(winner);
     ending_credit();
 
 	return 0;

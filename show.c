@@ -19,12 +19,7 @@ void show_set_cursor_disable(){
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE),&cci);
 }
 
-void show_land_info(Land l){
 
-}
-void show_gameboard(Land* gameboard){
-
-}
 void show_player_move(Land* gameboard, Player* p, int from, int to){
     int label = p->label;
     if (label == PLAYER){
@@ -55,12 +50,12 @@ void show_gameboard_grid(){
     printf("弛          弛     弛   忙式式式式式式式式式式式式式式式式式式式式式式忖                                               忙式式式式式式式式式式式式式式式式式式式式式式忖   弛     弛          弛\n"); //9
     printf("弛 +        弛     弛   弛      P L A Y E R     弛               T U R N  :                      弛    C O M P U T E R   弛   弛     弛         +弛\n"); //10
     printf("弛          弛     弛   弛                      弛               TURN LEFT:                      弛                      弛   弛     弛          弛\n"); //11
-    printf("弛          弛     弛   弛                      弛               FEST MULT:    -                 弛                      弛   弛     弛          弛\n"); //12
+    printf("弛          弛     弛   弛                      弛               FEST MULT:     --               弛                      弛   弛     弛          弛\n"); //12
     printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //13
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //14
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //15
     printf("弛 +        弛     弛   弛                      弛                                               弛                      弛   弛     弛         +弛\n"); //16
-    printf("弛          弛     弛   弛  TOTAL ASSETS:       弛                                               弛  TOTAL ASSETS:       弛   弛     弛          弛\n"); //17
+    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //17
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //18
     printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //19
     printf("弛          弛     弛   弛  LAP :               弛                                               弛  LAP :               弛   弛     弛          弛\n"); //20
@@ -79,47 +74,6 @@ void show_gameboard_grid(){
     // 17 Spaces per Block in row
 }
 
-void show_test_gameboard(Land* gameboard){
-    int i, y, x;
-    // need to simplify below
-    for(i = 0; i < 22; i++){
-
-        y = gameboard[i].p_player.y;
-        x = gameboard[i].p_player.x;
-        gotoyx_print(y, x, "PL");
-        y = gameboard[i].p_bot.y;
-        x = gameboard[i].p_bot.x;
-        gotoyx_print(y, x, "PC");
-
-        if (i == START_LAND || i == ABANDONED_ISLAND || i == TRAVEL || i == FESTIVAL) continue;
-
-        y = gameboard[i].p_b1.y;
-        x = gameboard[i].p_b1.x;
-        gotoyx_print(y, x, "SS");
-        y = gameboard[i].p_b2.y;
-        x = gameboard[i].p_b2.x;
-        gotoyx_print(y, x, "MM");
-        y = gameboard[i].p_b3.y;
-        x = gameboard[i].p_b3.x;
-        gotoyx_print(y, x, "LL");
-    }
-    gotoyx(35, 0);
-    system("pause");
-}
-
-int show_build_building(Land* gameboard, Player* p, int pos, int level){
-    int label, i, color;
-    Point building_pos[3] = {gameboard[pos].p_b1, gameboard[pos].p_b2, gameboard[pos].p_b3};
-    char* building_str[3] = {"SS", "MM", "LL"};
-    label = p->label;
-    color = (label == PLAYER ? C_BLUE : C_RED);
-    gotoyx_set_color(color);
-    for(i = 0; i < level; i++){
-        gotoyx_print(building_pos[i].y, building_pos[i].x, building_str[i]);
-    }
-    gotoyx_set_color(C_WHITE);
-    return 0;
-}
 
 int show_landmark_satisfy(int* arr){
     int i;
@@ -300,9 +254,6 @@ void show_money_normal_update(Player* p){
     printf("%7d", p->money);
 }
 
-void show_player_update(Player* p){
-
-}
 void show_lap_update(Player* p){
     const int Y = 20;
     const int X[] = {30, 101};
@@ -315,6 +266,7 @@ void show_init_update(Player* p1, Player* p2){
     show_lap_update(p2);
     show_money_normal_update(p1);
     show_money_normal_update(p2);
+    gotoyx(0, 0);
 }
 
 
@@ -389,8 +341,6 @@ void show_turn_update(int turn, int label){
 void show_dice_big_size(int sum){
     int i, digit1, digit2;
     int x = 62;
-    digit1 = sum / 10;
-    digit2 = sum % 10;
     const char* num0[] = {"  ___  ",  " __ ", " ___  ",  " ____  ", " _  _   ", " _____ ", "   __  ",  " ______ ",  "  ___  ", "  ___  "};
     const char* num1[] = {" / _ \\ ","/_ |", "|__ \\ ", "|___ \\ ", "| || |  ", "| ____|", "  / /  ",  "|____  |",  " / _ \\ "," / _ \\ "};
     const char* num2[] = {"| | | |",  " | |", "   ) |",  "  __) |", "| || |_ ", "| |__  ", " / /_  ",  "    / / ",  "| (_) |" ,"| (_) |"};
@@ -398,8 +348,10 @@ void show_dice_big_size(int sum){
     const char* num4[] = {"| |_| |",  " | |", " / /_ ",  " ___) |", "   | |  ", " ___) |", "| (_) |",  "  / /   "  ,"| (_) |", "   / / "};
     const char* num5[] = {" \\___/ ", " |_|", "|____|",  "|____/ ", "   |_|  ", "|____/ ", " \\___/ ", " /_/    "  ," \\___/ ","  /_/  "};
     const char** nums[] = {num0, num1, num2, num3, num4, num5};
-    if (sum != 10) x -= 3;
+    digit1 = sum / 10;
+    digit2 = sum % 10;
 
+    if (sum != 10) x -= 3;
     for(i = 0; i < 6; i++){
         gotoyx_print(16+i, 62, "                             ");
         if(sum == 10) gotoyx_print(16+i, x, nums[i][digit1]);
@@ -411,9 +363,9 @@ void show_dice_big_size(int sum){
     }
 }
 
-void show_winner(int turn){
+void show_winner(int winner){
     gotoyx(36,0);
-    if(turn%2 == 0) printf("PLAYER WINS");
+    if(winner == PLAYER) printf("PLAYER WINS");
     else printf("BOT WINS");
     gotoyx(35, 0);
     getch();
@@ -436,4 +388,20 @@ void show_festival(Land* land_before, Land* land_after){
     gotoyx_set_color(C_GREEN);
     gotoyx_print(y_after, x_after, "+");
     gotoyx_set_color(C_WHITE);
+}
+
+void show_window_init(Land* gameboard, Player* user, Player* bot){
+    HWND hwnd = GetConsoleWindow();
+    system("cls");
+    gotoyx_print(15, 20, "SET WINDOW SIZE 16 * 27, SET RASTER FONT");
+    gotoyx_print(18, 20, "INPUT ANY KEY TO CONTINUE...");
+    getch();
+    system("cls");
+    if (hwnd != NULL) MoveWindow(hwnd, 0, 0, 1430, 850, TRUE);
+    show_set_cursor_disable();
+    show_gameboard_grid();
+    show_dice_grid();
+    show_player_move(gameboard, user, 0, 0);
+    show_player_move(gameboard, bot, 0, 0);
+    show_init_update(user, bot);
 }
