@@ -33,3 +33,5 @@ add_executable(CProgramming_MyBuilding
         ending_file.h
         func.c
         func.h release.h release.c)
+
+target_link_libraries(CProgramming_MyBuilding winmm.lib)

@@ -167,7 +167,7 @@ void screen_4() {
 	printf("                                                                          ¡á    ¡á¡á¡á¡á¡á¡á\n");
 	printf("                                                                          ¡á¡á            ¡á\n");
 	printf("                                                                            ¡á¡á¡á¡á¡á¡á¡á¡á\n"RES);
-	printf("\n\n <Press Enter or Space>");
+	printf("\n\n\t\t <Press Enter or Space>");
 	while (1) {
 		int choice = getch();
 		if (choice == 32)
@@ -176,5 +176,4 @@ void screen_4() {
 			break;
 	}
 	PlaySound(0, NULL, SND_FILENAME | SND_ASYNC | 0);
-
 }

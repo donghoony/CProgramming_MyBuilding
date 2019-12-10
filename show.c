@@ -11,6 +11,7 @@
 #include <malloc.h>
 #include "show.h"
 #include "money.h"
+#include "intro_1.h"
 
 void show_set_cursor_disable(){
     CONSOLE_CURSOR_INFO cci;
@@ -399,6 +400,7 @@ void show_window_init(Land* gameboard, Player* user, Player* bot){
     system("cls");
     if (hwnd != NULL) MoveWindow(hwnd, 0, 0, 1430, 950, TRUE);
     show_set_cursor_disable();
+    intro();
     show_gameboard_grid();
     show_dice_grid();
     show_player_move(gameboard, user, 0, 0);

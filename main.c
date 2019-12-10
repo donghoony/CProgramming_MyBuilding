@@ -27,10 +27,10 @@ int main() {
         return -1;
     }
     file_get_land_pos(&gameboard);
+
     // Showing initialization
     show_window_init(gameboard, &user, &bot);
 
-//    intro();
     cheat = getch();
     if (cheat == '1') user.lap = bot.lap = 5;
     while(turn--){
