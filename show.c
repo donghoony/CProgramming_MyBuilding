@@ -410,3 +410,11 @@ void show_dice_big_size(int sum){
         gotoyx_print(16+i, x, "                             ");
     }
 }
+
+void show_winner(int turn){
+    gotoyx(36,0);
+    if(turn%2 == 0) printf("PLAYER WINS");
+    else printf("BOT WINS");
+    gotoyx(35, 0);
+    getch();
+}

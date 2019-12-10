@@ -128,15 +128,14 @@ int land_buy(Player* p, Land* land, Resident* res, int level){
 }
 
 int land_calculate_cost(Land* land, Resident* res){
-    // 통행료 = 땅값 + 빌라값 * 1.2^세대수 + 빌딩값 * 1.4^세대수 + 호텔값 * 1.5^세대수
     // 통행료 = (땅값 총합) * (1 + (빌라세대수 * 0.1) + (빌딩세대수 * 0.2) + (호텔세대수 * 0.3))
     // 랜마일 경우 통행료 = (땅값 총합) * (1 + (랜마세대수 * 0.5))
-    int i, ret = 0, land_only_total_price = 0, j;
+    int i, ret = 0, land_only_total_price = 0;
     const int BUY_MULTIPLY[] = {10, 12, 15, 17, 20};
     const int FEE_MULTIPLY[] = {10, 12, 14, 16, 18};
     const int RES_MULTIPLY[] = {0, 1, 2, 3, 5};
     int multiply = 0;
-    for(i = 0; i < 5; i++){
+    for(i = 0; i < 4; i++){
         if (land->level[i] == 1) {
             land_only_total_price += land->land_price * FEE_MULTIPLY[i] / 10;
             multiply += RES_MULTIPLY[i] * res->resident_info[i][land->land_position];
