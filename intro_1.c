@@ -175,4 +175,6 @@ void screen_4() {
 		if (choice == 13)
 			break;
 	}
+	PlaySound(0, NULL, SND_FILENAME | SND_ASYNC | 0);
+
 }
