@@ -144,5 +144,6 @@ int land_calculate_cost(Land* land, Resident* res){
             ret += add;
         }
     }
+	ret*=l->land_multiply;
     return ret;
 }
