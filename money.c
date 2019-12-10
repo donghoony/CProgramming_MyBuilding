@@ -110,31 +110,22 @@ int col_festival(Land* gameboard,Player* p){//2배설정함수
 }
 
 // 함수이름 전부 소문자로
-void all_land_rent_fee(Land* l,Player* p, Resident* r){//모든 땅에 대한 임대료 나
-    int i;
+int all_land_rent_fee(Land* l,Player* p, Resident* r){//모든 땅에 대한 임대료 나
+    int i, sum = 0, price;
     for(i=0; i < MAX_TILE; i++){
-        if(l[i].label==1){
-            p->money+=(l[i].land_price/100)*r->rand_person_villa[i];
-            p->money+=(l[i].land_price/100)*r->rand_person_building[i];
-            p->money+=(l[i].land_price/100)*r->rand_person_hotel[i];
+        price = l[i].land_price/100;
+        if(l[i].label == p->label){
+            sum += price * r->rand_person_villa[i];
+            sum += price * r->rand_person_building[i] * 2;
+            sum += price * r->rand_person_hotel[i] * 3;
+            sum += price * r->res_person_landmark[i] * 5;
         }
     }
+    return sum;
 }
 
 // money_get_income 있음
 void start_pont_income(Player* p,Land* l,Resident* r){//초반땅 통과하면 월급과 임대료를 같이 받음
    money_get_income(p);
    all_land_rent_fee(l, p, r);
-}
-
-//함수이름 소문자로
-void all_comland_rent_fee(Land* l,Player* p,Resident r){//모든 땅에 대한 임대료 상대
-    int i;
-    for(i = 0; i < MAX_TILE; i++){
-        if(l[i].label == p->label){
-            p->money+=(l[i].land_price/100)*r.rand_person_villa[i];
-            p->money+=(l[i].land_price/100)*r.rand_person_building[i];
-            p->money+=(l[i].land_price/100)*r.rand_person_hotel[i];
-        }
-    }
 }

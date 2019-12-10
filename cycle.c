@@ -9,7 +9,7 @@
 #include "money.h"
 
 // includes animation
-int move_cycle(Land* gameboard, Player* p, Dice d){
+int move_cycle(Land* gameboard, Player* p, Resident* res, Dice d){
     int i;
     for(i = 0; i < d.d1 + d.d2; i++){
         show_player_move(gameboard, p, p->position, (p->position + 1) % MAX_TILE);
@@ -17,6 +17,7 @@ int move_cycle(Land* gameboard, Player* p, Dice d){
 
         if (p->position == MAX_TILE) {
             money_get_income(p);
+            all_land_rent_fee(gameboard, p, res);
             p->position = 0;
             p->lap++;
             show_lap_update(p);
@@ -101,7 +102,7 @@ int travel_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
     int signal, pos;
     int destination = show_travel_choice(gameboard);
     Dice d = {0, (destination > 15) ? destination-15 : 7 + destination};
-    p->position = move_cycle(gameboard, p, d);
+    p->position = move_cycle(gameboard, p, res, d);
     pos = p->position;
 
     signal = land_cycle(gameboard, &gameboard[pos], p, p_2, res);
@@ -153,7 +154,7 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res, int cheat
         }
 
         // MOVE PHASE
-        p->position = move_cycle(gameboard, p, dice);
+        p->position = move_cycle(gameboard, p, res, dice);
         pos = p->position;
 
         //temporary added thing that indicates player's position

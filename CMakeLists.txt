@@ -32,4 +32,4 @@ add_executable(CProgramming_MyBuilding
         ending_file.c
         ending_file.h
         func.c
-        func.h)
+        func.h release.h release.c)

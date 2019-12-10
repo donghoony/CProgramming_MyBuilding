@@ -7,6 +7,7 @@
 #include "cycle.h"
 #include "func.h"
 #include "intro_1.h"
+#include "release.h"
 
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
@@ -16,7 +17,7 @@ int main() {
 	Resident resident = { {0},{0},{0}, {0},
                        {resident.rand_person_villa, resident.rand_person_building,
                                     resident.rand_person_hotel, resident.res_person_landmark}};
-    int signal, turn = 30 * 2, winner = -1, cheat = 0;
+    int signal, turn = 30 * 2, winner, cheat = 0;
     srand((unsigned) time(NULL));
 
     gameboard = (Land *) file_get_land_info();
@@ -41,6 +42,7 @@ int main() {
     show_winner(winner);
     ending_credit();
 
+    release(&gameboard);
 	return 0;
 }
 
