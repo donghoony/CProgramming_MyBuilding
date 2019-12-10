@@ -397,7 +397,7 @@ void show_window_init(Land* gameboard, Player* user, Player* bot){
     gotoyx_print(18, 20, "INPUT ANY KEY TO CONTINUE...");
     getch();
     system("cls");
-    if (hwnd != NULL) MoveWindow(hwnd, 0, 0, 1430, 850, TRUE);
+    if (hwnd != NULL) MoveWindow(hwnd, 0, 0, 1430, 950, TRUE);
     show_set_cursor_disable();
     show_gameboard_grid();
     show_dice_grid();

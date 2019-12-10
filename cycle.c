@@ -82,7 +82,6 @@ int land_cycle(Land* gameboard, Land* land, Player* p, Player* p_2, Resident* re
                 break;
             case FESTIVAL:
                 fest_pos = col_festival(gameboard, p);
-                gotoyx(34, 0); printf("FESTIVAL AT %d!! ", fest_pos);
                 show_festival(&gameboard[before_fest_pos], &gameboard[fest_pos]);
                 gotoyx(12, 71); gotoyx_set_color(C_GREEN);
                 if (fest_pos != START_LAND) printf("%5dx", gameboard[fest_pos].land_multiply);
@@ -111,7 +110,7 @@ int travel_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
 
 int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res, int cheat){
     // CYCLE : ROLL -> MOVE -> LAND -> END PHASE
-    int pos, double_count = 0;
+    int pos, double_count = 0, key = 0;
     int is_double = 0, signal;
     Dice dice;
     srand((unsigned)time(NULL));
@@ -125,7 +124,8 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res, int cheat
         }
 
         // ROLL PHASE
-        if (cheat != '1') getch();
+        if (cheat != '1') key = getch();
+        if (key != KEY_SPACE) continue;
         dice = rand_dice_roll();
 
         //test for control dice below 4 lines
@@ -159,7 +159,7 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res, int cheat
 
         //temporary added thing that indicates player's position
         gotoyx(33,0);
-        printf("NOW AT %02d", p->position);
+        if (cheat == '1') printf("NOW AT %02d", p->position);
 
         // LAND PHASE
         if (pos == TRAVEL) is_double = NOT_DOUBLE;
