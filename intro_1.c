@@ -1,19 +1,28 @@
 #include "intro_1.h"
 #include <windows.h>
 #include <mmsystem.h>
+#include <conio.h>
+
 #pragma comment(lib, "winmm.lib")
-/*
-	play_intro();
-	screen_0();
-	screen_1();
-	Sleep(600);
-	screen_2();
-	Sleep(600);
-	screen_1();
-	Sleep(600);
-	screen_3();
-	Sleep(600);
-	*/
+
+void intro(){
+//    play_intro();
+
+    screen_1();
+    Sleep(600);
+    system("cls");
+    screen_2();
+    Sleep(600);
+    system("cls");
+    screen_1();
+    Sleep(600);
+    system("cls");
+    screen_3();
+    Sleep(600);
+    system("cls");
+    screen_0();
+    getch();
+}
 void screen_1() {
 	printf("                                        "YEL"0000000                               \n");
 	printf("                                     00000000000000                           \n");
@@ -129,14 +138,14 @@ void screen_3() {
 }
 
 void screen_0() {
-	printf("  _____   __ __            _     _      ");
-	printf(" / ____| |  \/  |          | |   | |     ");
-	printf("| |      |  \/  | __ _ _ __| |__ | | ___ ");
-	printf("| |      | |\/| |/ _\` | \'__| \'_  \| |/ _ \"");
-	printf("| |____  | | | | (_| | |  | |_) | |  __/");
-	printf("  \_____| |_| |_| \__,_|_|  |_.__/|_| \___|");
+	printf("  _____   __ __            _     _      \n");
+	printf(" / ____| |  \\/  |          | |   | |     \n");
+	printf("| |      |  \\/  | __ _ _ __| |__ | | ___ \n");
+	printf("| |      | |\\/| |/ _\\` | \'__| \'_  \\| |/ _ \"\n");
+	printf("| |____  | | |  | (_| | |  | |_) | |  __/\n");
+	printf(" \\_____| |_|  |_| \\__,_|_|  |_.__/|_| \\___|\n");
 
 }
 void play_intro() {
-	PlaySound(TEXT(netmarble), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+//	PlaySound(TEXT(netmarble), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 }

@@ -25,6 +25,8 @@ add_executable(CProgramming_MyBuilding
         show.h
         land.c
 
+        intro_1.c
+        intro_1.h
         ending.c
         ending.h
         ending_file.c

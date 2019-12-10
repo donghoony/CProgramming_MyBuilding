@@ -58,6 +58,7 @@ Land* file_get_land_info(){
         temp_land.land_price = land_price;
         temp_land.land_position = land_number;
         temp_land.label = NO_ONE;
+        temp_land.land_multiply = 1;
         temp_land.land_type = (i == ABANDONED_ISLAND || i == START_LAND || i == FESTIVAL || i == TRAVEL) ? SPECIAL_TYPE : NORMAL_TYPE;
         land_array[i] = temp_land;
 

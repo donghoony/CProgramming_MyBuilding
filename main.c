@@ -3,11 +3,10 @@
 #include <time.h>
 #include "show.h"
 #include "player.h"
-#include "gotoyx.h"
 #include "file.h"
 #include "cycle.h"
 #include "func.h"
-#include "ending.h"
+#include "intro_1.h"
 
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
@@ -28,6 +27,9 @@ int main() {
     }
     file_get_land_pos(&gameboard);
     system("cls");
+
+//    intro();
+
 
     // Showing initialization
     show_set_cursor_disable();

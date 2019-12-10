@@ -12,3 +12,4 @@ void screen_2();
 void screen_3();
 void screen_0();
 void play_intro();
+void intro();
