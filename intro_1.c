@@ -2,7 +2,18 @@
 #include <windows.h>
 #include <mmsystem.h>
 #pragma comment(lib, "winmm.lib")
-
+/*
+	play_intro();
+	screen_0();
+	screen_1();
+	Sleep(600);
+	screen_2();
+	Sleep(600);
+	screen_1();
+	Sleep(600);
+	screen_3();
+	Sleep(600);
+	*/
 void screen_1() {
 	printf("                                        "YEL"0000000                               \n");
 	printf("                                     00000000000000                           \n");
