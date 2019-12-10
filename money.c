@@ -2,6 +2,7 @@
 #include "money.h"
 #include "land.h"
 #include "show.h"
+#include "gotoyx.h"
 #include <stdlib.h>
 #include <time.h>
 
@@ -121,6 +122,9 @@ int all_land_rent_fee(Land* l,Player* p, Resident* r){//모든 땅에 대한 임대료 나
             sum += price * r->res_person_landmark[i] * 5;
         }
     }
+    sum *= 10;
+    gotoyx(33, 70);
+    printf("RES : %d", sum);
     return sum;
 }
 

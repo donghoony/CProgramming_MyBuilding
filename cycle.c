@@ -17,7 +17,7 @@ int move_cycle(Land* gameboard, Player* p, Resident* res, Dice d){
 
         if (p->position == MAX_TILE) {
             money_get_income(p);
-            all_land_rent_fee(gameboard, p, res);
+            money_earn(p, all_land_rent_fee(gameboard, p, res));
             p->position = 0;
             p->lap++;
             show_lap_update(p);
