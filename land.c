@@ -70,7 +70,7 @@ int land_buy_build(Player* p, Land* land, Resident* r, int level){
         gotoyx_print(land->p_b3.y, land->p_b3.x, "  ");
         gotoyx_print(land->p_b1.y, land->p_b1.x-1, "LMRK");
         gotoyx(land->p_b3.y, land->p_b3.x);
-        printf("%2d", book_people * 2);
+        printf("%2d", book_people);
         gotoyx_set_color(C_YELLOW);
         gotoyx_print(land->p_b2.y, land->p_b2.x, "★");
 	}
@@ -129,21 +129,22 @@ int land_buy(Player* p, Land* land, Resident* res, int level){
 
 int land_calculate_cost(Land* land, Resident* res){
     // 통행료 = 땅값 + 빌라값 * 1.2^세대수 + 빌딩값 * 1.4^세대수 + 호텔값 * 1.5^세대수
-    int i, ret = 0, add, j;
+    // 통행료 = (땅값 총합) * (1 + (빌라세대수 * 0.1) + (빌딩세대수 * 0.2) + (호텔세대수 * 0.3))
+    // 랜마일 경우 통행료 = (땅값 총합) * (1 + (랜마세대수 * 0.5))
+    int i, ret = 0, land_only_total_price = 0, j;
     const int BUY_MULTIPLY[] = {10, 12, 15, 17, 20};
     const int FEE_MULTIPLY[] = {10, 12, 14, 16, 18};
-    const int RES_MULTIPLY[] = {0, 12, 14, 15, 16};
+    const int RES_MULTIPLY[] = {0, 1, 2, 3, 5};
+    int multiply = 0;
     for(i = 0; i < 5; i++){
         if (land->level[i] == 1) {
-            add = land->land_price * FEE_MULTIPLY[i] / 10;
-            if (i > 0){
-                for(j = 0; j < res->resident_info[i-1][land->land_position]; j++){
-                    add = add * RES_MULTIPLY[i] / 10;
-                }
-            }
-            ret += add;
+            land_only_total_price += land->land_price * FEE_MULTIPLY[i] / 10;
+            multiply += RES_MULTIPLY[i] * res->resident_info[i][land->land_position];
         }
     }
-	ret*=l->land_multiply;
+    if (land->level[4] == 1) multiply = 5 * res->res_person_landmark[land->land_position];
+    gotoyx(34, 4);
+    printf("%d", multiply + 10);
+    ret = land_only_total_price * (10 + multiply) / 10;
     return ret;
 }

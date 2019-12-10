@@ -11,8 +11,8 @@
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
     Land *gameboard;
-    Player user = {100000, 0,  PLAYER, 0, 0};
-    Player bot = {100000, 0, COMPUTER, 0, 0};
+    Player user = {100000, 0,  PLAYER, 5, 0};
+    Player bot = {100000, 0, COMPUTER, 5, 0};
 	Resident resident = { {0},{0},{0}, {0},
                        {resident.rand_person_villa, resident.rand_person_building,
                                     resident.rand_person_hotel, resident.res_person_landmark}};
@@ -23,7 +23,6 @@ int main() {
 
     // make_user_name보다는 그냥 한번에 setting해주는 함수로 짜는 게 나을듯, 위에 100, 0, "",
     // PLAYER 넣어주는 걸로 (단, 세세히 모듈화)
-    make_user_name(&user);
     gameboard = (Land *) file_get_land_info();
 
     // Check gameboard is successfully attatched
@@ -43,7 +42,7 @@ int main() {
     //ending credit below
 //    ending_credit();
     show_init_update(&user, &bot);
-
+//    show_dice_big_size(19);
 
     while(turn--){
         show_turn_update(turn, (turn%2 == 1) ? PLAYER : COMPUTER);

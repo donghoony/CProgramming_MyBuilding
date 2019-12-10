@@ -121,16 +121,17 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res){
         }
 
         // ROLL PHASE
-        getch();
+//        getch();
         dice = rand_dice_roll();
 
         //test for control dice below 4 lines
-//        gotoyx(33, 50);
-//        printf("DICE :         ");
-//        gotoyx(33, 57);
-//        scanf("%d %d", &dice.d1, &dice.d2);
+        gotoyx(33, 50);
+        printf("DICE :         ");
+        gotoyx(33, 57);
+        scanf("%d %d", &dice.d1, &dice.d2);
         //enable below if normal stance
-        show_dice_roll(dice.d1, dice.d2);
+//        show_dice_roll(dice.d1, dice.d2);
+//        show_dice_big_size(dice.d1 + dice.d2);
 
         is_double = determine_double(dice);
         double_count += is_double ? 1 : 0;

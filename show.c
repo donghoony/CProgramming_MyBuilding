@@ -385,3 +385,28 @@ void show_turn_update(int turn, int label){
     gotoyx_set_color(C_WHITE);
     return;
 }
+
+void show_dice_big_size(int sum){
+    int i, digit1, digit2;
+    int x = 62;
+    digit1 = sum / 10;
+    digit2 = sum % 10;
+    const char* num0[] = {"  ___  ",  " __ ", " ___  ",  " ____  ", " _  _   ", " _____ ", "   __  ",  " ______ ",  "  ___  ", "  ___  "};
+    const char* num1[] = {" / _ \\ ","/_ |", "|__ \\ ", "|___ \\ ", "| || |  ", "| ____|", "  / /  ",  "|____  |",  " / _ \\ "," / _ \\ "};
+    const char* num2[] = {"| | | |",  " | |", "   ) |",  "  __) |", "| || |_ ", "| |__  ", " / /_  ",  "    / / ",  "| (_) |" ,"| (_) |"};
+    const char* num3[] = {"| | | |",  " | |", "  / / ",  " |__ < ", "|__   _|", "|___ \\ ","| '_ \\ ", "   / /  "  ," > _ < ", " \\__, |"};
+    const char* num4[] = {"| |_| |",  " | |", " / /_ ",  " ___) |", "   | |  ", " ___) |", "| (_) |",  "  / /   "  ,"| (_) |", "   / / "};
+    const char* num5[] = {" \\___/ ", " |_|", "|____|",  "|____/ ", "   |_|  ", "|____/ ", " \\___/ ", " /_/    "  ," \\___/ ","  /_/  "};
+    const char** nums[] = {num0, num1, num2, num3, num4, num5};
+    if (sum != 10) x -= 3;
+
+    for(i = 0; i < 6; i++){
+        gotoyx_print(16+i, 62, "                             ");
+        if(sum == 10) gotoyx_print(16+i, x, nums[i][digit1]);
+        gotoyx_print(16+i, x+7, nums[i][digit2]);
+    }
+    _sleep(800);
+    for(i = 0;i < 6; i++){
+        gotoyx_print(16+i, x, "                             ");
+    }
+}

@@ -37,3 +37,4 @@ void show_init_update(Player*, Player*);
 void show_money_normal_update(Player* p);
 int show_travel_choice(Land* gameboard);
 void show_turn_update(int turn, int label);
+void show_dice_big_size(int sum);
