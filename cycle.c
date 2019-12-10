@@ -162,6 +162,7 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res, int cheat
         printf("NOW AT %02d", p->position);
 
         // LAND PHASE
+        if (pos == TRAVEL) is_double = NOT_DOUBLE;
         signal = land_cycle(gameboard, &gameboard[pos], p, p_2, res);
         if (signal == NOT_OK) return NOT_OK;
 

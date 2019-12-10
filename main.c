@@ -12,8 +12,8 @@
 int main() {
     // !!! 선 언 먼 저 합 니 다 , srand도 함 수 니 까 선 언 다 음 에 하 세 요 !!!
     Land *gameboard;
-    Player user = {100000, 0,  PLAYER, 5, 0};
-    Player bot = {100000, 0, COMPUTER, 5, 0};
+    Player user = {100000, 0,  PLAYER, 0, 0};
+    Player bot = {100000, 0, COMPUTER, 0, 0};
 	Resident resident = { {0},{0},{0}, {0},
                        {resident.rand_person_villa, resident.rand_person_building,
                                     resident.rand_person_hotel, resident.res_person_landmark}};
@@ -32,6 +32,7 @@ int main() {
 
 //    intro();
     cheat = getch();
+    if (cheat == '1') user.lap = bot.lap = 5;
     while(turn--){
         show_turn_update(turn, (turn%2 == 1) ? PLAYER : COMPUTER);
         signal = game_cycle(gameboard, (turn%2 == 1) ? &user : &bot, (turn%2 == 1) ? &bot : &user, &resident, cheat);
