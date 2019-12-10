@@ -23,6 +23,7 @@ void intro() {
 	play_intro_2();
 	screen_4();
 	gotoyx(0, 0);
+
 }
 void screen_1() {
     printf("                                                                              \n");
@@ -150,6 +151,16 @@ void play_intro_2() {
 	PlaySound(TEXT(netmarble_2), NULL, SND_FILENAME | SND_ASYNC | 1);
 }
 
+void play_intro_3() {
+	int choice = rand() % 3;
+	if(choice ==0)
+		PlaySound(TEXT(netmarble_3), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	if(choice==1)
+		PlaySound(TEXT(netmarble_4), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	if(choice==2)
+		PlaySound(TEXT(netmarble_5), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+}
+
 void screen_4() {
     printf("                                                                                  \n");
     printf("                                                                                  \n");
@@ -184,5 +195,5 @@ void screen_4() {
 		if (choice == 13)
 			break;
 	}
-	PlaySound(0, NULL, SND_FILENAME | SND_ASYNC | 0);
+	PlaySound(NULL, 0, 0);
 }

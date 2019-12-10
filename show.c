@@ -403,6 +403,7 @@ void show_window_init(Land* gameboard, Player* user, Player* bot){
     intro();
     show_gameboard_grid();
     show_dice_grid();
+	play_intro_3();
     show_player_move(gameboard, user, 0, 0);
     show_player_move(gameboard, bot, 0, 0);
     show_init_update(user, bot);
