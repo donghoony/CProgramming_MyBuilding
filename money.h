@@ -21,3 +21,6 @@ void all_Myland_rent_fee(Land* l,Player* p,Resident r);
 int enemy_land_spend(Player* p,Land* land);
 int col_land_price(Land* l);
 int money_compare(int have, int need);
+int find_festival_pos(Land* l);
+int make_festival(Land* gameboard,Player* p);
+int col_festival(Land* gameboard,Player* p);

@@ -39,3 +39,4 @@ int show_travel_choice(Land* gameboard);
 void show_turn_update(int turn, int label);
 void show_dice_big_size(int sum);
 void show_winner(int turn);
+void show_festival(Land*, Land*);

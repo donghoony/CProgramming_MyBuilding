@@ -5,14 +5,13 @@
 #include <stdlib.h>
 #include <time.h>
 
-int col_land_price(Land* l);
 int money_spend(Player* p, int value){//단순 돈 관리
    int i, cur_money = p->money;
    if (p->money < value) return NOT_OK;
    for(i = cur_money; i > cur_money - value; i -= 10){
        p->money -= 10;
        show_money_update(p, FALSE);
-       if (i % 250 == 0)_sleep(1);
+       if (i % 250 == 0)_sleep(20);
    }
    show_money_normal_update(p);
    return OK;
@@ -22,7 +21,7 @@ void money_earn(Player* p, int value){
     for(i = cur_money; i < cur_money+value; i+=10){
         p->money += 10;
         show_money_update(p, TRUE);
-        if (i % 250 == 0)_sleep(1);
+        if (i % 250 == 0)_sleep(20);
     }
     show_money_normal_update(p);
     return;
@@ -41,7 +40,7 @@ int money_trade(Player* p_from, Player* p_to, int value){
         show_money_update(p_to, TRUE);
 
 
-        if (i % 250 == 0) _sleep(1);
+        if (i % 250 == 0) _sleep(20);
     }
     show_money_normal_update(p_from);
     show_money_normal_update(p_to);
@@ -89,19 +88,25 @@ int col_land_price(Land* l){
 }
 
 int make_festival(Land* gameboard,Player* p){//내 땅중 랜덤하게 하나 선택//페스티벌 지역 설정
-	int i;
+	int i, cnt =0 ;
 	srand((unsigned)time(NULL));
+
+    for(i = 0; i < MAX_TILE; i++) if (gameboard[i].label == p->label) cnt++;
+
+    if (cnt == 0) return START_LAND;
+
 	while(1){
 		i = rand() % MAX_TILE;
 		if(p->label == gameboard[i].label) break;
 	}
 	return i;
 }
-void col_festival(Land* gameboard,Player* p){//2배설정함수
+int col_festival(Land* gameboard,Player* p){//2배설정함수
 	int origin_pos = find_festival_pos(gameboard);//원래 페스티벌 지역
-	int new_pos=make_festival(gameboard,p);//새로운 페스티벌 장소
+	int new_pos=make_festival(gameboard, p);//새로운 페스티벌 장소
 	if(origin_pos != new_pos) gameboard[origin_pos].land_multiply = 1;
-    gameboard[new_pos].land_multiply=gameboard[new_pos].land_multiply * 2;
+    gameboard[new_pos].land_multiply *= 2;
+    return new_pos;
 }
 
 // 함수이름 전부 소문자로
@@ -124,12 +129,12 @@ void start_pont_income(Player* p,Land* l,Resident* r){//초반땅 통과하면 월급과 �
 
 //함수이름 소문자로
 void all_comland_rent_fee(Land* l,Player* p,Resident r){//모든 땅에 대한 임대료 상대
-   int i;
-   for(i=0; i < MAX_TILE; i++){
-      if(l[i].label==2){
-         p->money+=(l[i].land_price/100)*r.rand_person_villa[i];
-		 p->money+=(l[i].land_price/100)*r.rand_person_building[i];
-		 p->money+=(l[i].land_price/100)*r.rand_person_hotel[i];
-      }
-   }
+    int i;
+    for(i = 0; i < MAX_TILE; i++){
+        if(l[i].label == p->label){
+            p->money+=(l[i].land_price/100)*r.rand_person_villa[i];
+            p->money+=(l[i].land_price/100)*r.rand_person_building[i];
+            p->money+=(l[i].land_price/100)*r.rand_person_hotel[i];
+        }
+    }
 }

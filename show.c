@@ -55,7 +55,7 @@ void show_gameboard_grid(){
     printf("弛          弛     弛   忙式式式式式式式式式式式式式式式式式式式式式式忖                                               忙式式式式式式式式式式式式式式式式式式式式式式忖   弛     弛          弛\n"); //9
     printf("弛 +        弛     弛   弛      P L A Y E R     弛               T U R N  :                      弛    C O M P U T E R   弛   弛     弛         +弛\n"); //10
     printf("弛          弛     弛   弛                      弛               TURN LEFT:                      弛                      弛   弛     弛          弛\n"); //11
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //12
+    printf("弛          弛     弛   弛                      弛               FEST MULT:    -                 弛                      弛   弛     弛          弛\n"); //12
     printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //13
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //14
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //15
@@ -417,4 +417,23 @@ void show_winner(int turn){
     else printf("BOT WINS");
     gotoyx(35, 0);
     getch();
+}
+
+void show_festival(Land* land_before, Land* land_after){
+    if (land_after->land_position == START_LAND) return;
+    int y_before, x_before, y_after, x_after;
+    if (land_before->land_position != START_LAND){
+        y_before = land_before->p_land.y;
+        x_before = land_before->p_land.x;
+    }
+    x_after = land_after->p_land.x;
+    y_after = land_after->p_land.y;
+    gotoyx(34, 50);
+    if (land_before->land_position != START_LAND){
+        gotoyx_set_color((land_before->label == COMPUTER) ? C_RED : C_BLUE);
+        gotoyx_print(y_before, x_before, "+");
+    }
+    gotoyx_set_color(C_GREEN);
+    gotoyx_print(y_after, x_after, "+");
+    gotoyx_set_color(C_WHITE);
 }

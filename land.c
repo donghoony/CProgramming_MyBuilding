@@ -133,17 +133,20 @@ int land_calculate_cost(Land* land, Resident* res){
     int i, ret = 0, land_only_total_price = 0;
     const int BUY_MULTIPLY[] = {10, 12, 15, 17, 20};
     const int FEE_MULTIPLY[] = {10, 12, 14, 16, 18};
-    const int RES_MULTIPLY[] = {0, 1, 2, 3, 5};
+    const int RES_MULTIPLY[] = {1, 2, 3, 5};
     int multiply = 0;
+    gotoyx(34, 15);
     for(i = 0; i < 4; i++){
         if (land->level[i] == 1) {
             land_only_total_price += land->land_price * FEE_MULTIPLY[i] / 10;
             multiply += RES_MULTIPLY[i] * res->resident_info[i][land->land_position];
+            printf("%d : %d ", i,  res->resident_info[i][land->land_position]);
         }
     }
     if (land->level[4] == 1) multiply = 5 * res->res_person_landmark[land->land_position];
     gotoyx(34, 4);
-    printf("%d", multiply + 10);
     ret = land_only_total_price * (10 + multiply) / 10;
+    ret *= land->land_multiply;
+    printf("%d %d", multiply + 10, ret);
     return ret;
 }

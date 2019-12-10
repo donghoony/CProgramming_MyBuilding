@@ -61,9 +61,11 @@ int land_normal_cycle(Land* land, Player* p, Player* p_2, Resident* res){
 }
 
 int land_cycle(Land* gameboard, Land* land, Player* p, Player* p_2, Resident* res){
+    int fest_pos, before_fest_pos;
     int land_type = land->land_type;
     int signal;
 
+    before_fest_pos = find_festival_pos(gameboard);
     //도착한 곳이 땅 타일이면
         if (land_type == NORMAL_TYPE){
             signal = land_normal_cycle(land, p, p_2, res);
@@ -78,6 +80,13 @@ int land_cycle(Land* gameboard, Land* land, Player* p, Player* p_2, Resident* re
                 if (signal == NOT_OK) return NOT_OK;
                 break;
             case FESTIVAL:
+                fest_pos = col_festival(gameboard, p);
+                gotoyx(34, 0);
+                printf("FESTIVAL AT %d!! ", fest_pos);
+                show_festival(&gameboard[before_fest_pos], &gameboard[fest_pos]);
+                gotoyx(12, 71);
+                gotoyx_set_color(C_GREEN);
+                if (fest_pos != START_LAND) printf("%5dx", gameboard[fest_pos].land_multiply);
                 break;
             case START_LAND:
                 show_lap_update(p);
