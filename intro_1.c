@@ -1,8 +1,10 @@
 #include "intro_1.h"
+#include "gotoyx.h"
 #include <windows.h>
 #include <mmsystem.h>
 #include <conio.h>
 #pragma comment(lib, "winmm.lib")
+
 
 void intro() {
 	play_intro();
@@ -23,8 +25,8 @@ void intro() {
 	play_intro_2();
 	screen_4();
 	gotoyx(0, 0);
-
 }
+
 void screen_1() {
     printf("                                                                              \n");
     printf("                                                                              \n");
@@ -148,7 +150,7 @@ void play_intro() {
 	PlaySound(TEXT(netmarble), NULL, SND_FILENAME | SND_ASYNC | 1);
 }
 void play_intro_2() {
-	PlaySound(TEXT(netmarble_2), NULL, SND_FILENAME | SND_ASYNC | 1);
+	PlaySound(TEXT(netmarble_2), NULL, SND_LOOP | SND_FILENAME | SND_ASYNC | 1);
 }
 
 void play_intro_3() {
@@ -190,9 +192,7 @@ void screen_4() {
 	printf("\n\n                                                         <Press Enter or Space>");
 	while (1) {
 		int choice = getch();
-		if (choice == 32)
-			break;
-		if (choice == 13)
+		if (choice == 32 || choice == 13)
 			break;
 	}
 	PlaySound(NULL, 0, 0);

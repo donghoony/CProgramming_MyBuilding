@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 project(CProgramming_MyBuilding)
 set(CMAKE_CXX_STANDARD )
-
 add_executable(CProgramming_MyBuilding
         cycle.c
         cycle.h
@@ -33,5 +32,4 @@ add_executable(CProgramming_MyBuilding
         ending_file.h
         func.c
         func.h release.h release.c)
-
 target_link_libraries(CProgramming_MyBuilding winmm.lib)

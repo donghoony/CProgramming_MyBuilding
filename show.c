@@ -366,8 +366,8 @@ void show_dice_big_size(int sum){
 
 void show_winner(int winner){
     gotoyx(36,0);
-    if(winner == PLAYER) printf("PLAYER WINS");
-    else printf("BOT WINS");
+    if(winner == PLAYER) printf("PLAYER1 WINS!");
+    else printf("PLAYER2 WINS");
     gotoyx(35, 0);
     getch();
 }
