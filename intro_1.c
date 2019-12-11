@@ -25,6 +25,7 @@ void intro() {
 	play_intro_2();
 	screen_4();
 	gotoyx(0, 0);
+	getch();
 }
 
 void screen_1() {
@@ -189,11 +190,6 @@ void screen_4() {
 	printf("                                                                                             ¡á    ¡á¡á¡á¡á¡á¡á\n");
 	printf("                                                                                             ¡á¡á            ¡á\n");
 	printf("                                                                                              ¡á¡á¡á¡á¡á¡á¡á¡á\n"RES);
-	printf("\n\n                                                         <Press Enter or Space>");
-	while (1) {
-		int choice = getch();
-		if (choice == 32 || choice == 13)
-			break;
-	}
+	printf("\n\n                                                         <Press Any Key>");
 	PlaySound(NULL, 0, 0);
 }

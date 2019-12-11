@@ -28,11 +28,13 @@ int main() {
         return -1;
     }
     file_get_land_pos(&gameboard);
+    system("cls");
 
+    cheat = getch();
     // Showing initialization
     show_window_init(gameboard, &user, &bot);
 
-    cheat = getch();
+
     if (cheat == '1') user.lap = bot.lap = 5;
     while(turn--){
         show_turn_update(turn, (turn%2 == 1) ? PLAYER : COMPUTER);

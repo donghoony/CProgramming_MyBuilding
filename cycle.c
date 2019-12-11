@@ -125,7 +125,7 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res, int cheat
 
         // ROLL PHASE
         if (cheat != '1') key = getch();
-        if (key != KEY_SPACE) continue;
+        if (key != KEY_SPACE && cheat != '1') continue;
         dice = rand_dice_roll();
 
         //test for control dice below 4 lines
