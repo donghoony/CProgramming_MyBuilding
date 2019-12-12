@@ -10,8 +10,8 @@
 #include "../header_files/minigame.h"
 
 void minigame_cycle(Player* p){
-//    int win_rate = minigame_init();
-    int win_rate = PlayMaingame();
+    int win_rate = minigame_init();
+//    int win_rate = PlayMaingame();
     const int WIN_COST[] = {0, 5000, 10000, 20000};
     if(win_rate) money_earn(p, WIN_COST[win_rate]);
 }
