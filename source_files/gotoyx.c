@@ -21,7 +21,10 @@ void gotoyx_set_color(int color){
 }
 
 void gotoyx_clear() {
-    COORD coor = { 0,0 };
+    COORD coor = { 18,50 };
     DWORD dw;
-    FillConsoleOutputCharacter(GetStdHandle(STD_OUTPUT_HANDLE), ' ', 100 * 100, coor, &dw);
+    int i = 0;
+
+    for(i=17;i<24;i++)
+        gotoyx_print(i, 50, "                                          ");
 }
