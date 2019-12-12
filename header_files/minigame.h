@@ -7,4 +7,4 @@ int minigame_init();
 int minigame_oddeven(int level);
 void show_minigame_flip(int win);
 void show_minigame_grid();
-int minigame_win_continue();
+int minigame_win_continue(int level);
