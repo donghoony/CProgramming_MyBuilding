@@ -24,7 +24,6 @@ void intro() {
 	play_intro_2();
 	screen_4();
 	gotoyx(0, 0);
-	getch();
 }
 
 void screen_1() {

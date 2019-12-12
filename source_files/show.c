@@ -394,13 +394,14 @@ void show_festival(Land* land_before, Land* land_after){
     gotoyx_set_color(C_WHITE);
 }
 
-void show_window_init(Land* gameboard, Player* user, Player* bot){
+char show_window_init(Land* gameboard, Player* user, Player* bot){
     HWND hwnd = GetConsoleWindow();
+    char key;
     system("cls");
 
     gotoyx_print(15, 20, "SET WINDOW SIZE 16 * 27, SET RASTER FONT");
     gotoyx_print(18, 20, "INPUT ANY KEY TO CONTINUE...");
-    getch();
+    key = getch();
     system("cls");
     if (hwnd != NULL) MoveWindow(hwnd, 0, 0, 1430, 950, TRUE);
     show_set_cursor_disable();
@@ -411,6 +412,7 @@ void show_window_init(Land* gameboard, Player* user, Player* bot){
     show_player_move(gameboard, user, 0, 0);
     show_player_move(gameboard, bot, 0, 0);
     show_init_update(user, bot);
+    return key;
 }
 
 void show_land_building_residents(Land* land, int level, int book_people){

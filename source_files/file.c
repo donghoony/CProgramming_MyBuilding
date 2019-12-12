@@ -97,7 +97,7 @@ int file_get_land_pos(Land **land_arr_addr){
         fscanf(f, "%d %d", &p_bot.y, &p_bot.x);
         fscanf(f, "%d %d", &p_land.y, &p_land.x);
 
-        if (land_arr[i].land_type != NORMAL_TYPE){
+        if (land_arr[i].land_type == NORMAL_TYPE){
             land_arr[i].p_b1 = p_b1;
             land_arr[i].p_b2 = p_b2;
             land_arr[i].p_b3 = p_b3;

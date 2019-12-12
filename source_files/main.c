@@ -29,8 +29,7 @@ int main() {
     if (signal == NOT_OK) return NOT_OK;
 
     // Showing initialization
-    show_window_init(gameboard, &user, &bot);
-    key = getch();
+    key = show_window_init(gameboard, &user, &bot);
     cheat_enable(key, &user, &bot);
     while(turn--){
         show_turn_update(turn, (turn%2 == 1) ? PLAYER : COMPUTER);
