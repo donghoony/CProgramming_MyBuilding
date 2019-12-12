@@ -10,7 +10,7 @@ int PlayMaingame() {
 	int go_or_stop = 1;
 	int result;
 
-
+	gotoyx_clear();
 	PlayGame[0] = PlayHeadOrTail;
 
 	SetBet(&bet);
@@ -28,6 +28,8 @@ int PlayMaingame() {
 	}
 
 	result = SetResult(&multiple, &bet, &win_or_lose);
+
+	gotoyx_clear();
 
 	return result;
 }
