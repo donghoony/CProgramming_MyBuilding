@@ -3,7 +3,7 @@
 #include <Windows.h>
 #include <malloc.h>
 #include <stdlib.h>
-#include "..\\header_files\\gotoyx.h"
+#include "minigamegotoyx.h"
 
 /* 컴포넌트 관련 상수 */
 #define COMPONENT_NUMBERS 7
@@ -20,6 +20,7 @@
 #define COIN_GAMEOBJECT 101
 #define SYSTEMMENU_GAMEOBJECT 102
 #define SYSTEMCURSOR_GAMEOBJECT 103
+#define SHELL_GAMEOBJECT 104
 
 /* 키 관련 상수 */
 #define RIGHT_ARROW 77
