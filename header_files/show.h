@@ -24,8 +24,11 @@ int* show_choice_building(Land* land, Player* p);
 void show_dice_grid();
 void show_dice_roll(int, int);
 int show_landmark_satisfy(int*);
+
+void show_update_predict_price(Player* p, int predict_price);
 void show_money_update(Player*, int);
 int show_predict_price(Land* land, Player* p, int* selected_building, int now_price, int cur);
+int show_predict_price_with_cur_zero(Land* land, Player* p, int* selected_building);
 void show_lap_update(Player*);
 void show_init_update(Player*, Player*);
 void show_money_normal_update(Player* p);

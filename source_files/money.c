@@ -13,7 +13,7 @@ int money_spend(Player* p, int value){//´Ü¼ø µ· °ü¸®
    for(i = cur_money; i > cur_money - value; i -= 10){
        p->money -= 10;
        show_money_update(p, FALSE);
-       if (i % 250 == 0)_sleep(20);
+       if (i % 500 == 0)_sleep(10);
    }
    show_money_normal_update(p);
    return OK;
@@ -23,7 +23,7 @@ void money_earn(Player* p, int value){
     for(i = cur_money; i < cur_money+value; i+=10){
         p->money += 10;
         show_money_update(p, TRUE);
-        if (i % 250 == 0)_sleep(20);
+        if (i % 500 == 0)_sleep(10);
     }
     show_money_normal_update(p);
     return;

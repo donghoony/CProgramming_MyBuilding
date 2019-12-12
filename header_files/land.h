@@ -44,7 +44,7 @@ typedef struct land{
     Point p_b1, p_b2, p_b3, p_player, p_bot, p_land; // 땅 빌라 빌딩 호텔 랜마 절대좌표 저장
 }Land;
 
-
+int land_check_landmark(Land* land);
 int land_buy(Player* user, Land* l, Resident* res, int level);
 int land_check_land(Land* land, int level);
 int land_check_lap(Player* p, int level);
