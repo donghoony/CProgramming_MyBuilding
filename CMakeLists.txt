@@ -41,6 +41,6 @@ add_executable(CProgramming_MyBuilding
         minigame/maingame.c
         minigame/maingame.h
         minigame/class.c
-        )
+        header_files/basic_const.h)
 
 target_link_libraries(CProgramming_MyBuilding winmm.lib)

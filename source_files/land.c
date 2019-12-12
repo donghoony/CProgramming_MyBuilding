@@ -11,8 +11,8 @@
 #include "../header_files/show.h"
 
 int land_check_landmark(Land* land) {
-    int i=0, sum=0;
-    for(i=0; i<LANDMARK-1; i++) {
+    int i = 0, sum = 0;
+    for(i = 0; i < LANDMARK - 1; i++) {
         sum += land->level[i];
     }
     if(sum == 4) return OK;
@@ -20,7 +20,6 @@ int land_check_landmark(Land* land) {
 }
 
 int land_check_land(Land* land, int level) { //건물을 올리려면 반드시 땅을 보유중이어야 함을 확인해주는 함수
-    int i=0;
     if(level > ONLY_LAND && land->level[ONLY_LAND-1] == 0) return NOT_OK;  //땅을 보유하지 않고 건물 올리는 경우 -1 반환
     else return OK; //그 외의 경우 1반환
 }

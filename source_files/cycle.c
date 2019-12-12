@@ -8,6 +8,11 @@
 #include "../header_files/money.h"
 #include "../minigame/maingame.h"
 
+void minigame_cycle(Player* p){
+    int win_rate = PlayMaingame();
+    const int WIN_COST[] = {0, 5000, 10000, 20000};
+    money_earn(p, WIN_COST[win_rate]);
+}
 
 int start_point_cycle(Land* gameboard,Player* p, Resident* res){
     money_get_income(p);
@@ -64,7 +69,6 @@ int land_normal_cycle(Land* land, Player* p, Player* p_2, Resident* res){
 }
 
 int land_cycle(Land* gameboard, Land* land, Player* p, Player* p_2, Resident* res){
-    int fest_pos, before_fest_pos;
     int land_type = land->land_type;
     int signal;
 
@@ -90,7 +94,7 @@ int land_cycle(Land* gameboard, Land* land, Player* p, Player* p_2, Resident* re
                 player_abandon_init(p);
                 break;
             case MINIGAME:
-                PlayMaingame();
+                minigame_cycle(p);
                 break;
         }
     }
@@ -171,7 +175,7 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res, int cheat
 }
 
 int tie_breaker(Land* gameboard, Resident* res){
-    int i, j, p1_land_cnt, p2_land_cnt, p1_res_cnt = 0, p2_res_cnt = 0;
+    int i, j, p1_land_cnt = 0, p2_land_cnt = 0, p1_res_cnt = 0, p2_res_cnt = 0;
     for(i = 0; i < MAX_TILE; i++){
         if (gameboard[i].label == PLAYER) {
             p1_land_cnt++;

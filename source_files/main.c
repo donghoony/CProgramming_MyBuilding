@@ -27,7 +27,7 @@ int main() {
 
     signal = file_modify(&gameboard);
     if (signal == NOT_OK) return NOT_OK;
-
+    ending_credit();
     // Showing initialization
     key = show_window_init(gameboard, &user, &bot);
     cheat_enable(key, &user, &bot);

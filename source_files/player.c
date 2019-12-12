@@ -1,5 +1,4 @@
 #include "../header_files/player.h"
-#include "../header_files/cycle.h"
 #include "../header_files/show.h"
 
 void player_move_value(Player* p, int move_value){

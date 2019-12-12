@@ -2,10 +2,7 @@
 
 #include "random.h"
 #include "land.h"
-
-
-#define TRUE 1
-#define FALSE 0
+#include "basic_const.h"
 
 int move_cycle(Land* gameboard, Player* p, Resident* res, Dice d);
 int determine_double(Dice d);
@@ -16,3 +13,4 @@ int travel_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res);
 int tie_breaker(Land* gameboard, Resident* res);
 int start_point_cycle(Land* gameboard,Player* p, Resident* res);
 void festival_cycle(Land* gameboard, Player* p);
+void minigame_cycle(Player* p);

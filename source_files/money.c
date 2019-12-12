@@ -86,16 +86,15 @@ int make_festival(Land* gameboard,Player* p){//내 땅중 랜덤하게 하나 선택//페스�
 	return i;
 }
 
-int col_festival(Land* gameboard,Player* p){//2배설정함수
-	int origin_pos = find_festival_pos(gameboard);//원래 페스티벌 지역
-	int new_pos = make_festival(gameboard, p);//새로운 페스티벌 장소
+int col_festival(Land* gameboard,Player* p){ //2배설정함수
+	int origin_pos = find_festival_pos(gameboard); //원래 페스티벌 지역
+	int new_pos = make_festival(gameboard, p); //새로운 페스티벌 장소
 	if(origin_pos != new_pos) gameboard[origin_pos].land_multiply = 1;
     gameboard[new_pos].land_multiply *= 2;
     return new_pos;
 }
 
-// 함수이름 전부 소문자로
-int all_land_rent_fee(Land* l,Player* p, Resident* r){//모든 땅에 대한 임대료 나
+int all_land_rent_fee(Land* l,Player* p, Resident* r){ //모든 땅에 대한 임대료
     int i, sum = 0, price;
     for(i=0; i < MAX_TILE; i++){
         price = l[i].land_price/100;

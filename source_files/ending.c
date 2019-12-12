@@ -2,9 +2,9 @@
 #include "../header_files/gotoyx.h"
 #include <string.h>
 #include <windows.h>
-#define MAX 40
 
-void show_ending(End e[],int index){//아마 재귀함수로 가야할듯
+#define MAX 40
+void show_ending(End e[],int index){ //아마 재귀함수로 가야할듯
 	int i;
 	if(index == 69){
 	    system("cls");
@@ -23,3 +23,4 @@ void show_ending(End e[],int index){//아마 재귀함수로 가야할듯
 	Sleep(100);
 	show_ending(e,index+1);
 }
+
