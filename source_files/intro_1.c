@@ -1,10 +1,9 @@
-#include "intro_1.h"
-#include "gotoyx.h"
+#include "../header_files/intro_1.h"
+#include "../header_files/gotoyx.h"
 #include <windows.h>
 #include <mmsystem.h>
 #include <conio.h>
 #pragma comment(lib, "winmm.lib")
-
 
 void intro() {
 	play_intro();
@@ -151,7 +150,7 @@ void play_intro() {
 	PlaySound(TEXT(netmarble), NULL, SND_FILENAME | SND_ASYNC | 1);
 }
 void play_intro_2() {
-	PlaySound(TEXT(netmarble_2), NULL, SND_LOOP | SND_FILENAME | SND_ASYNC | 1);
+	PlaySound(TEXT(netmarble_2), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP | 1);
 }
 
 void play_intro_3() {
@@ -191,5 +190,6 @@ void screen_4() {
 	printf("                                                                                             ¡á¡á            ¡á\n");
 	printf("                                                                                              ¡á¡á¡á¡á¡á¡á¡á¡á\n"RES);
 	printf("\n\n                                                         <Press Any Key>");
+	getch();
 	PlaySound(NULL, 0, 0);
 }

@@ -1,6 +1,7 @@
 
 #include <windows.h>
 #include <stdio.h>
+#include "../header_files/gotoyx.h"
 
 void gotoyx(int y, int x){
     COORD pos = {x, y};
@@ -19,3 +20,8 @@ void gotoyx_set_color(int color){
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0xf & 0) | color);
 }
 
+void gotoyx_clear() {
+    COORD coor = { 0,0 };
+    DWORD dw;
+    FillConsoleOutputCharacter(GetStdHandle(STD_OUTPUT_HANDLE), ' ', 100 * 100, coor, &dw);
+}

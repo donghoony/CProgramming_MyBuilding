@@ -1,5 +1,5 @@
-#include "ending_file.h"
-#include "func.h"
+#include "../header_files/ending_file.h"
+#include "../header_files/func.h"
 int ending_credit(){
 	End e[100] = {{0, 0, '\0'}};
 	open_word(e);

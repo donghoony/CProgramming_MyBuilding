@@ -3,7 +3,7 @@
 //
 #include <malloc.h>
 #include <stdio.h>
-#include "land.h"
+#include "../header_files/land.h"
 #include <string.h>
 
 #define START_CHAR '!'
@@ -35,7 +35,7 @@ Land* file_get_land_info(){
     Land* land_array = (Land*) malloc(sizeof(Land) * 21);
 
     // LAND_INFO
-    FILE* f = fopen("..\\LAND_INFO", "r");
+    FILE* f = fopen("..\\data\\LAND_INFO", "r");
 
     if (file_is_nullptr(f)) return NULL;
     get_chars_until_specific_char(f, START_CHAR);
@@ -59,7 +59,7 @@ Land* file_get_land_info(){
         temp_land.land_position = land_number;
         temp_land.label = NO_ONE;
         temp_land.land_multiply = 1;
-        temp_land.land_type = (i == ABANDONED_ISLAND || i == START_LAND || i == FESTIVAL || i == TRAVEL) ? SPECIAL_TYPE : NORMAL_TYPE;
+        temp_land.land_type = (i == ABANDONED_ISLAND || i == START_LAND || i == FESTIVAL || i == TRAVEL || i == MINIGAME) ? SPECIAL_TYPE : NORMAL_TYPE;
         land_array[i] = temp_land;
 
 
@@ -79,7 +79,7 @@ int file_get_land_pos(Land **land_arr_addr){
     int i, num;
     Point p_b1, p_b2, p_b3, p_player, p_bot, p_land;
     Land* land_arr = *land_arr_addr;
-    FILE* f = fopen("..\\LAND_POS_INFO", "r");
+    FILE* f = fopen("..\\data\\LAND_POS_INFO", "r");
 
     if (file_is_nullptr(f)) return NULL;
     get_chars_until_specific_char(f, START_CHAR);
@@ -97,14 +97,27 @@ int file_get_land_pos(Land **land_arr_addr){
         fscanf(f, "%d %d", &p_bot.y, &p_bot.x);
         fscanf(f, "%d %d", &p_land.y, &p_land.x);
 
-        land_arr[i].p_b1 = p_b1;
-        land_arr[i].p_b2 = p_b2;
-        land_arr[i].p_b3 = p_b3;
+        if (land_arr[i].land_type != NORMAL_TYPE){
+            land_arr[i].p_b1 = p_b1;
+            land_arr[i].p_b2 = p_b2;
+            land_arr[i].p_b3 = p_b3;
+        }
         land_arr[i].p_bot = p_bot;
         land_arr[i].p_player = p_player;
         land_arr[i].p_land = p_land;
     }
-
     fclose(f);
 	return OK;
+}
+
+int file_modify(Land** gameboard){
+    *gameboard = (Land *) file_get_land_info();
+    // Check gameboard is successfully attached in program
+    if (*gameboard == NULL) {
+        printf("!! FUNCTION RETURNED NULLPTR !!\n");
+        system("pause");
+        return NOT_OK;
+    }
+    file_get_land_pos(gameboard);
+    system("cls");
 }

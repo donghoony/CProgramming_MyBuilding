@@ -10,11 +10,12 @@
 #define BACK_WHI "\x1b[47m"
 #define BYE "\x1b[93m"
 
-#define netmarble_2 "..\\netmarble_2.wav"
-#define netmarble "..\\netmarble.wav"
-#define netmarble_3 "..\\netmarble_3.wav"
-#define netmarble_4 "..\\netmarble_4.wav"
-#define netmarble_5 "..\\netmarble_5.wav"
+#define netmarble_2 "..\\data\\netmarble_2.wav"
+#define netmarble "..\\data\\netmarble.wav"
+#define netmarble_3 "..\\data\\netmarble_3.wav"
+#define netmarble_4 "..\\data\\netmarble_4.wav"
+#define netmarble_5 "..\\data\\netmarble_5.wav"
+
 void screen_1();
 void screen_2();
 void screen_3();

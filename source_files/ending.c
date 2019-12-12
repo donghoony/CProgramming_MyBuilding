@@ -1,12 +1,14 @@
-#include "ending.h"
-#include "gotoyx.h"
+#include "../header_files/ending.h"
+#include "../header_files/gotoyx.h"
 #include <string.h>
-#include <Windows.h>
+#include <windows.h>
 #define MAX 40
 
 void show_ending(End e[],int index){//아마 재귀함수로 가야할듯
 	int i;
 	if(index == 69){
+	    system("cls");
+	    gotoyx_print(20, 51, "The End");
 	    getchar();
 	    return;
 	}

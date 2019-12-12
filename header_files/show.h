@@ -3,7 +3,6 @@
 //
 #pragma once
 #include "land.h"
-#include "cycle.h"
 
 #ifndef KONKUK_SHOW_H
 #define KONKUK_SHOW_H
@@ -36,3 +35,6 @@ void show_dice_big_size(int sum);
 void show_winner(int turn);
 void show_festival(Land*, Land*);
 void show_window_init(Land* gameboard, Player* user, Player* bot);
+void show_land_building_residents(Land* land, int level, int book_people);
+void show_land_building_landmark_residents(Land* land, int book_people);
+void show_land_building_only_land(Land* land, Player* p);

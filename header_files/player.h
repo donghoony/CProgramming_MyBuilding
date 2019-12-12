@@ -1,5 +1,4 @@
 #pragma once
-#include <stdio.h>
 
 #define NO_ONE 0
 #define PLAYER 1
@@ -13,7 +12,10 @@ typedef struct player {
 	int abandon_island_count;
 }Player;
 
-void* make_user_name(Player* user);
-
 void player_move_value(Player* p, int move_value);
 void player_move_toward(Player* p, int land_num);
+
+// ADDED MANUALLY
+int player_check_abandoned(Player* p);
+void player_reduce_abandoned_count(Player* p);
+void player_abandon_init(Player* p);

@@ -3,15 +3,15 @@
 //
 
 #include <windows.h>
-#include "land.h"
-#include "gotoyx.h"
+#include "../header_files/land.h"
+#include "../header_files/gotoyx.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 #include <malloc.h>
-#include "show.h"
-#include "money.h"
-#include "intro_1.h"
+#include "../header_files/show.h"
+#include "../header_files/money.h"
+#include "../header_files/intro_1.h"
 
 void show_set_cursor_disable(){
     CONSOLE_CURSOR_INFO cci;
@@ -52,13 +52,13 @@ void show_gameboard_grid(){
     printf("弛 +        弛     弛   弛     P L A Y E R 1    弛               T U R N  :                      弛     P L A Y E R 2    弛   弛     弛         +弛\n"); //10
     printf("弛          弛     弛   弛                      弛               TURN LEFT:                      弛                      弛   弛     弛          弛\n"); //11
     printf("弛          弛     弛   弛                      弛               FEST MULT:     --               弛                      弛   弛     弛          弛\n"); //12
-    printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //13
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //14
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //15
-    printf("弛 +        弛     弛   弛                      弛                                               弛                      弛   弛     弛         +弛\n"); //16
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //17
-    printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //18
-    printf("戍式式式式式式式式式式托式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //19
+    printf("戍式式式式式式式式式式扛式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //13
+    printf("弛                弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //14
+    printf("弛                弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //15
+    printf("弛 M I N I G A M E弛   弛                      弛                                               弛                      弛   弛     弛         +弛\n"); //16
+    printf("弛                弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //17
+    printf("弛                弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //18
+    printf("戍式式式式式式式式式式成式式式式式扣   弛                      弛                                               弛                      弛   戍式式式式式托式式式式式式式式式式扣\n"); //19
     printf("弛          弛     弛   弛  LAP :               弛                                               弛  LAP :               弛   弛     弛          弛\n"); //20
     printf("弛          弛     弛   弛                      弛                                               弛                      弛   弛     弛          弛\n"); //21
     printf("弛 +        弛     弛   弛  MONEY :             弛                                               弛  MONEY :             弛   弛     弛         +弛\n"); //22
@@ -388,12 +388,16 @@ void show_festival(Land* land_before, Land* land_after){
     }
     gotoyx_set_color(C_GREEN);
     gotoyx_print(y_after, x_after, "+");
+
+    gotoyx(12, 71);
+    if (land_after->land_position != START_LAND) printf("%5dx", land_after->land_multiply);
     gotoyx_set_color(C_WHITE);
 }
 
 void show_window_init(Land* gameboard, Player* user, Player* bot){
     HWND hwnd = GetConsoleWindow();
     system("cls");
+
     gotoyx_print(15, 20, "SET WINDOW SIZE 16 * 27, SET RASTER FONT");
     gotoyx_print(18, 20, "INPUT ANY KEY TO CONTINUE...");
     getch();
@@ -407,4 +411,28 @@ void show_window_init(Land* gameboard, Player* user, Player* bot){
     show_player_move(gameboard, user, 0, 0);
     show_player_move(gameboard, bot, 0, 0);
     show_init_update(user, bot);
+}
+
+void show_land_building_residents(Land* land, int level, int book_people){
+    const char* STR[5] = {"T", "S", "M", "L", "LMRK"};
+    int x_pos[5] = {NULL, land->p_b1.x, land->p_b2.x, land->p_b3.x, land->p_b1.x-1};
+    int y_pos[5] = {NULL, land->p_b1.y, land->p_b2.y, land->p_b3.y, land->p_b1.y};
+    gotoyx_print(y_pos[level], x_pos[level], STR[level]);
+    gotoyx_print_int(y_pos[level], x_pos[level] + 1, book_people);
+}
+
+void show_land_building_landmark_residents(Land* land, int book_people){
+    gotoyx_print(land->p_b1.y, land->p_b1.x, "  ");
+    gotoyx_print(land->p_b2.y, land->p_b2.x, "  ");
+    gotoyx_print(land->p_b3.y, land->p_b3.x, "  ");
+    gotoyx_print(land->p_b1.y, land->p_b1.x-1, "LMRK");
+    gotoyx(land->p_b3.y, land->p_b3.x);
+    printf("%2d", book_people);
+    gotoyx_set_color(C_YELLOW);
+    gotoyx_print(land->p_b2.y, land->p_b2.x, "≠");
+}
+
+void show_land_building_only_land(Land* land, Player* p){
+    gotoyx_set_color(p->label == PLAYER ? C_BLUE : C_RED);
+    gotoyx_print(land->p_land.y, land->p_land.x, "+");
 }

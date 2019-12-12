@@ -1,7 +1,8 @@
 #pragma once
 
-#include "land.h"
 #include "random.h"
+#include "land.h"
+
 
 #define TRUE 1
 #define FALSE 0
@@ -13,3 +14,5 @@ int game_cycle(Land* gameboard, Player* p, Player* p2, Resident* res, int);
 int land_normal_cycle(Land* land, Player* p, Player* p_2, Resident* res);
 int travel_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res);
 int tie_breaker(Land* gameboard, Resident* res);
+int start_point_cycle(Land* gameboard,Player* p, Resident* res);
+void festival_cycle(Land* gameboard, Player* p);

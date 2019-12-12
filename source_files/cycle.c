@@ -1,12 +1,29 @@
 #include <stdlib.h>
 #include <time.h>
 #include <conio.h>
-#include "cycle.h"
-#include "player.h"
-#include "random.h"
-#include "show.h"
-#include "gotoyx.h"
-#include "money.h"
+#include "../header_files/cycle.h"
+#include "../header_files/player.h"
+#include "../header_files/show.h"
+#include "../header_files/gotoyx.h"
+#include "../header_files/money.h"
+#include "../minigame/maingame.h"
+
+
+int start_point_cycle(Land* gameboard,Player* p, Resident* res){
+    money_get_income(p);
+    money_earn(p, all_land_rent_fee(gameboard, p, res));
+    p->position = 0;
+    p->lap++;
+    show_lap_update(p);
+    show_player_move(gameboard, p,21, 0);
+}
+
+void festival_cycle(Land* gameboard, Player* p){
+    int before_fest_pos, fest_pos;
+    before_fest_pos = find_festival_pos(gameboard);
+    fest_pos = col_festival(gameboard, p);
+    show_festival(&gameboard[before_fest_pos], &gameboard[fest_pos]);
+}
 
 // includes animation
 int move_cycle(Land* gameboard, Player* p, Resident* res, Dice d){
@@ -14,15 +31,7 @@ int move_cycle(Land* gameboard, Player* p, Resident* res, Dice d){
     for(i = 0; i < d.d1 + d.d2; i++){
         show_player_move(gameboard, p, p->position, (p->position + 1) % MAX_TILE);
         player_move_value(p, 1);
-
-        if (p->position == MAX_TILE) {
-            money_get_income(p);
-            money_earn(p, all_land_rent_fee(gameboard, p, res));
-            p->position = 0;
-            p->lap++;
-            show_lap_update(p);
-            show_player_move(gameboard, p,21, 0);
-        }
+        if (p->position == MAX_TILE) start_point_cycle(gameboard, p, res);
         _sleep(150);
     }
     return p->position;
@@ -32,32 +41,25 @@ int land_normal_cycle(Land* land, Player* p, Player* p_2, Resident* res){
     int land_owner = land->label;
     int label = p->label;
     int* selected_building = NULL;
-    int i, predicted_price, valid;
-
+    int i, predicted_price, signal;
     // 빈 땅, 내 땅, 남 땅 확인 및 통행료 지급
-
     // 빈 땅이거나 내 땅이면 사면 됨
     if (land_owner == NO_ONE || land_owner == label){
         // 합 및 현재금액 -> show_choice에서 비교함
         selected_building = show_choice_building(land, p);
         for(i = 0; i < 5; i++){
             if (selected_building[i] == 1){
-//                        gotoyx_print(34, 0, "Attempt to buy..");
                 land_buy(p, land, res, i);
-//                _sleep(300);
             }
         }
         free(selected_building);
     }
-
         // 남 땅이면 통행료 냄
     else {
         predicted_price = land_calculate_cost(land, res);
-        valid = money_trade(p, p_2, predicted_price);
-
-        if (valid == NOT_OK) return NOT_OK;
+        signal = money_trade(p, p_2, predicted_price);
+        if (signal == NOT_OK) return NOT_OK;
     }
-
     return OK;
 }
 
@@ -66,13 +68,11 @@ int land_cycle(Land* gameboard, Land* land, Player* p, Player* p_2, Resident* re
     int land_type = land->land_type;
     int signal;
 
-    before_fest_pos = find_festival_pos(gameboard);
     //도착한 곳이 땅 타일이면
         if (land_type == NORMAL_TYPE){
             signal = land_normal_cycle(land, p, p_2, res);
             if (signal == NOT_OK) return NOT_OK;
     }
-
     //도착한 곳이 특별 타일이면
     if (land_type == SPECIAL_TYPE) {
         switch(land->land_position){
@@ -81,16 +81,16 @@ int land_cycle(Land* gameboard, Land* land, Player* p, Player* p_2, Resident* re
                 if (signal == NOT_OK) return NOT_OK;
                 break;
             case FESTIVAL:
-                fest_pos = col_festival(gameboard, p);
-                show_festival(&gameboard[before_fest_pos], &gameboard[fest_pos]);
-                gotoyx(12, 71); gotoyx_set_color(C_GREEN);
-                if (fest_pos != START_LAND) printf("%5dx", gameboard[fest_pos].land_multiply);
+                festival_cycle(gameboard, p);
                 break;
             case START_LAND:
                 show_lap_update(p);
                 break;
             case ABANDONED_ISLAND:
-                p->abandon_island_count = 1;
+                player_abandon_init(p);
+                break;
+            case MINIGAME:
+                PlayMaingame();
                 break;
         }
     }
@@ -117,10 +117,10 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res, int cheat
 
     while (1){
         // CHECK ABANDON ISLAND PHASE
-        if (p->abandon_island_count > 0){
-            p->abandon_island_count--;
+        if (player_check_abandoned(p)){
+            player_reduce_abandoned_count(p);
             _sleep(500);
-            return 1;
+            return OK;
         }
 
         // ROLL PHASE
@@ -135,12 +135,11 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res, int cheat
             gotoyx(33, 57);
             scanf("%d %d", &dice.d1, &dice.d2);
         }
-        //enable below if normal stance
+        //enable below if non-cheat version
         else{
             show_dice_roll(dice.d1, dice.d2);
             show_dice_big_size(dice.d1 + dice.d2);
         }
-
 
         is_double = determine_double(dice);
         double_count += is_double ? 1 : 0;
@@ -149,25 +148,24 @@ int game_cycle(Land* gameboard, Player* p, Player* p_2, Resident* res, int cheat
         if (double_count >= 2) {
             show_player_move(gameboard, p, p->position, ABANDONED_ISLAND);
             player_move_toward(p, ABANDONED_ISLAND);
-            p->abandon_island_count = 1;
-            return 1;
+            player_abandon_init(p);
+            return OK;
         }
-
         // MOVE PHASE
         p->position = move_cycle(gameboard, p, res, dice);
         pos = p->position;
-
-        //temporary added thing that indicates player's position
-        gotoyx(33,0);
-        if (cheat == '1') printf("NOW AT %02d", p->position);
-
+        //indicates player's position in cheat mode
+        if (cheat == '1') {
+            gotoyx(33,0);
+            printf("NOW AT %02d", p->position);
+        }
         // LAND PHASE
-        if (pos == TRAVEL) is_double = NOT_DOUBLE;
+        if (pos == TRAVEL) is_double = FALSE;
         signal = land_cycle(gameboard, &gameboard[pos], p, p_2, res);
         if (signal == NOT_OK) return NOT_OK;
 
         // END PHASE, 더블이 아니면 루프 탈출하기
-        if (is_double == NOT_DOUBLE || p->position == ABANDONED_ISLAND) break;
+        if (is_double == FALSE || p->position == ABANDONED_ISLAND) break;
     }
     return OK;
 }

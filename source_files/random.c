@@ -1,5 +1,8 @@
+#pragma once
 #include <stdlib.h>
-#include "random.h"
+#include "../header_files/random.h"
+#include "../header_files/cycle.h"
+
 
 Dice rand_dice_roll(){
     Dice d;
@@ -15,5 +18,5 @@ int rand_roll_dice_only(){
 }
 
 int determine_double(Dice d){
-    return (d.d1 == d.d2) ? DOUBLE : NOT_DOUBLE;
+    return (d.d1 == d.d2) ? TRUE : FALSE;
 }

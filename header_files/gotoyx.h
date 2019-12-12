@@ -1,8 +1,4 @@
 #pragma once
-#ifndef KONKUK_GOTOYX_H
-#define KONKUK_GOTOYX_H
-
-#endif //KONKUK_GOTOYX_H
 
 #define C_BLUE 9
 #define C_GREEN 10
@@ -16,3 +12,4 @@ void gotoyx(int y, int x);
 void gotoyx_print(int y, int x, char* arg);
 void gotoyx_set_color(int color);
 void gotoyx_print_int(int y, int x, int n);
+void gotoyx_clear();

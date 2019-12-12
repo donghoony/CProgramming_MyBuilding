@@ -3,12 +3,17 @@
 //
 #pragma once
 
+#ifndef PLAYER_H
+#include "player.h"
+#endif
+
 #include "resident.h"
 
 #define START_LAND 0
 #define ABANDONED_ISLAND 4
 #define FESTIVAL 11
 #define TRAVEL 15
+#define MINIGAME 2
 
 #define NORMAL_TYPE 0
 #define SPECIAL_TYPE 1
@@ -45,10 +50,9 @@ typedef struct land{
     Point p_b1, p_b2, p_b3, p_player, p_bot, p_land;
 }Land;
 
+
 int land_buy(Player* user, Land* l, Resident* res, int level);
-void land_check_label(Player* p,Land* land, Resident* res, int level);
 int land_check_land(Land* land, int level);
 int land_check_lap(Player* p, int level);
 int land_buy_build(Player* p, Land* land, Resident* r, int level);
 int land_calculate_cost(Land* land, Resident* res);
-//void land_buy_menu();;
