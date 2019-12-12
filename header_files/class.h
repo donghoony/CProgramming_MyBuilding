@@ -3,7 +3,7 @@
 #include <Windows.h>
 #include <malloc.h>
 #include <stdlib.h>
-#include "minigamegotoyx.h"
+#include "..\\header_files\\gotoyx.h"
 
 /* 컴포넌트 관련 상수 */
 #define COMPONENT_NUMBERS 7

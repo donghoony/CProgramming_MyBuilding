@@ -6,7 +6,7 @@
 #include "../header_files/show.h"
 #include "../header_files/gotoyx.h"
 #include "../header_files/money.h"
-#include "../minigame/maingame.h"
+#include "../header_files\\maingame.h"
 
 void minigame_cycle(Player* p){
     int win_rate = PlayMaingame();

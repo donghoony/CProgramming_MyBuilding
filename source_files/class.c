@@ -1,4 +1,4 @@
-#include "class.h"
+#include "..\\header_files\\class.h"
 
 /* »ý¼ºÀÚ */
 GameObject* NewGameObject(int NewGameObjectID)	{

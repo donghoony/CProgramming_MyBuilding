@@ -1,4 +1,4 @@
-#include "class.h"
+#include "..\\header_files\\class.h"
 
 #define GAME_NUMBER 1
 

@@ -1,4 +1,4 @@
-#include "minigamegotoyx.h"
+#include "..\\header_files\\minigamegotoyx.h"
 // 이미 있으니까 그거 쓸게
 //void gotoyx(int y, int x){
 //    COORD pos = {x, y};
