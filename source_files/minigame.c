@@ -1,8 +1,5 @@
-
-
 #include <stdlib.h>
 #include <conio.h>
-#include "../header_files/player.h"
 #include "../header_files/basic_const.h"
 #include "../header_files/gotoyx.h"
 #include "../header_files/show.h"
@@ -82,7 +79,6 @@ int minigame_oddeven(int level){
     show_minigame_flip(win);
     if (level == 2) for(i = 0; i < 6; i++) gotoyx_print(18 + i, 50, "                                     ");
 
-
     gotoyx_set_color(C_WHITE);
     if (win == TRUE){
         level++;
@@ -90,7 +86,10 @@ int minigame_oddeven(int level){
         else next_continue = FALSE;
 
         if (next_continue == TRUE) return minigame_oddeven(level);
-        else return level;
+        else {
+            for(i = 0; i < 6; i++) gotoyx_print(18 + i, 50, "                                     ");
+            return level;
+        }
     }
 
     else return 0;

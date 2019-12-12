@@ -38,6 +38,7 @@ void show_player_move(Land* gameboard, Player* p, int from, int to){
 }
 
 void show_gameboard_grid(){
+    gotoyx(0, 0);
     gotoyx_set_color(C_WHITE);
     printf("忙式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式成式式式式式式式式式式式式式式式式忖\n"); //0
     printf("弛 MUINDO         弛        +       弛        +       弛        +       弛        +       弛        +       弛        +       弛 FESTIVAL       弛\n"); //1
@@ -263,6 +264,7 @@ void show_lap_update(Player* p){
     printf("%3d", p->lap);
 }
 void show_init_update(Player* p1, Player* p2){
+
     show_lap_update(p1);
     show_lap_update(p2);
     show_money_normal_update(p1);
