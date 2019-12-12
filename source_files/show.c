@@ -399,7 +399,7 @@ char show_window_init(Land* gameboard, Player* user, Player* bot){
     char key;
     system("cls");
 
-    gotoyx_print(15, 20, "SET WINDOW SIZE 16 * 27, SET RASTER FONT");
+    gotoyx_print(15, 20, "SET WINDOW SIZE MAXIMUM, SET FONT TO RASTER FONT");
     gotoyx_print(18, 20, "INPUT ANY KEY TO CONTINUE...");
     key = getch();
     system("cls");

@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "../header_files/land.h"
 #include <string.h>
+#include <conio.h>
 
 #define START_CHAR '!'
 
@@ -27,12 +28,12 @@ void get_chars_until_specific_char(FILE* f, char specific_char){
 
 // returns Land* array => Land**
 Land* file_get_land_info(){
-    int land_price, land_number, i, j;
-    char land_name[100], landmark_name[100];
+    int land_price, land_number, i;
+    char land_name[30], landmark_name[30];
     Land temp_land;
     // land tmp;
     // land array <Struct array>
-    Land* land_array = (Land*) malloc(sizeof(Land) * 21);
+    Land* land_array = (Land*) malloc(sizeof(Land) * MAX_TILE);
 
     // LAND_INFO
     FILE* f = fopen("..\\data\\LAND_INFO", "r");
@@ -41,8 +42,8 @@ Land* file_get_land_info(){
     get_chars_until_specific_char(f, START_CHAR);
 
     for(i = 0; i < MAX_TILE; i++){
-        memset(land_name, 0x0, 100);
-        memset(landmark_name, 0x0, 100);
+        memset(land_name, 0x0, 30);
+        memset(landmark_name, 0x0, 30);
 
         fscanf(f, "%d", &land_number);
         fscanf(f, "%s", land_name);
@@ -52,6 +53,7 @@ Land* file_get_land_info(){
         //initialization
         memset(temp_land.level, 0x0, sizeof(temp_land.level));
         temp_land.name = (char*) malloc(sizeof(char) * strlen(land_name) + 1);
+
         strcpy(temp_land.name, land_name);
         temp_land.landmark_name = (char*) malloc(sizeof(char) * strlen(landmark_name) + 1);
         strcpy(temp_land.landmark_name, landmark_name);
@@ -62,7 +64,7 @@ Land* file_get_land_info(){
         temp_land.land_type = (i == ABANDONED_ISLAND || i == START_LAND || i == FESTIVAL || i == TRAVEL || i == MINIGAME) ? SPECIAL_TYPE : NORMAL_TYPE;
         land_array[i] = temp_land;
 
-
+        printf("%d %d\n", strlen(land_name), strlen(landmark_name));
         // test codes below
         /*
         tmp = land_array[i];
@@ -71,7 +73,6 @@ Land* file_get_land_info(){
         //test code ends
 
     }
-    fclose(f);
     return land_array;
 }
 

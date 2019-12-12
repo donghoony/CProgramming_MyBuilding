@@ -7,11 +7,14 @@
 #include "../header_files/file.h"
 #include "../header_files/cycle.h"
 #include "../header_files/func.h"
-#include "../header_files/intro_1.h"
 #include "../header_files/release.h"
 
 void cheat_enable(char key, Player* p1, Player* p2){
     if (key == '1') p1->lap = p2->lap = 5;
+    if (key == '2') {
+        p1->lap = p2->lap = 5;
+        p2->money = 5000;
+    }
 }
 
 int main() {
@@ -27,13 +30,15 @@ int main() {
 
     signal = file_modify(&gameboard);
     if (signal == NOT_OK) return NOT_OK;
-    ending_credit();
     // Showing initialization
+
     key = show_window_init(gameboard, &user, &bot);
+    show_init_update(&user, &bot);
+
     cheat_enable(key, &user, &bot);
     while(turn--){
         show_turn_update(turn, (turn%2 == 1) ? PLAYER : COMPUTER);
-        signal = game_cycle(gameboard, (turn%2 == 1) ? &user : &bot, (turn%2 == 1) ? &bot : &user, &resident, key);
+        signal = game_cycle(gameboard, (turn%2 == 1) ? &user : &bot, (turn%2 == 1) ? &bot : &user, &resident, (key == '1' || key == '2' ? '1' : '0'));
         if (signal == NOT_OK) break;
     }
     winner = (turn%2 == 1) ? PLAYER : COMPUTER;

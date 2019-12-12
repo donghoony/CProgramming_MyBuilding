@@ -1,7 +1,7 @@
 #pragma once
 #include <stdio.h>
 
-#define MAX_TILE 22
+#include "basic_const.h"
 
 typedef struct resident {
 	int rand_person_villa[MAX_TILE];
