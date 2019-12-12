@@ -35,12 +35,12 @@ add_executable(CProgramming_MyBuilding
         header_files/release.h
         source_files/release.c
 
-        minigame/minigamegotoyx.c
-        minigame/minigamegotoyx.h
-        minigame/class.h
-        minigame/maingame.c
-        minigame/maingame.h
-        minigame/class.c
+        source_files/minigamegotoyx.c
+        header_files/minigamegotoyx.h
+        header_files/class.h
+        source_files/maingame.c
+        header_files/maingame.h
+        source_files/class.c
         header_files/basic_const.h)
 
 target_link_libraries(CProgramming_MyBuilding winmm.lib)

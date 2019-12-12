@@ -5,7 +5,7 @@
 //int SetBet(int* bet);
 int ChooseGame();
 int GoOrStop(int* go_or_stop);
-
+int PlayMaingame();
 int PlayHeadOrTail(int* multiple, int* win_or_lose);
 int HeadOrTail0(int* guess, int* menu, GameObject* SystemMenu, GameObject* SystemCursor, GameObject* Player);
 int HeadOrTail1(int* menu, GameObject* SystemMenu, GameObject* Coin);

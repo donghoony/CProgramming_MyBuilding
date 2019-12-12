@@ -6,12 +6,14 @@
 #include "../header_files/show.h"
 #include "../header_files/gotoyx.h"
 #include "../header_files/money.h"
-#include "../header_files\\maingame.h"
+#include "../header_files/maingame.h"
+#include "../header_files/minigame.h"
 
 void minigame_cycle(Player* p){
-    int win_rate = PlayMaingame();
+    int win_rate = minigame_init();
+//    int win_rate = PlayMaingame();
     const int WIN_COST[] = {0, 5000, 10000, 20000};
-    money_earn(p, WIN_COST[win_rate]);
+    if(win_rate) money_earn(p, WIN_COST[win_rate]);
 }
 
 int start_point_cycle(Land* gameboard,Player* p, Resident* res){
