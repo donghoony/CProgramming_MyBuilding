@@ -21,8 +21,6 @@ void gotoyx_set_color(int color){
 }
 
 void gotoyx_clear() {
-    COORD coor = { 18,50 };
-    DWORD dw;
     int i = 0;
 
     for(i=17;i<24;i++)

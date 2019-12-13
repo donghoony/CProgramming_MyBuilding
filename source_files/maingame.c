@@ -1,35 +1,35 @@
 #include "..\\header_files\\maingame.h"
-
-int PlayMaingame() {
-
-	int (*PlayGame[GAME_NUMBER])(int* multiple, int* win_or_lose);
-	int choose_game;
-	int multiple = 0;
-	int win_or_lose = 0;
-	int go_or_stop = 1;
-	int result;
-
-	PlayGame[0] = PlayHeadOrTail;
-
-	
-	while (multiple < 3 && win_or_lose == 0 && go_or_stop == 1) {
-
-		choose_game = ChooseGame();
-
-		PlayGame[choose_game](&multiple, &win_or_lose);
-
-		if (win_or_lose == 0 && multiple <2)
-			GoOrStop(&go_or_stop);
-
-	}
-
-	gotoyx_clear();
-	gotoyx_set_color(C_WHITE);
-
-	result = SetResult(&multiple, &win_or_lose);
-
-	return multiple;
-}
+//
+//int PlayMaingame() {
+//
+//	int (*PlayGame[GAME_NUMBER])();
+//	int choose_game;
+//	int multiple = 0;
+//	int win_or_lose = 0;
+//	int go_or_stop = 1;
+//	int result;
+//
+//	PlayGame[0] = PlayHeadOrTail;
+//
+//	
+//	while (multiple < 3 && win_or_lose == 0 && go_or_stop == 1) {
+//
+//		//choose_game = ChooseGame();
+//
+//		PlayGame[choose_game](&multiple, &win_or_lose);
+//
+//		if (win_or_lose == 0 && multiple <2)
+//			GoOrStop(&go_or_stop);
+//
+//	}
+//
+//	gotoyx_clear();
+//	gotoyx_set_color(C_WHITE);
+//
+//	result = SetResult(&multiple, &win_or_lose);
+//
+//	return multiple;
+//}
 
 
 int SetBet() {
@@ -65,6 +65,9 @@ int SetBet() {
 	// Cursor 컴포넌트 설정
 	((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->max = 3;
 	((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->min = 0;
+	
+	Menu->Render(Menu->cthis, 50, 17, 0, C_GREEN);
+	((RenderComponent*)Cursor->GetComponent(Cursor->cthis, RENDER_COMPONENT))->Render(((RenderComponent*)Cursor->GetComponent(Cursor->cthis, RENDER_COMPONENT))->cthis, ((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->arrow * 7 + 54, 22, 0, C_BLUE);
 
 	while (1) {
 
@@ -74,12 +77,18 @@ int SetBet() {
 		//입력값이 오른쪽 화살표이면
 		if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == RIGHT_ARROW && ((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->arrow < ((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->max) {
 			((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->arrow++;
-			gotoyx_clear();
+			gotoyx_clear(); 
+			Menu->Render(Menu->cthis, 50, 17, 0, C_GREEN);
+			((RenderComponent*)Cursor->GetComponent(Cursor->cthis, RENDER_COMPONENT))->Render(((RenderComponent*)Cursor->GetComponent(Cursor->cthis, RENDER_COMPONENT))->cthis, ((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->arrow * 7 + 54, 22, 0, C_BLUE);
+
 		}
 		//입력값이 왼쪽 화살표이면
 		else if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == LEFT_ARROW && ((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->arrow > ((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->min) {
 			((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->arrow--;
 			gotoyx_clear();
+			Menu->Render(Menu->cthis, 50, 17, 0, C_GREEN);
+			((RenderComponent*)Cursor->GetComponent(Cursor->cthis, RENDER_COMPONENT))->Render(((RenderComponent*)Cursor->GetComponent(Cursor->cthis, RENDER_COMPONENT))->cthis, ((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->arrow * 7 + 54, 22, 0, C_BLUE);
+
 		}
 		//입력값이 엔터이면
 		else if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == ENTER) {
@@ -87,28 +96,25 @@ int SetBet() {
 			break;
 		}
 
-		Menu->Render(Menu->cthis, 50, 17, 0, C_GREEN);
-		((RenderComponent*)Cursor->GetComponent(Cursor->cthis, RENDER_COMPONENT))->Render(((RenderComponent*)Cursor->GetComponent(Cursor->cthis, RENDER_COMPONENT))->cthis, ((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->arrow * 7 + 54, 22, 0, C_BLUE);
-		((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input = 0;
-	}
+		}
 
 	gotoyx_clear();
 
 	return (((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->arrow)*5000;
 }
-
-int Square(int num, int times) {
-	
-	if (times == 0)
-		return 0;
-
-	int total = 1;
-
-	for (int i = 0; i < times; i++)
-		total *= num;
-
-	return total;
-}
+//
+//int Square(int num, int times) {
+//	
+//	if (times == 0)
+//		return 0;
+//
+//	int total = 1;
+//
+//	for (int i = 0; i < times; i++)
+//		total *= num;
+//
+//	return total;
+//}
 
 int ChooseGame() {
 
@@ -116,7 +122,9 @@ int ChooseGame() {
 
 	return rand() % GAME_NUMBER;
 }
-int GoOrStop(int* go_or_stop) {
+int GoOrStop() {
+
+	int go_or_stop;
 
 	GameObject* SystemMenu = NewGameObject(SYSTEMMENU_GAMEOBJECT);
 	GameObject* SystemCursor = NewGameObject(SYSTEMCURSOR_GAMEOBJECT);
@@ -139,25 +147,33 @@ int GoOrStop(int* go_or_stop) {
 	((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->SetInputHeight((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), 1);
 	((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->SetInputWidth((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), 5);
 	((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->GetData((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), "..\\data\\GoOrStopCursor.txt");
+	
+	((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render(((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->cthis, 50, 17, 0, C_GREEN);
+	((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow * 11 + 58, 22, 0, C_BLUE);
 
 	while (1) {
 
-		((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render(((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->cthis, 50, 17, 0, C_GREEN);
-		((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow * 11 + 58, 22, 0, C_BLUE);
-
+		
 		((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input = ((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->GetInput((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT));
 		if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == RIGHT_ARROW && ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow < 1) {
 			((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->AddValue(((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->cthis, &((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow, 1);
-			gotoyx_clear();
+			gotoyx_clear(); 
+			((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render(((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->cthis, 50, 17, 0, C_GREEN);
+			((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow * 11 + 58, 22, 0, C_BLUE);
+
 		}
 		else if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == LEFT_ARROW && ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow > 0) {
 			((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->AddValue(((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->cthis, &((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow, -1);
-			gotoyx_clear();
+			gotoyx_clear(); 
+			((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render(((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->cthis, 50, 17, 0, C_GREEN);
+			((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow * 11 + 58, 22, 0, C_BLUE);
+
 		}
 		else if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == ENTER) {
-			*go_or_stop = !(((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow);
+			go_or_stop = !(((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow);
 			gotoyx_clear();
-			return 0;
+			gotoyx_set_color(C_WHITE);
+			return go_or_stop;
 		}
 		
 
@@ -174,7 +190,7 @@ int SetResult(int* multiple, int* win_or_lose) {
 	}
 }
 
-int PlayHeadOrTail(int* multiple, int* win_or_lose) {
+int PlayHeadOrTail() {
 
 	//게임 오브젝트 선언
 	GameObject* Player = NewGameObject(PLAYER_GAMEOBJECT);
@@ -204,8 +220,8 @@ int PlayHeadOrTail(int* multiple, int* win_or_lose) {
 	CursorComponent* SystemCursorCursor = NewCursorComponent(CURSOR_COMPONENT);
 	SystemCursor->InsertComponent(SystemCursor->cthis, SystemCursorCursor->pComponentBase->ComponentID, (ComponentBase*)SystemCursorCursor);
 
-	int menu = 0;
 	int guess = 0;
+	int win_or_lose = 0;
 
 	//RENDER 데이터 설정
 	((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->SetInputHeight((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 7);
@@ -218,80 +234,81 @@ int PlayHeadOrTail(int* multiple, int* win_or_lose) {
 	//ROll 데이터 설정
 	((RollComponent*)Coin->GetComponent(Coin->cthis, ROLL_COMPONENT))->GetRandom((RollComponent*)Coin->GetComponent(Coin->cthis, ROLL_COMPONENT)->cthis, 2);
 
-	while (1) {
-		if (menu == 0) {
-			HeadOrTail0(&guess, &menu, SystemMenu, SystemCursor, Player);
-		}
-		else if (menu == 1) {
-			HeadOrTail1(&menu, SystemMenu, Coin);
-		}
-		else if (menu == 2) {
-			HeadOrTail2(&menu, &guess, win_or_lose, multiple, SystemMenu, Coin, Player);
-		}
-		else if (menu == 3)
-			return 0;
-	}
+	guess = HeadOrTail0(SystemMenu, SystemCursor, Player);
+	HeadOrTail1(SystemMenu, Coin);
+	win_or_lose = HeadOrTail2(&guess, SystemMenu, Coin, Player);
+
+	return win_or_lose;
 }
 
-HeadOrTail0(int* guess, int* menu, GameObject* SystemMenu, GameObject* SystemCursor, GameObject* Player) {
+HeadOrTail0(GameObject* SystemMenu, GameObject* SystemCursor, GameObject* Player) {
+	
+	int guess = 0;
 
 	((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 50, 17, 0, C_GREEN);
 	((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow * 11 + 58, 22, 0, C_BLUE);
 
-	((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input = ((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->GetInput((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT));
-	if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == RIGHT_ARROW && ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow < 1) {
-		((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->AddValue(((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->cthis, &((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow, 1);
-		gotoyx_clear();
-	}
-	else if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == LEFT_ARROW && ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow > 0) {
-		((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->AddValue(((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->cthis, &((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow, -1);
-		gotoyx_clear();
-	}
-	else if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == ENTER) {
-		*menu += 1;
-		*guess = ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow;
-		((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input = 0;
-		gotoyx_clear();
-	}
+	while (1) {
+		
+		((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input = ((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->GetInput((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT));
+		if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == RIGHT_ARROW && ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow < 1) {
+			((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->AddValue(((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->cthis, &((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow, 1);
+			gotoyx_clear();
+			((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 50, 17, 0, C_GREEN);
+			((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow * 11 + 58, 22, 0, C_BLUE);
+		}
+		else if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == LEFT_ARROW && ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow > 0) {
+			((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->AddValue(((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->pTriggerComponent->cthis, &((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow, -1);
+			gotoyx_clear(); ((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 50, 17, 0, C_GREEN);
+			((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow * 11 + 58, 22, 0, C_BLUE);
 
-	return 0;
+		}
+		else if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == ENTER) {
+			guess = ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow;
+			((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input = 0;
+			gotoyx_clear(); ((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 50, 17, 0, C_GREEN);
+			((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow * 11 + 58, 22, 0, C_BLUE);
+
+			return guess;
+		}
+	}
 }
-HeadOrTail1(int* menu, GameObject* SystemMenu, GameObject* Coin) {
+HeadOrTail1(GameObject* SystemMenu, GameObject* Coin) {
 
 	((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 50, 17, 1, C_GREEN);
-	((AnimationComponent*)Coin->GetComponent(Coin->cthis, ANIMATION_COMPONENT))->Animation((AnimationComponent*)Coin->GetComponent(Coin->cthis, ANIMATION_COMPONENT), 100, "..//data\\HeadOrTailCoinAnimation.txt", 68, 22, 1, 4, C_GREEN);
-	
-	if (((AnimationComponent*)Coin->GetComponent(Coin->cthis, ANIMATION_COMPONENT))->animation_switch == 2){
-		*menu += 1;
-		gotoyx_clear();
+
+	while (1) {
+			
+		((AnimationComponent*)Coin->GetComponent(Coin->cthis, ANIMATION_COMPONENT))->Animation((AnimationComponent*)Coin->GetComponent(Coin->cthis, ANIMATION_COMPONENT), 100, "..//data\\HeadOrTailCoinAnimation.txt", 68, 22, 1, 4, C_GREEN);
+
+		if (((AnimationComponent*)Coin->GetComponent(Coin->cthis, ANIMATION_COMPONENT))->animation_switch == 2) {
+			gotoyx_clear();
+			return 0;
+		}
 	}
 
-
-	return 0;
 }
-HeadOrTail2(int* menu, int* guess, int* win_or_lose, int* multiple, GameObject* SystemMenu, GameObject* Coin, GameObject* Player){
+HeadOrTail2(int* guess, GameObject* SystemMenu, GameObject* Coin, GameObject* Player){
+	
+	((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 50, 17, 2, C_GREEN);
 
-	((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input = ((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->GetInput(((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->cthis);
+	while (1) {
 
-	if (*guess == ((RollComponent*)Coin->GetComponent(Coin->cthis, ROLL_COMPONENT))->random_number) {
-		((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 50, 17, 2, C_GREEN);
+		((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input = ((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->GetInput(((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->cthis);
+		if (*guess == ((RollComponent*)Coin->GetComponent(Coin->cthis, ROLL_COMPONENT))->random_number) {
+			if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == ENTER) {
+				gotoyx_clear();
+				return 1;
+			}
+		}
+		else {
+			((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 50, 17, 3, C_GREEN);
 
-		if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == ENTER){
-			*menu += 1;
-			((TriggerComponent*)SystemMenu->GetComponent(SystemMenu->cthis, TRIGGER_COMPONENT))->AddValue((TriggerComponent*)SystemMenu->GetComponent(SystemMenu->cthis, TRIGGER_COMPONENT), multiple, 1);
-			gotoyx_clear();
+			if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == ENTER) {
+				gotoyx_clear();
+				gotoyx_set_color(C_WHITE);
+				return 0;
+			}
 		}
 	}
-	else {
-		((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 50, 17, 3, C_GREEN);
-		
-		if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == ENTER){
-			*menu += 1;
-			((TriggerComponent*)SystemMenu->GetComponent(SystemMenu->cthis, TRIGGER_COMPONENT))->SetValue((TriggerComponent*)SystemMenu->GetComponent(SystemMenu->cthis, TRIGGER_COMPONENT), win_or_lose, 1);
-			gotoyx_clear();
-		}
-	}
-
-
-	return 0;
 }

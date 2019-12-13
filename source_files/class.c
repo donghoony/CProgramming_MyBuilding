@@ -293,7 +293,6 @@ int Animation_(AnimationComponent* cthis, int lasting_time, const char* FileName
 
 	if (cthis->fps != (cthis->pTImeComponent->GetLapTime(cthis->pTImeComponent->cthis)) / lasting_time) {
 		cthis->fps = (cthis->pTImeComponent->GetLapTime(cthis->pTImeComponent->cthis)) / lasting_time;
-		gotoyx_clear();
 	}
 
 

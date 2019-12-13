@@ -13,3 +13,4 @@ void gotoyx_print(int y, int x, char* arg);
 void gotoyx_set_color(int color);
 void gotoyx_print_int(int y, int x, int n);
 void gotoyx_clear();
+void gotoyx_minigame_animation_clear();
