@@ -1,7 +1,7 @@
 #include "..\\header_files\\class.h"
 
 #define GAME_NUMBER 1
-#define BASE_MONEY 5000
+#define BASE_MONEY 1000
 
 int SetBet();
 int ChooseGame();

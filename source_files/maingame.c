@@ -166,7 +166,7 @@ int GoOrStop(int* go_or_stop) {
 int SetResult(int* multiple, int* win_or_lose) {
 
 	if (*win_or_lose == 0) {
-		return (*multiple+1);
+		return (*multiple);
 	}
 	else if (*win_or_lose == 1) {
 		return 0;

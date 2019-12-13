@@ -19,8 +19,9 @@ void minigame_cycle(Player* p){
     money_spend(p, bet);
 
     int multiple = PlayMaingame();
+    int win_multiple[] = { 0, 2, 3, 4 };
 
-    if(multiple) money_earn(p, Square(2, multiple)*(bet + BASE_MONEY));
+    if(multiple) money_earn(p, win_multiple[multiple]*(bet + BASE_MONEY));
 }
 
 int start_point_cycle(Land* gameboard,Player* p, Resident* res){
