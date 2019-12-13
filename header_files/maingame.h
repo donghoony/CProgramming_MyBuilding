@@ -1,7 +1,7 @@
 #include "..\\header_files\\class.h"
 
 #define GAME_NUMBER 1
-#define BASE_MONEY 1000
+#define BASE_MONEY 500
 
 int SetBet();
 int ChooseGame();
@@ -13,4 +13,4 @@ int HeadOrTail1(int* menu, GameObject* SystemMenu, GameObject* Coin);
 int HeadOrTail2(int* menu, int* guess, int* win_or_lose, int* multiple, GameObject* SystemMenu, GameObject* Coin, GameObject* Player);
 int PlayShellGame(int* multiple, int* win_or_lose);
 int SetResult(int*multiple, int* win_or_lose);
-int Square(int num, int times);
+//int Square(int num, int times);

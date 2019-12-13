@@ -11,13 +11,13 @@
 
 void minigame_cycle(Player* p){
  
+    //배팅
     int bet = SetBet();
-
     while (p->money < bet)
         bet = SetBet();
-
     money_spend(p, bet);
 
+    //게임 선택
     int multiple = PlayMaingame();
     int win_multiple[] = { 0, 2, 3, 4 };
 
