@@ -10,7 +10,6 @@
 #include "../header_files/minigame.h"
 
 void minigame_cycle(Player* p){
-
     int bet = 0;
     int choose_game;
     int win_or_lose;

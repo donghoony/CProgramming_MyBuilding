@@ -1,6 +1,6 @@
 #pragma once
 #include <stdio.h>
-#define ending_credit "..\\data\\ending.wav"
+#define ending_credit_song "..\\data\\ending.wav"
 
 typedef struct end{
 	int x_pos;

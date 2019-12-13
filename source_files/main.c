@@ -35,6 +35,10 @@ int main() {
     key = show_window_init(gameboard, &user, &bot);
     show_init_update(&user, &bot);
 
+    ending();
+
+
+
     cheat_enable(key, &user, &bot);
     while(turn--){
         show_turn_update(turn, (turn%2 == 1) ? PLAYER : COMPUTER);
@@ -43,8 +47,8 @@ int main() {
     }
     winner = (turn%2 == 1) ? PLAYER : COMPUTER;
     if (signal == OK && turn == 0) winner = tie_breaker(gameboard, &resident);
-    show_winner(winner);
-    ending_credit();
+    ending();
+
     release(&gameboard);
 
 	return 0;

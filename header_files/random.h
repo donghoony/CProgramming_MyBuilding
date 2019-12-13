@@ -9,3 +9,4 @@ typedef struct dice{
 
 Dice rand_dice_roll();
 int rand_roll_dice_only();
+int determine_double(Dice d);
