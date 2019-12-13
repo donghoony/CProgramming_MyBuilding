@@ -5,6 +5,7 @@ int ending_credit(){
 	open_word(e);
 	open_x(e);
 	open_y(e);
+	play_ending_credit_song();
 	show_ending(e,0);
 	return 0;
 }

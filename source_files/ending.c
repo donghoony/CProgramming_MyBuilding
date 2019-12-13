@@ -24,3 +24,6 @@ void show_ending(End e[],int index){ //아마 재귀함수로 가야할듯
 	show_ending(e,index+1);
 }
 
+void play_ending_credit_song() {
+	PlaySound(TEXT(ending_credit), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP | 1);
+}
