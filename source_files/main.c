@@ -34,11 +34,6 @@ int main() {
 
     key = show_window_init(gameboard, &user, &bot);
     show_init_update(&user, &bot);
-
-    ending();
-
-
-
     cheat_enable(key, &user, &bot);
     while(turn--){
         show_turn_update(turn, (turn%2 == 1) ? PLAYER : COMPUTER);
