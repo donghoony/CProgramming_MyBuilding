@@ -1,36 +1,4 @@
 #include "..\\header_files\\maingame.h"
-//
-//int PlayMaingame() {
-//
-//	int (*PlayGame[GAME_NUMBER])();
-//	int choose_game;
-//	int multiple = 0;
-//	int win_or_lose = 0;
-//	int go_or_stop = 1;
-//	int result;
-//
-//	PlayGame[0] = PlayHeadOrTail;
-//
-//	
-//	while (multiple < 3 && win_or_lose == 0 && go_or_stop == 1) {
-//
-//		//choose_game = ChooseGame();
-//
-//		PlayGame[choose_game](&multiple, &win_or_lose);
-//
-//		if (win_or_lose == 0 && multiple <2)
-//			GoOrStop(&go_or_stop);
-//
-//	}
-//
-//	gotoyx_clear();
-//	gotoyx_set_color(C_WHITE);
-//
-//	result = SetResult(&multiple, &win_or_lose);
-//
-//	return multiple;
-//}
-
 
 int SetBet() {
 
@@ -96,26 +64,12 @@ int SetBet() {
 			break;
 		}
 
-		}
+	}
 
 	gotoyx_clear();
 
 	return (((CursorComponent*)Cursor->GetComponent(Cursor->cthis, CURSOR_COMPONENT))->arrow)*5000;
 }
-//
-//int Square(int num, int times) {
-//	
-//	if (times == 0)
-//		return 0;
-//
-//	int total = 1;
-//
-//	for (int i = 0; i < times; i++)
-//		total *= num;
-//
-//	return total;
-//}
-
 int ChooseGame() {
 
 	srand((unsigned)time(NULL));
@@ -180,16 +134,6 @@ int GoOrStop() {
 	}
 }
 
-int SetResult(int* multiple, int* win_or_lose) {
-
-	if (*win_or_lose == 0) {
-		return (*multiple);
-	}
-	else if (*win_or_lose == 1) {
-		return 0;
-	}
-}
-
 int PlayHeadOrTail() {
 
 	//게임 오브젝트 선언
@@ -240,7 +184,6 @@ int PlayHeadOrTail() {
 
 	return win_or_lose;
 }
-
 HeadOrTail0(GameObject* SystemMenu, GameObject* SystemCursor, GameObject* Player) {
 	
 	int guess = 0;

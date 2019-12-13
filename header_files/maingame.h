@@ -6,11 +6,8 @@
 int SetBet();
 int ChooseGame();
 int GoOrStop();
-//int PlayMaingame();
 int PlayHeadOrTail();
 int HeadOrTail0(GameObject* SystemMenu, GameObject* SystemCursor, GameObject* Player);
 int HeadOrTail1(GameObject* SystemMenu, GameObject* Coin);
 int HeadOrTail2(int* guess, GameObject* SystemMenu, GameObject* Coin, GameObject* Player);
-int PlayShellGame(int* multiple, int* win_or_lose);
-int SetResult(int*multiple, int* win_or_lose);
-//int Square(int num, int times);
+//int PlayShellGame(int* multiple, int* win_or_lose);
