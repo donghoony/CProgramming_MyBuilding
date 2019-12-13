@@ -11,20 +11,22 @@
 
 void minigame_cycle(Player* p){
 
+    int bet = 0;
+    int choose_game;
+    int win_or_lose;
+    int multiple = 0;
+    int go_or_stop = 0;
+    int (*PlayGame[GAME_NUMBER])();
+    int win_multiple[] = { 0, 2, 3, 4 };
+
     //베팅
-    int bet = SetBet();
-    while (p->money < bet)
+    bet = SetBet();
+    while (p->money < bet)  //do while?
         bet = SetBet();
     if(bet != 0)
         money_spend(p, bet);
 
     //게임 선택 및 실행
-    int choose_game;
-    int win_or_lose;
-    int multiple = 0;
-    int go_or_stop = 0;
-
-    int (*PlayGame[GAME_NUMBER])();
     PlayGame[0] = PlayHeadOrTail;
 
     while (multiple < 3) {
@@ -48,7 +50,6 @@ void minigame_cycle(Player* p){
     }
 
     //결과 - 플레이어 돈 조정
-    int win_multiple[] = { 0, 2, 3, 4 };
     if(multiple) money_earn(p, win_multiple[multiple]*(bet + BASE_MONEY));
 }
 

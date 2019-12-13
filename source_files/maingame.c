@@ -11,13 +11,15 @@ int SetBet() {
 	//물론 기능이 하나여도 게임오브젝트로 선언해도 됨
 	GameObject* Player = NewGameObject(PLAYER_GAMEOBJECT);
 
-	//게임오브젝트인 Cursor에 Render 컴포넌트와 InputComponent 컴포넌트, Trigger 컴포넌트 추가
+	//게임오브젝트 별 컴포넌트 선언
 	RenderComponent* CursorRender = NewRenderComponent(RENDER_COMPONENT);
-	Cursor->InsertComponent(Cursor->cthis, RENDER_COMPONENT, (ComponentBase*)CursorRender);
 	CursorComponent* CursorCursor = NewCursorComponent(CURSOR_COMPONENT);
-	Cursor->InsertComponent(Cursor->cthis, CURSOR_COMPONENT, (ComponentBase*)CursorCursor);
-
 	InputComponent* PlayerInput = NewInputComponent(INPUT_COMPONENT);
+
+	//게임오브젝트인 Cursor에 Render 컴포넌트와 InputComponent 컴포넌트, Trigger 컴포넌트 추가
+	Cursor->InsertComponent(Cursor->cthis, RENDER_COMPONENT, (ComponentBase*)CursorRender);
+	Cursor->InsertComponent(Cursor->cthis, CURSOR_COMPONENT, (ComponentBase*)CursorCursor);
+	//Player 오브젝트에 Input 컴포넌트 추가
 	Player->InsertComponent(Player->cthis, INPUT_COMPONENT, (ComponentBase*)PlayerInput);
 	
 	/* Render 컴포넌트 데이터 불러오기 */
@@ -85,14 +87,15 @@ int GoOrStop() {
 	GameObject* Player = NewGameObject(PLAYER_GAMEOBJECT);
 
 	RenderComponent* SystemMenuRender = NewRenderComponent(RENDER_COMPONENT);
-	SystemMenu->InsertComponent(SystemMenu->cthis, RENDER_COMPONENT, (ComponentBase*)SystemMenuRender);
-
 	RenderComponent* SystemCursorRender = NewRenderComponent(RENDER_COMPONENT);
-	SystemCursor->InsertComponent(SystemCursor->cthis, RENDER_COMPONENT, (ComponentBase*)SystemCursorRender);
 	CursorComponent* SystemCursorCursor = NewCursorComponent(CURSOR_COMPONENT);
-	SystemCursor->InsertComponent(SystemCursor->cthis, CURSOR_COMPONENT, (ComponentBase*)SystemCursorCursor);
 
 	InputComponent* PlayerInput = NewInputComponent(INPUT_COMPONENT);
+
+	SystemMenu->InsertComponent(SystemMenu->cthis, RENDER_COMPONENT, (ComponentBase*)SystemMenuRender);
+	SystemCursor->InsertComponent(SystemCursor->cthis, RENDER_COMPONENT, (ComponentBase*)SystemCursorRender);
+	SystemCursor->InsertComponent(SystemCursor->cthis, CURSOR_COMPONENT, (ComponentBase*)SystemCursorCursor);
+
 	Player->InsertComponent(Player->cthis, INPUT_COMPONENT, (ComponentBase*)PlayerInput);
 
 	((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->SetInputHeight((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 7);
@@ -136,6 +139,9 @@ int GoOrStop() {
 
 int PlayHeadOrTail() {
 
+	int guess = 0;
+	int win_or_lose = 0;
+
 	//게임 오브젝트 선언
 	GameObject* Player = NewGameObject(PLAYER_GAMEOBJECT);
 	GameObject* Coin = NewGameObject(COIN_GAMEOBJECT);
@@ -164,8 +170,6 @@ int PlayHeadOrTail() {
 	CursorComponent* SystemCursorCursor = NewCursorComponent(CURSOR_COMPONENT);
 	SystemCursor->InsertComponent(SystemCursor->cthis, SystemCursorCursor->pComponentBase->ComponentID, (ComponentBase*)SystemCursorCursor);
 
-	int guess = 0;
-	int win_or_lose = 0;
 
 	//RENDER 데이터 설정
 	((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->SetInputHeight((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 7);
@@ -209,12 +213,12 @@ HeadOrTail0(GameObject* SystemMenu, GameObject* SystemCursor, GameObject* Player
 		else if (((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input == ENTER) {
 			guess = ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow;
 			((InputComponent*)Player->GetComponent(Player->cthis, INPUT_COMPONENT))->input = 0;
-			gotoyx_clear(); ((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemMenu->GetComponent(SystemMenu->cthis, RENDER_COMPONENT), 50, 17, 0, C_GREEN);
-			((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT))->Render((RenderComponent*)SystemCursor->GetComponent(SystemCursor->cthis, RENDER_COMPONENT), ((CursorComponent*)SystemCursor->GetComponent(SystemCursor->cthis, CURSOR_COMPONENT))->arrow * 11 + 58, 22, 0, C_BLUE);
-
-			return guess;
+			gotoyx_clear(); 
+			break;
 		}
 	}
+
+	return guess;
 }
 HeadOrTail1(GameObject* SystemMenu, GameObject* Coin) {
 
@@ -226,10 +230,11 @@ HeadOrTail1(GameObject* SystemMenu, GameObject* Coin) {
 
 		if (((AnimationComponent*)Coin->GetComponent(Coin->cthis, ANIMATION_COMPONENT))->animation_switch == 2) {
 			gotoyx_clear();
-			return 0;
+			break;
 		}
 	}
 
+	return 0;
 }
 HeadOrTail2(int* guess, GameObject* SystemMenu, GameObject* Coin, GameObject* Player){
 	

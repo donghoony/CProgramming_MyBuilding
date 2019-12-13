@@ -190,6 +190,7 @@ int GetData_(RenderComponent* cthis, const char* FileName) {
 	char* temp;
 	temp = (char*)malloc(sizeof(char) * 100);
 	fp = fopen(FileName, "r+");
+	int i, j;
 
 	while (fgets(temp, 100, fp) != NULL) {	//길이 측정
 		cthis->calc_height++;
@@ -204,14 +205,14 @@ int GetData_(RenderComponent* cthis, const char* FileName) {
 
 	cthis->str = (char***)malloc(sizeof(char**) * cthis->fps);
 
-	for (int i = 0; i < cthis->fps; i++) {
+	for (i = 0; i < cthis->fps; i++) {
 		*(cthis->str + i) = (char**)malloc(sizeof(char*) * cthis->input_height);
-		for (int j = 0; j < cthis->input_height; j++)
+		for (j = 0; j < cthis->input_height; j++)
 			*(*(cthis->str + i) + j) = (char*)malloc(sizeof(char) * cthis->input_width);
 	}
 
-	for (int i = 0; i < cthis->fps; i++) {
-		for (int j = 0; j < cthis->input_height; j++) {
+	for (i = 0; i < cthis->fps; i++) {
+		for (j = 0; j < cthis->input_height; j++) {
 			fgets(*(*(cthis->str + i) + j), cthis->input_width, fp);
 		}
 	}
@@ -220,8 +221,10 @@ int GetData_(RenderComponent* cthis, const char* FileName) {
 }
 int Render_(RenderComponent* cthis, int x, int y, int select_fps, int color) {
 
+	int i;
+
 	gotoyx_set_color(color);
-	for (int i = 0; i < cthis->input_height; i++)
+	for (i = 0; i < cthis->input_height; i++)
 		gotoyx_print( y+i, x, *(*(cthis->str + select_fps) + i));
 
 	return 0;
